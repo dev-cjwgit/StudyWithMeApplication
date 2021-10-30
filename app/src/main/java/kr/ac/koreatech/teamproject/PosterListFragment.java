@@ -66,13 +66,12 @@ public class PosterListFragment extends Fragment {
         binding = FragmentPosterListBinding.inflate(getLayoutInflater());
 
         List<String> list = new ArrayList<>();
-        list.add("집으로 가즈앙");
-        list.add("기분 좋은 아침");
-        list.add("안드로이드");
-        list.add("아이폰은 전설이다");
-        list.add("공부가 싫어");
-        list.add("과제도 싫엉");
-        list.add("공부 멈춰!!!!");
+        list.add("모바일프로그래밍");
+        list.add("소프트웨어공학");
+        list.add("자바프로그래밍");
+        list.add("IoT개론및실습");
+        list.add("스크립트프로그래밍");
+        list.add("객체지향개발론및실습");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         binding.framentPosterListListView.setAdapter(adapter);
 
