@@ -3,6 +3,7 @@ package kr.ac.koreatech.teamproject;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,22 +12,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import kr.ac.koreatech.teamproject.databinding.FragmentStudyBinding;
+import kr.ac.koreatech.teamproject.databinding.FragmentStudyJoinBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StudyFragment#newInstance} factory method to
+ * Use the {@link StudyJoinFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StudyFragment extends Fragment {
-    private FragmentStudyBinding binding;
-    private List<String> list = new ArrayList<>();
+public class StudyJoinFragment extends Fragment {
+    private FragmentStudyJoinBinding binding;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,10 +31,8 @@ public class StudyFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String title;
 
-    public StudyFragment(String title) {
-        this.title = title;
+    public StudyJoinFragment() {
         // Required empty public constructor
     }
 
@@ -48,11 +42,11 @@ public class StudyFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StudyFagment.
+     * @return A new instance of fragment StudyJoinFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StudyFragment newInstance(String param1, String param2) {
-        StudyFragment fragment = new StudyFragment("");
+    public static StudyJoinFragment newInstance(String param1, String param2) {
+        StudyJoinFragment fragment = new StudyJoinFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,50 +61,43 @@ public class StudyFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        binding = FragmentStudyBinding.inflate(getLayoutInflater());
 
+        binding = FragmentStudyJoinBinding.inflate(getLayoutInflater());
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
-        binding.framentStudyListView.setAdapter(adapter);
-
-        binding.fragmentStudyButtonSend.setOnClickListener((v) -> {
-            list.add(binding.fragmentStudyEditTextSend.getText().toString());
-            binding.fragmentStudyEditTextSend.setText("");
-            adapter.notifyDataSetChanged();
-        });
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle(title);
+        actionBar.setTitle("스터디 그룹 모집");
         actionBar.setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
-
         return binding.getRoot();
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.studymenu, menu);
+        inflater.inflate(R.menu.study_join_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("plz in search");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                System.out.println(s + " 검색하려고?");
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int curId = item.getItemId();
-        switch (curId) {
-            case R.id.action_online:
-                System.out.println("현활 보려고??");
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
 }

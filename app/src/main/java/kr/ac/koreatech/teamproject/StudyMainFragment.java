@@ -6,19 +6,26 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
-import kr.ac.koreatech.teamproject.databinding.FragmentPosterBinding;
-import kr.ac.koreatech.teamproject.databinding.FragmentSettingBinding;
+import java.util.ArrayList;
+import java.util.List;
+
+import kr.ac.koreatech.teamproject.databinding.FragmentStudyMainBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PosterFragment#newInstance} factory method to
+ * Use the {@link StudyMainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PosterFragment extends Fragment {
-    private FragmentPosterBinding binding;
+public class StudyMainFragment extends Fragment {
+    private FragmentStudyMainBinding binding;
+    private List<String> list = new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,9 +36,9 @@ public class PosterFragment extends Fragment {
     private String mParam2;
     private String title;
 
-    public PosterFragment(String title) {
-        // Required empty public constructor
+    public StudyMainFragment(String title) {
         this.title = title;
+        // Required empty public constructor
     }
 
     /**
@@ -40,11 +47,11 @@ public class PosterFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PosterFragment.
+     * @return A new instance of fragment StudyFagment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PosterFragment newInstance(String param1, String param2) {
-        PosterFragment fragment = new PosterFragment("");
+    public static StudyMainFragment newInstance(String param1, String param2) {
+        StudyMainFragment fragment = new StudyMainFragment("");
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,8 +66,19 @@ public class PosterFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        binding = FragmentPosterBinding.inflate(getLayoutInflater());
+        binding = FragmentStudyMainBinding.inflate(getLayoutInflater());
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
+        binding.framentStudyListView.setAdapter(adapter);
+
+        binding.fragmentStudyButtonSend.setOnClickListener((v) -> {
+            list.add(binding.fragmentStudyEditTextSend.getText().toString());
+            binding.fragmentStudyEditTextSend.setText("");
+            adapter.notifyDataSetChanged();
+        });
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +87,29 @@ public class PosterFragment extends Fragment {
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle(title);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
+
         return binding.getRoot();
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.studymenu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
+            case R.id.action_online:
+                System.out.println("현활 보려고??");
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

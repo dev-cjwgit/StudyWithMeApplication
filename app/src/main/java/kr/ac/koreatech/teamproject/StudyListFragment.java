@@ -88,11 +88,21 @@ public class StudyListFragment extends Fragment {
                 MainActivity main = ((MainActivity) getActivity());
                 FragmentManager fm = main.getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment1, new StudyFragment(selected_item));
+                fragmentTransaction.replace(R.id.fragment1, new StudyMainFragment(selected_item));
                 fragmentTransaction.commit();
                 //텍스트뷰에 출력
                 System.out.println(selected_item + " 에 접속함?");
             }
+        });
+
+        binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
+
+            MainActivity main = ((MainActivity) getActivity());
+            FragmentManager fm = main.getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment1, new StudyJoinFragment());
+            fragmentTransaction.commit();
+
         });
     }
 

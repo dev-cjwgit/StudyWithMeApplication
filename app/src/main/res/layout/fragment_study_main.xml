@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:weightSum="20"
     android:orientation="vertical"
-    tools:context=".StudyFragment">
+    tools:context=".StudyMainFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
