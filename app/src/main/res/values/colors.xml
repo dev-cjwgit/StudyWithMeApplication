@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="ActionBarColor">#A7E9AF</color>
-    <color name="backGroundColor">#EEF9BF</color>
-    <color name="navigationBar">#75B79E</color>
+    <color name="LightGreen">#A7E9AF</color>
+    <color name="LightYellow">#EEF9BF</color>
+    <color name="DeepGreen">#75B79E</color>
 </resources>

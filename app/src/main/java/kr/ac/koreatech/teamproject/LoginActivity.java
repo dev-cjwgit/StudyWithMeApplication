@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import kr.ac.koreatech.teamproject.MainActivity;
 import kr.ac.koreatech.teamproject.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
