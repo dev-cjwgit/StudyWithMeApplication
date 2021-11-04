@@ -3,6 +3,7 @@ package kr.ac.koreatech.teamproject;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,9 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-
+import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
 
@@ -33,6 +37,7 @@ public class PosterListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Object MenuInflater;
 
     public PosterListFragment() {
         // Required empty public constructor
@@ -97,6 +102,34 @@ public class PosterListFragment extends Fragment {
 
             //텍스트뷰에 출력
             System.out.println(selected_item + " 에 접속함?");
+
+            //test용 toast 메세지
+            Toast myToast=Toast.makeText(this.getActivity().getApplicationContext(), "안녕",Toast.LENGTH_SHORT);
+            myToast.show();
+
+            /*public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+                super.onCreateOptionsMenu(menu, inflater);
+                inflater.inflate(R.menu.poster_search_menu, menu);
+                MenuItem searchItem = menu.findItem(R.id.action_search);
+
+                SearchView searchView = (SearchView) searchItem.getActionView();
+                searchView.setQueryHint("plz in search");
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
+                    @Override
+                    public boolean onQueryTextSubmit(String s) {
+                        System.out.println(s + " 검색하려고?");
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String s) {
+                        return false;
+                    }
+                });
+            }*/
+
+
         });
     }
 
