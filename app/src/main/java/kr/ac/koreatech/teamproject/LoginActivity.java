@@ -25,10 +25,6 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide(); // 액션바 숨기기
     }
 
-    private void testFunc() {
-
-    }
-
     public void loginButton_onClick(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
