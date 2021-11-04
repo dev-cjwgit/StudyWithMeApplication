@@ -83,13 +83,13 @@ public class MainFragment extends Fragment {
         // init Data
         ArrayList<FrontPoster> data1 = new ArrayList<>();
 
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_board), "모바일프로그래밍"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_board), "소프트웨어공학"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_board), "자바프로그래밍"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_board), "IoT개론및실습"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_board), "스크립트프로그래밍"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_board), "객체지향개발론및실습"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_board), "컴퓨터네트워크"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_1), "모바일프로그래밍"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_2), "중국어회화"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_3), "창의적글쓰기"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_4), "IoT개론및실습"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_5), "스크립트프로그래밍"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_1), "객체지향개발론및실습"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_4), "컴퓨터네트워크"));
 
 
         ArrayList<FrontPoster> data2 = new ArrayList<>();
