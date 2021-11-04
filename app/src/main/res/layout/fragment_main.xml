@@ -92,7 +92,10 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="1위"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#D57E7E"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView6"
@@ -121,10 +124,13 @@
             android:id="@+id/textView8"
             android:layout_width="59dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="2위"
+            android:textColor="#D57E7E"
             android:textAlignment="center"
-            android:text="2위" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView9"
@@ -154,9 +160,12 @@
             android:layout_width="59dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:textAlignment="center"
             android:layout_weight="1"
-            android:text="3위" />
+            android:text="3위"
+            android:textAlignment="center"
+            android:textColor="#D57E7E"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView12"
