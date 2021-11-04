@@ -94,13 +94,13 @@ public class MainFragment extends Fragment {
 
         ArrayList<FrontPoster> data2 = new ArrayList<>();
 
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "집으로 가즈앙"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "기분 좋은 아침"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "안드로이드"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "아이폰은 전설이다"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "공부가 싫어"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "과제도 싫엉"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "공부 멈춰!!!!"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "정처리 합격하기"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "CAD 스터디"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "C언어 모각코"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "과탑먹을사람들"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "모각코"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "공대생들어와"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "중국어같이공부하자"));
         // init LayoutManager
         m1LayoutManager = new LinearLayoutManager(this.getActivity());
         m1LayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 기본값이 VERTICAL
