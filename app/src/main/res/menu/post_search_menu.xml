@@ -2,29 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_poster_search"
+        android:id="@+id/action_post_search"
         app:showAsAction="always"
         android:icon="@drawable/icon_search"
-        android:title="poster_Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView">
+    </item>
+    <item
+        android:id="@+id/question"
+        app:showAsAction="never"
+        android:title="질의응답">
 
     </item>
     <item
-        android:id="@+id/license"
+        android:id="@+id/assignment"
         app:showAsAction="never"
-        android:title="자격증">
+        android:title="과제방">
+
     </item>
 
-    <item
-        android:id="@+id/subject"
-        app:showAsAction="never"
-        android:title="교과목">
-    </item>
-
-    <item
-        android:id="@+id/etc"
-        app:showAsAction="never"
-        android:title="기타">
-    </item>
 
 </menu>

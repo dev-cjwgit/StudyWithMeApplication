@@ -70,9 +70,30 @@ public class PosterFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentPosterBinding.inflate(getLayoutInflater());
+    }
 
+    //menu 생성 부분
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.post_search_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_post_search);
 
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("plz in search");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                System.out.println(s + " 검색하려고?");
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
     }
 
     @Override

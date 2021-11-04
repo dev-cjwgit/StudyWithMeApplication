@@ -111,12 +111,12 @@ public class PosterListFragment extends Fragment {
         });
     }
 
-    //menu 생성 부분
-    /*@Override
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.poster_search_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem searchItem = menu.findItem(R.id.action_poster_search);
 
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("plz in search");
@@ -133,7 +133,7 @@ public class PosterListFragment extends Fragment {
                 return false;
             }
         });
-    }*/
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
