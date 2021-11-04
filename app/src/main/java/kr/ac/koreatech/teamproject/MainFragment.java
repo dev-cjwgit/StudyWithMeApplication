@@ -133,10 +133,11 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle("메인");
+        actionBar.setTitle("Study With Me ·८·");
         actionBar.setDisplayHomeAsUpEnabled(true);
         return binding.getRoot();
     }
+
 }
 
 class FrontPoster {

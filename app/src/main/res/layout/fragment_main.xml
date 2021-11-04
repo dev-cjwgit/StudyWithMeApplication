@@ -19,10 +19,11 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_weight="1"
         android:text=" 가입한 게시판"
         android:textSize="18sp"
+        android:textColor="#FFBF86"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -37,9 +38,10 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:layout_weight="1"
         android:text=" 가입한 스터디 그룹"
+        android:textColor="#FFBF86"
         android:textSize="18sp"
         android:textStyle="bold" />
 
