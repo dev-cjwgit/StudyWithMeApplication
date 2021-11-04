@@ -94,7 +94,7 @@ public class MainFragment extends Fragment {
 
         ArrayList<FrontPoster> data2 = new ArrayList<>();
 
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "정처리 합격하기"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "정처기합격"));
         data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "CAD 스터디"));
         data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "C언어 모각코"));
         data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "과탑먹을사람들"));
