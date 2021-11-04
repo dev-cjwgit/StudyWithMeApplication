@@ -93,6 +93,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:text="login"
+
             android:onClick="loginButton_onClick"
             android:layout_weight="1"/>
 
