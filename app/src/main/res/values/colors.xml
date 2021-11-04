@@ -7,8 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="LightGreen">#A7E9AF</color>
-    <color name="LightYellow">#EEF9BF</color>
-    <color name="DeepGreen">#75B79E</color>
+    <color name="LightGreen">#A7E9AF</color> <!--액션바색-->
+    <color name="LightYellow">#EEF9BF</color> <!--배경색-->
+    <color name="DeepGreen">#75B79E</color> <!--네비바색-->
+    <color name="LightBlue">#96C7C1</color> <!--버튼 색-->
     <!--a-->
 </resources>
