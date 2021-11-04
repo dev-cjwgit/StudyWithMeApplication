@@ -107,31 +107,33 @@ public class PosterListFragment extends Fragment {
             Toast myToast=Toast.makeText(this.getActivity().getApplicationContext(), "안녕",Toast.LENGTH_SHORT);
             myToast.show();
 
-            /*public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-                super.onCreateOptionsMenu(menu, inflater);
-                inflater.inflate(R.menu.poster_search_menu, menu);
-                MenuItem searchItem = menu.findItem(R.id.action_search);
-
-                SearchView searchView = (SearchView) searchItem.getActionView();
-                searchView.setQueryHint("plz in search");
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
-
-                    @Override
-                    public boolean onQueryTextSubmit(String s) {
-                        System.out.println(s + " 검색하려고?");
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onQueryTextChange(String s) {
-                        return false;
-                    }
-                });
-            }*/
-
 
         });
     }
+
+    //menu 생성 부분
+    /*@Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.poster_search_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("plz in search");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                System.out.println(s + " 검색하려고?");
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -3,11 +3,21 @@ package kr.ac.koreatech.teamproject;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentSettingBinding;
@@ -60,6 +70,9 @@ public class PosterFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentPosterBinding.inflate(getLayoutInflater());
+
+
+
     }
 
     @Override
@@ -71,4 +84,7 @@ public class PosterFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         return binding.getRoot();
     }
+
+
+
 }
