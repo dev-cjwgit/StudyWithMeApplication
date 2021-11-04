@@ -72,6 +72,15 @@ public class PosterListFragment extends Fragment {
         list.add("IoT개론및실습");
         list.add("스크립트프로그래밍");
         list.add("객체지향개발론및실습");
+        list.add("공학설계");
+        list.add("창의적공학설계");
+        list.add("c프로그래밍1");
+        list.add("빅데이터개론");
+        list.add("컴퓨터그래픽스");
+        list.add("기초전기전자실습");
+        list.add("c프로그래밍2");
+        list.add("경영학개론");
+        list.add("경제학원론");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         binding.framentPosterListListView.setAdapter(adapter);
 
