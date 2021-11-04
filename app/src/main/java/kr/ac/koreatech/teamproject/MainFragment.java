@@ -94,13 +94,13 @@ public class MainFragment extends Fragment {
 
         ArrayList<FrontPoster> data2 = new ArrayList<>();
 
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "정처기합격"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "CAD 스터디"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "C언어 모각코"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "과탑먹을사람들"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "모각코"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "공대생들어와"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_book), "중국어같이공부하자"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_1), "정처기합격"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_2), "CAD 스터디"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_3), "C언어 모각코"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_4), "과탑먹을사람들"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_5), "모각코"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_6), "공대생들어와"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_7), "중국어같이해"));
         // init LayoutManager
         m1LayoutManager = new LinearLayoutManager(this.getActivity());
         m1LayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 기본값이 VERTICAL
@@ -133,10 +133,11 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle("메인");
+        actionBar.setTitle("Study With Me ·८·");
         actionBar.setDisplayHomeAsUpEnabled(true);
         return binding.getRoot();
     }
+
 }
 
 class FrontPoster {
