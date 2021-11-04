@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="20"
+    android:background="@color/backGroundColor"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -27,6 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="navigation_onClick"
+            android:background="@color/navigationBar"
             android:src="@drawable/icon_home" />
 
         <ImageView
@@ -35,6 +37,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="navigation_onClick"
+            android:background="@color/navigationBar"
             android:src="@drawable/icon_board" />
 
         <ImageView
@@ -43,6 +46,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="navigation_onClick"
+            android:background="@color/navigationBar"
             android:src="@drawable/icon_book" />
 
         <ImageView
@@ -50,6 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/navigationBar"
             android:onClick="navigation_onClick"
             android:src="@drawable/icon_setting" />
     </LinearLayout>
