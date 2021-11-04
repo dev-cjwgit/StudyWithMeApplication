@@ -13,7 +13,7 @@ import kr.ac.koreatech.teamproject.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding; //
-    //override
+    //override 삭제해주세요.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
