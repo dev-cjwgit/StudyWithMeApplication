@@ -66,13 +66,13 @@ public class StudyListFragment extends Fragment {
         binding = FragmentStudyListBinding.inflate(getLayoutInflater());
 
         List<String> list = new ArrayList<>();
-        list.add("집으로 가즈앙");
-        list.add("기분 좋은 아침");
-        list.add("안드로이드");
-        list.add("아이폰은 전설이다");
-        list.add("공부가 싫어");
-        list.add("과제도 싫엉");
-        list.add("공부 멈춰!!!!");
+        list.add("정처기합격");
+        list.add("CAD 스터디");
+        list.add("C언어 모각코");
+        list.add("과탑먹을사람들");
+        list.add("모각코");
+        list.add("공대생들어와");
+        list.add("중국어같이공부");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         binding.framentStudyListListView.setAdapter(adapter);
 

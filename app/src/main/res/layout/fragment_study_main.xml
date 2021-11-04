@@ -6,9 +6,35 @@
     android:weightSum="20"
     android:background="@color/LightYellow"
     android:orientation="vertical"
-    tools:context=".StudyMainFragment">
+    tools:context=".StudyMainFragment"
+    android:gravity="center">
 
     <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/star" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스터디 그룹 채팅방"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/star" />
+    </LinearLayout>
     <ListView
         android:id="@+id/framentStudy_listView"
         android:layout_width="match_parent"
@@ -32,7 +58,9 @@
             android:text="+"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/LightBlue"/>
     </LinearLayout>
 
 </LinearLayout>
