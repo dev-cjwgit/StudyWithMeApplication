@@ -68,7 +68,6 @@ public class PosterListFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentPosterListBinding.inflate(getLayoutInflater());
-        //a
 
         List<String> list = new ArrayList<>();
         list.add("모바일프로그래밍");
