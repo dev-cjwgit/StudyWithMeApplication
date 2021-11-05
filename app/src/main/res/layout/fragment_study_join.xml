@@ -24,9 +24,10 @@
             android:text="스터디 모집"
             android:textSize="24sp" />
     </LinearLayout>
+
     <ListView
         android:id="@+id/framentStudyJoin_listView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="15"/>
+        android:layout_height="677dp"
+        android:layout_weight="15" />
 </LinearLayout>
