@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -97,7 +96,7 @@ public class PosterListFragment extends Fragment {
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment1, new PosterFragment(selected_item));
+            fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(selected_item));
             fragmentTransaction.commit();
 
             //텍스트뷰에 출력
@@ -142,6 +141,7 @@ public class PosterListFragment extends Fragment {
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("게시판");
         actionBar.setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
         return binding.getRoot();
     }
 }
