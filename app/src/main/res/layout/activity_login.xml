@@ -16,20 +16,21 @@
         login_textview_join_membership
     -->
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="5"/>
+        android:layout_height="11dp"
+        android:layout_weight="5" />
 
     <!-- 앱 로고 -->
+
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="149dp"
+        android:layout_height="162dp"
         android:layout_weight="2"
         android:src="@drawable/login_logo" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="9dp"
+        android:layout_height="46dp"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:text="logoimage넣을거임"
@@ -39,7 +40,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="157dp"
         android:layout_margin="16dp"
         android:layout_weight="5"
         android:orientation="vertical"
@@ -47,7 +48,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="24dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="5">
@@ -73,7 +74,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="5">
@@ -82,10 +83,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:gravity="center"
-                android:text="PW : "
                 android:background="@drawable/button_background"
                 android:backgroundTint="#D8B6A4"
+                android:gravity="center"
+                android:text="PW : "
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
@@ -100,24 +101,24 @@
         <Button
             android:id="@+id/login_button_login"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="19dp"
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:background="@drawable/button_background"
             android:backgroundTint="@color/LightBlue"
-            android:textSize="17dp"
             android:onClick="loginButton_onClick"
-            android:text="login" />
+            android:text="login"
+            android:textSize="17dp" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/login_textView_join_membership"
         android:layout_width="wrap_content"
-        android:layout_margin="20dp"
         android:layout_height="26dp"
         android:layout_gravity="center"
+        android:layout_margin="20dp"
         android:layout_weight="0.5"
         android:text="회원가입"
         android:textStyle="bold" />
