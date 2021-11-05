@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import adapter.RecyclerViewAdapter;
 import entity.FrontPoster;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 
@@ -34,8 +35,8 @@ import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 public class MainFragment extends Fragment {
     private FragmentMainBinding binding;
 
-    private RecyclerAdapter m1Adapter;
-    private RecyclerAdapter m2Adapter;
+    private RecyclerViewAdapter m1Adapter;
+    private RecyclerViewAdapter m2Adapter;
     private LinearLayoutManager m1LayoutManager;
     private LinearLayoutManager m2LayoutManager;
 
@@ -115,8 +116,8 @@ public class MainFragment extends Fragment {
 
 
         // init Adapter
-        m1Adapter = new RecyclerAdapter();
-        m2Adapter = new RecyclerAdapter();
+        m1Adapter = new RecyclerViewAdapter();
+        m2Adapter = new RecyclerViewAdapter();
         // set Data
         m1Adapter.setData(data1);
         m2Adapter.setData(data2);
@@ -141,64 +142,6 @@ public class MainFragment extends Fragment {
 
 }
 
-
-class RecyclerViewHolder extends RecyclerView.ViewHolder {
-
-    public ImageView icon;
-    public TextView description;
-
-    public RecyclerViewHolder(View itemView, ArrayList<FrontPoster> items) {
-        super(itemView);
-        icon = (ImageView) itemView.findViewById(R.id.controll_recycler_imageView);
-        description = (TextView) itemView.findViewById(R.id.controll_recycler_textView);
-
-        itemView.setOnClickListener(v -> {
-            // TODO : process click event.
-            int pos = getAdapterPosition();
-            if (pos != RecyclerView.NO_POSITION) {
-                System.out.println(items.get(pos).getTitle() + " 에 접속함?");
-            }
-        });
-    }
-}
-
-
-class RecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
-
-    private ArrayList<FrontPoster> datas;
-
-    public void setData(ArrayList<FrontPoster> list) {
-        datas = list;
-    }
-
-    @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-
-// 사용할 아이템의 뷰를 생성해준다.
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.controll_recyclerview_poster, parent, false);
-
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, datas);
-
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        FrontPoster data = datas.get(position);
-
-        holder.description.setText(data.getTitle());
-        holder.icon.setImageBitmap(data.getBitmap());
-
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return datas.size();
-    }
-}
 
 //
 //class MyListDecoration extends RecyclerView.ItemDecoration {
