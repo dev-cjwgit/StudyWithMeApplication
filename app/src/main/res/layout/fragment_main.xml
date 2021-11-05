@@ -16,6 +16,52 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="43dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/LightBlue"
+            android:text="❰" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="223dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="2021.11.8"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="43dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/LightBlue"
+            android:text="❱" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="02 : 12 : 35"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -183,4 +229,5 @@
             android:layout_weight="1"
             android:text="15:21:03" />
     </LinearLayout>
+
 </LinearLayout>
