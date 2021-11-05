@@ -20,5 +20,18 @@
 
     </item>
 
+    <item
+        android:id="@+id/shareInformation"
+        app:showAsAction="never"
+        android:title="정보공유">
+
+    </item>
+    <item
+        android:id="@+id/shareDocument"
+        app:showAsAction="never"
+        android:title="자료공유">
+
+    </item>
+
 
 </menu>

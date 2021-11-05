@@ -102,11 +102,6 @@ public class PosterListFragment extends Fragment {
             //텍스트뷰에 출력
             System.out.println(selected_item + " 에 접속함?");
 
-            //test용 toast 메세지
-            Toast myToast=Toast.makeText(this.getActivity().getApplicationContext(), "안녕",Toast.LENGTH_SHORT);
-            myToast.show();
-
-
         });
     }
 

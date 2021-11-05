@@ -31,13 +31,13 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
+        android:layout_height="24dp"
         android:layout_weight="2"
         android:src="@drawable/logo_2" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="157dp"
+        android:layout_height="149dp"
         android:layout_margin="16dp"
         android:layout_weight="5"
         android:orientation="vertical"
