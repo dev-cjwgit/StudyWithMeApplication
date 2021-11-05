@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:layout_marginTop="20sp"
-        android:text=" 가입한 게시판"
+        android:text="  가입한 게시판"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:layout_marginTop="30sp"
-        android:text=" 가입한 스터디 그룹"
+        android:text="  가입한 스터디 그룹"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="411dp"
+            android:layout_width="378dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text=" RANKING"
