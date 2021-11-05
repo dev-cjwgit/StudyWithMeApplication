@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import entity.FrontPoster;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 
 /**
@@ -140,23 +141,6 @@ public class MainFragment extends Fragment {
 
 }
 
-class FrontPoster {
-    private Bitmap bitmap;
-    private String title;
-
-    public FrontPoster(Bitmap bitmap, String title) {
-        this.title = title;
-        this.bitmap = bitmap;
-    }
-
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-}
 
 class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -171,12 +155,13 @@ class RecyclerViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(v -> {
             // TODO : process click event.
             int pos = getAdapterPosition();
-            if(pos != RecyclerView.NO_POSITION){
+            if (pos != RecyclerView.NO_POSITION) {
                 System.out.println(items.get(pos).getTitle() + " 에 접속함?");
             }
         });
     }
 }
+
 
 class RecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
