@@ -20,42 +20,43 @@
         android:layout_height="0dp"
         android:layout_weight="1.5"
         android:orientation="horizontal"
+        android:background="@color/DeepGreen"
         android:weightSum="4">
 
         <ImageView
+            android:layout_margin="8dp"
             android:id="@+id/main_imageView_main"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="navigation_onClick"
-            android:background="@color/DeepGreen"
             android:src="@drawable/icon_home" />
 
         <ImageView
+            android:layout_margin="8dp"
             android:id="@+id/main_imageView_poster"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="navigation_onClick"
-            android:background="@color/DeepGreen"
-            android:src="@drawable/icon_board" />
+            android:src="@drawable/icon_subject" />
 
         <ImageView
+            android:layout_margin="8dp"
             android:id="@+id/main_imageView_study"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="navigation_onClick"
-            android:background="@color/DeepGreen"
-            android:src="@drawable/icon_book" />
+            android:src="@drawable/icon_group" />
 
         <ImageView
+            android:layout_margin="8dp"
             android:id="@+id/main_imageView_setting"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/DeepGreen"
             android:onClick="navigation_onClick"
-            android:src="@drawable/icon_setting" />
+            android:src="@drawable/icon_more" />
     </LinearLayout>
 </LinearLayout>
