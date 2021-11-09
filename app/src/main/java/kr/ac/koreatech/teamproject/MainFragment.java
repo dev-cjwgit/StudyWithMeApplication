@@ -85,24 +85,24 @@ public class MainFragment extends Fragment {
         // init Data
         ArrayList<FrontPoster> data1 = new ArrayList<>();
 
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_1), "모바일프로그래밍"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_2), "중국어회화"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_3), "창의적글쓰기"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_4), "IoT개론및실습"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_5), "스크립트프로그래밍"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_1), "객체지향개발론및실습"));
-        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.bulletin_4), "컴퓨터네트워크"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "모바일프로그래밍"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "중국어회화"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "창의적글쓰기"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "IoT개론및실습"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "스크립트프로그래밍"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "객체지향개발론및실습"));
+        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "컴퓨터네트워크"));
 
 
         ArrayList<FrontPoster> data2 = new ArrayList<>();
 
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_1), "정처기합격"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_2), "CAD 스터디"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_3), "C언어 모각코"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_4), "과탑먹을사람들"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_5), "모각코"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_6), "공대생들어와"));
-        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.studygroup_7), "중국어같이해"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "정처기합격"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "CAD 스터디"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "C언어 모각코"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "과탑먹을사람들"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "모각코"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "공대생들어와"));
+        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.icon_home), "중국어같이해"));
         // init LayoutManager
         m1LayoutManager = new LinearLayoutManager(this.getActivity());
         m1LayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 기본값이 VERTICAL

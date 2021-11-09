@@ -15,12 +15,6 @@
          android:layout_width="wrap_content"
          >
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/star" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,12 +22,6 @@
             android:text="스터디 그룹 채팅방"
             android:layout_gravity="center"/>
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/star" />
     </LinearLayout>
     <ListView
         android:id="@+id/framentStudy_listView"

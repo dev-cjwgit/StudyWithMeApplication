@@ -11,5 +11,13 @@
     <color name="LightYellow">#EEF9BF</color>
     <color name="DeepGreen">#75B79E</color>
     <color name="LightBlue">#96C7C1</color> <!--버튼 색-->
-    <!--a-->
+
+    <color name="darkBlue">#193498</color>
+    <color name="blue">#113CFC</color>
+    <color name="blueFacebook">#1377ee</color>
+    <color name="blueFacebook_background">#1974e4</color>
+    <color name="lightBlue">#1597E5</color>
+    <color name="whiteBlue">#69DADB</color>
+    <color name="gray">#9b9b9b</color>
+
 </resources>
