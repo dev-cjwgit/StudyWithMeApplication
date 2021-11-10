@@ -186,7 +186,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:gravity="center"
-                android:text="개발자는고양" />
+                android:text="개발자는고양이" />
 
             <TextView
                 android:layout_width="0dp"
@@ -218,7 +218,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:gravity="center"
-                android:text="고양이는만능이" />
+                android:text="고양is뭔들" />
 
             <TextView
                 android:layout_width="0dp"
