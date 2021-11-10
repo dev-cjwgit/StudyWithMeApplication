@@ -28,12 +28,17 @@ public class StudyListFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private boolean back_btn = false;
     private String mParam1;
     private String mParam2;
 
     public StudyListFragment() {
         // Required empty public constructor
+    }
+
+    public StudyListFragment(boolean back_btn) {
+        // Required empty public constructor
+        this.back_btn = back_btn;
     }
 
     /**
@@ -85,7 +90,7 @@ public class StudyListFragment extends Fragment {
                 MainActivity main = ((MainActivity) getActivity());
                 FragmentManager fm = main.getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment1, new StudyMainFragment(selected_item));
+                fragmentTransaction.replace(R.id.fragment1, new StudyMainFragment(selected_item, true));
                 fragmentTransaction.commit();
                 //텍스트뷰에 출력
                 System.out.println(selected_item + " 에 접속함?");
@@ -97,7 +102,7 @@ public class StudyListFragment extends Fragment {
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment1, new StudyJoinFragment());
+            fragmentTransaction.replace(R.id.fragment1, new StudyJoinFragment(true));
             fragmentTransaction.commit();
 
         });
@@ -109,7 +114,7 @@ public class StudyListFragment extends Fragment {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("스터디 그룹 리스트");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(back_btn);
         return binding.getRoot();
     }
 }

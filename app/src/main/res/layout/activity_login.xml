@@ -16,24 +16,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="11dp"
-        android:layout_weight="5" />
+        android:layout_weight="5.5" />
 
     <!-- 앱 로고 -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
+        android:fontFamily="@font/font_lucida_grande"
         android:gravity="center"
         android:text="Study With Me"
-        android:fontFamily="@font/font_lucida_grande"
-        android:textFontWeight="600"
         android:textColor="@color/blueFacebook"
+        android:textFontWeight="600"
         android:textSize="50sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2" />
+        android:layout_weight="1" />
 
     <!--    <ImageView-->
     <!--        android:id="@+id/imageView2"-->
@@ -55,6 +55,7 @@
             android:id="@+id/login_editText_id"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:hint=" 아이디(이메일 또는 전화번호)" />
 
@@ -63,14 +64,17 @@
             android:id="@+id/login_editText_pw"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:hint=" 비밀번호" />
+            android:hint=" 비밀번호"
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/login_button_login"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:background="@color/blueFacebook_background"
             android:backgroundTint="@color/blueFacebook_background"
@@ -80,12 +84,14 @@
             android:textSize="17dp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:orientation="horizontal"
         android:weightSum="1">
+
         <TextView
             android:id="@+id/login_textView_join_membership"
             android:layout_width="0dp"
@@ -96,7 +102,6 @@
             android:textColor="@color/gray"
             android:textStyle="bold" />
     </LinearLayout>
-
 
 
 </LinearLayout>

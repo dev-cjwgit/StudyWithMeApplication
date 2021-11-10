@@ -93,7 +93,7 @@ public class PosterListFragment extends Fragment {
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(selected_item));
+            fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(selected_item, true));
             fragmentTransaction.commit();
 
             //텍스트뷰에 출력
@@ -132,7 +132,7 @@ public class PosterListFragment extends Fragment {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("게시판");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
         return binding.getRoot();
     }

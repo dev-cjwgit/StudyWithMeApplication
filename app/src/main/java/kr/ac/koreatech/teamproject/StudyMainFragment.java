@@ -29,14 +29,20 @@ public class StudyMainFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private boolean back_btn = false;
     private String mParam1;
     private String mParam2;
     private String title;
 
     public StudyMainFragment(String title) {
-        this.title = title;
+        this(title, false);
         // Required empty public constructor
+    }
+
+    public StudyMainFragment(String title, boolean back_btn) {
+        // Required empty public constructor
+        this.title = title;
+        this.back_btn = back_btn;
     }
 
     /**
@@ -83,7 +89,7 @@ public class StudyMainFragment extends Fragment {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle(title);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(back_btn);
         setHasOptionsMenu(true);
 
         return binding.getRoot();

@@ -76,7 +76,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentMain_poster_listView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="110dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
@@ -101,7 +101,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentMain_study_listView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="110dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"

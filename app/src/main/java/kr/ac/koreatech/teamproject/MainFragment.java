@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +33,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment{
     private FragmentMainBinding binding;
 
     private RecyclerViewAdapter m1Adapter;
@@ -76,8 +77,6 @@ public class MainFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentMainBinding.inflate(getLayoutInflater());
-        // RecyclerView binding
-        //        mVerticalView = (RecyclerView) findViewById(R.id.vertical_list);
 
         // init Data
         ArrayList<FrontPoster> data1 = new ArrayList<>();
@@ -133,68 +132,9 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("Study With Me"); //  ·८·
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         return binding.getRoot();
     }
 
+
 }
-
-
-//
-//class MyListDecoration extends RecyclerView.ItemDecoration {
-//
-//    @Override
-//    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-//
-//        if (parent.getChildAdapterPosition(view) != parent.getAdapter().getItemCount() - 1) {
-//            outRect.right = 30;
-//        }
-//    }
-//}
-//
-//class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-//
-//    private ArrayList<Bitmap> itemList;
-//    private Context context;
-//    private View.OnClickListener onClickItem;
-//
-//    public MyAdapter(Context context, ArrayList<Bitmap> itemList, View.OnClickListener onClickItem) {
-//        this.context = context;
-//        this.itemList = itemList;
-//        this.onClickItem = onClickItem;
-//    }
-//
-//
-//    @Override
-//    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        // context 와 parent.getContext() 는 같다.
-//        View view = LayoutInflater.from(context)
-//                .inflate(R.layout.controll_recyclerview_poster, parent, false);
-//
-//        return new ViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(ViewHolder holder, int position) {
-//        Bitmap draw = itemList.get(position);
-//
-////        Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.login_logo);
-//        holder.imageView.setImageBitmap(draw);
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return itemList.size();
-//    }
-//
-//
-//    public class ViewHolder extends RecyclerView.ViewHolder {
-//        public ImageView imageView;
-//
-//        public ViewHolder(View itemView) {
-//            super(itemView);
-//
-//            imageView = itemView.findViewById(R.id.controll_recycler_imageView1);
-//        }
-//    }
-//}

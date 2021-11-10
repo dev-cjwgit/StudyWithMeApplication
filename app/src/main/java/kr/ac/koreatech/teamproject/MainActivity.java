@@ -1,6 +1,7 @@
 package kr.ac.koreatech.teamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -48,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
         // 마지막으로 뒤로 가기 버튼을 눌렀던 시간에 2.5초를 더해 현재 시간과 비교 후
         // 마지막으로 뒤로 가기 버튼을 눌렀던 시간이 2.5ncs초가 지나지 않았으면 종료
         if (System.currentTimeMillis() <= backKeyPressedTime + 2500) {
-            finish();
             toast.cancel();
             toast = Toast.makeText(this, "이용해 주셔서 감사합니다.", Toast.LENGTH_LONG);
             toast.show();
+            // 강제종료
+            ActivityCompat.finishAffinity(this);
+            System.exit(0);
         }
     }
     //endregion
@@ -80,13 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.main_imageView_study: {
                 Log.i("C_MainActivity/navigation_onClick", "스터디 프래그먼트");
-                fragment = new StudyListFragment();
+                fragment = new StudyListFragment(false);
                 break;
             }
 
             case R.id.main_imageView_setting: {
                 Log.i("C_MainActivity/navigation_onClick", "설정 프래그먼트");
-                fragment = new SettingFragment();
+                fragment = new SettingFragment(false);
                 break;
             }
             default: {

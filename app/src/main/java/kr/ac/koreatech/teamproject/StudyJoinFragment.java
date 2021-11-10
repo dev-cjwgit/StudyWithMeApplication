@@ -33,12 +33,16 @@ public class StudyJoinFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private boolean back_btn = false;
     private String mParam1;
     private String mParam2;
 
     public StudyJoinFragment() {
         // Required empty public constructor
+    }
+    public StudyJoinFragment(boolean back_btn) {
+        // Required empty public constructor
+        this.back_btn = back_btn;
     }
 
     /**
@@ -104,7 +108,7 @@ public class StudyJoinFragment extends Fragment {
 
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("스터디 그룹 모집");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(back_btn);
         setHasOptionsMenu(true);
         return binding.getRoot();
     }

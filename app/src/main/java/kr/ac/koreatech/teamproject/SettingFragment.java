@@ -22,12 +22,17 @@ public class SettingFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private boolean back_btn = false;
     private String mParam1;
     private String mParam2;
 
     public SettingFragment() {
         // Required empty public constructor
+    }
+
+    public SettingFragment(boolean back_btn) {
+        // Required empty public constructor
+        this.back_btn = back_btn;
     }
 
     /**
@@ -61,9 +66,9 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("설정");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(back_btn);
         return binding.getRoot();
     }
 }
