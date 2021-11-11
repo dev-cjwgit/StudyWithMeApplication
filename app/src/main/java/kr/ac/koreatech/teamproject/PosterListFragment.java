@@ -1,5 +1,6 @@
 package kr.ac.koreatech.teamproject;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -13,12 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import adapter.PosterListViewAdapter;
+import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
 
 /**
@@ -28,6 +33,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
  */
 public class PosterListFragment extends Fragment {
     private FragmentPosterListBinding binding;
+    private PosterListViewAdapter posterListViewAdapter;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -65,41 +71,32 @@ public class PosterListFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentPosterListBinding.inflate(getLayoutInflater());
-
-        List<String> list = new ArrayList<>();
-        list.add("모바일프로그래밍");
-        list.add("소프트웨어공학");
-        list.add("자바프로그래밍");
-        list.add("IoT개론및실습");
-        list.add("스크립트프로그래밍");
-        list.add("객체지향개발론및실습");
-        list.add("공학설계");
-        list.add("창의적공학설계");
-        list.add("c프로그래밍1");
-        list.add("빅데이터개론");
-        list.add("컴퓨터그래픽스");
-        list.add("기초전기전자실습");
-        list.add("c프로그래밍2");
-        list.add("경영학개론");
-        list.add("경제학원론");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
-        binding.framentPosterListListView.setAdapter(adapter);
-
+        posterListViewAdapter = new PosterListViewAdapter();
+        binding.framentPosterListListView.setAdapter(posterListViewAdapter);
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍", "강승우", 38, "안드로이드 스튜디오를 이용하여 앱을 만듭니다."));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "객체지향개발론및실습", "김상진", 42, "객체지향의 5대 원칙 등을 배웁니다."));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "컴퓨터네트워크", "박승철", 45, "컴퓨터의 OSI 7계층에 대해서 "));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "IoT개론및실습", "강승우", 23, "라즈베리파이의 GPIO에 대해서 학습합니다."));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "공학설계", "조태훈", 6, "졸업설계를 위한 아이디어를 구상합니다."));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스크립트프로그래밍", "한연희", 40, "파이썬의 기초 문법을 배웁니다."));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "일터학습개론", "김영은", 38, "일 또는 일 밖에서 일어나는 학습에 대해서 배웁니다."));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "소프트웨어공학", "김승희", 17, "설계전략, 모델링등에 대해서 배웁니다."));
+        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "자바프로그래밍", "김상진", 32, "자바 기초 문법에 대해 학습합니다."));
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
-        binding.framentPosterListListView.setOnItemClickListener((adapterView, view, position, id) -> {
-
-            //클릭한 아이템의 문자열을 가져옴
-            String selected_item = (String) adapterView.getItemAtPosition(position);
-            MainActivity main = ((MainActivity) getActivity());
-            FragmentManager fm = main.getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(selected_item, true));
-            fragmentTransaction.commit();
-
-            //텍스트뷰에 출력
-            System.out.println(selected_item + " 에 접속함?");
-
-        });
+//        binding.framentPosterListListView.setOnItemClickListener((adapterView, view, position, id) -> {
+//
+//            //클릭한 아이템의 문자열을 가져옴
+//            String selected_item = (String) adapterView.getItemAtPosition(position);
+//            MainActivity main = ((MainActivity) getActivity());
+//            FragmentManager fm = main.getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//            fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(selected_item, true));
+//            fragmentTransaction.commit();
+//
+//            //텍스트뷰에 출력
+//            System.out.println(selected_item + " 에 접속함?");
+//
+//        });
     }
 
 

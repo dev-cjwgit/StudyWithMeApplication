@@ -14,11 +14,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import kr.ac.koreatech.teamproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-
+    private Map<String, Fragment> fragmentMap = new HashMap<>();
     private long backKeyPressedTime = 0;
 
     private Toast toast;
@@ -31,7 +34,12 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.fragment1, new MainFragment());
         fragmentTransaction.commit();
-
+        //
+        fragmentMap.put("main", new MainFragment());
+        fragmentMap.put("poster", new PosterListFragment());
+        fragmentMap.put("study", new StudyListFragment());
+        fragmentMap.put("more", new SettingFragment());
+        //
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
             backKeyPressedTime = System.currentTimeMillis();
-            toast = Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG);
+            toast = Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
@@ -50,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         // 마지막으로 뒤로 가기 버튼을 눌렀던 시간이 2.5ncs초가 지나지 않았으면 종료
         if (System.currentTimeMillis() <= backKeyPressedTime + 2500) {
             toast.cancel();
-            toast = Toast.makeText(this, "이용해 주셔서 감사합니다.", Toast.LENGTH_LONG);
+            toast = Toast.makeText(this, "이용해 주셔서 감사합니다.", Toast.LENGTH_SHORT);
             toast.show();
             // 강제종료
             ActivityCompat.finishAffinity(this);
@@ -71,30 +79,30 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.main_imageView_main: {
                 Log.i("C_MainActivity/navigation_onClick", "메인 프래그먼트");
-                fragment = new MainFragment();
+                fragment = fragmentMap.get("main");
                 break;
             }
 
             case R.id.main_imageView_poster: {
                 Log.i("C_MainActivity/navigation_onClick", "게시판 프래그먼트");
-                fragment = new PosterListFragment();
+                fragment = fragmentMap.get("poster");
                 break;
             }
 
             case R.id.main_imageView_study: {
                 Log.i("C_MainActivity/navigation_onClick", "스터디 프래그먼트");
-                fragment = new StudyListFragment(false);
+                fragment = fragmentMap.get("study");
                 break;
             }
 
             case R.id.main_imageView_setting: {
                 Log.i("C_MainActivity/navigation_onClick", "설정 프래그먼트");
-                fragment = new SettingFragment(false);
+                fragment = fragmentMap.get("more");
                 break;
             }
             default: {
                 Log.i("C_MainActivity/navigation_onClick", "기본 프래그먼트");
-                fragment = new MainFragment();
+                fragment = fragmentMap.get("main");
             }
         }
         fragmentTransaction.replace(R.id.fragment1, fragment);

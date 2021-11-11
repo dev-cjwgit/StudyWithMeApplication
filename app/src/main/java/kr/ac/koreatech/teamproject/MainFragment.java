@@ -48,6 +48,7 @@ public class MainFragment extends Fragment{
     private String mParam1;
     private String mParam2;
 
+
     public MainFragment() {
         // Required empty public constructor
     }

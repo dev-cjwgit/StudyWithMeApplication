@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:weightSum="9">
+
+    <ImageView
+        android:id="@+id/poster_listview_image"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:layout_weight="2"
+        android:src="@drawable/default_image" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="7"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/poster_listview_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="7"
+                android:ellipsize="end"
+                android:ems="5"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="과목명을 입력해주세요"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/poster_listview_profname"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="3"
+                android:ellipsize="end"
+                android:ems="5"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="만든이"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/poster_listview_introduce"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="9"
+                android:ellipsize="end"
+                android:ems="5"
+                android:gravity="center"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/poster_listview_people"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
