@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -83,20 +84,20 @@ public class PosterListFragment extends Fragment {
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "소프트웨어공학", "김승희", 17, "설계전략, 모델링등에 대해서 배웁니다."));
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "자바프로그래밍", "김상진", 32, "자바 기초 문법에 대해 학습합니다."));
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
-//        binding.framentPosterListListView.setOnItemClickListener((adapterView, view, position, id) -> {
-//
-//            //클릭한 아이템의 문자열을 가져옴
-//            String selected_item = (String) adapterView.getItemAtPosition(position);
-//            MainActivity main = ((MainActivity) getActivity());
-//            FragmentManager fm = main.getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-//            fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(selected_item, true));
-//            fragmentTransaction.commit();
-//
-//            //텍스트뷰에 출력
-//            System.out.println(selected_item + " 에 접속함?");
-//
-//        });
+        binding.framentPosterListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
+                final PosterEntity item = (PosterEntity) posterListViewAdapter.getItem(a_position);
+                MainActivity main = ((MainActivity) getActivity());
+                FragmentManager fm = main.getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(item.getTitle(), true));
+                fragmentTransaction.commit();
+
+                //텍스트뷰에 출력
+                System.out.println(item.getTitle() + " 에 접속함?");
+            }
+        });
     }
 
 

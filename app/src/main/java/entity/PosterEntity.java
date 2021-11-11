@@ -9,6 +9,17 @@ public class PosterEntity {
     private Integer currPeople; // 현재 인원
     private String introduce; // 한줄소개
 
+    @Override
+    public String toString() {
+        return "PosterEntity{" +
+                "bitmap=" + bitmap +
+                ", title='" + title + '\'' +
+                ", profName='" + profName + '\'' +
+                ", currPeople=" + currPeople +
+                ", introduce='" + introduce + '\'' +
+                '}';
+    }
+
     public PosterEntity(Bitmap bitmap, String title, String profName, Integer currPeople, String introduce) {
         this.bitmap = bitmap;
         this.title = title;

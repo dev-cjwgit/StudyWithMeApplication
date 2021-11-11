@@ -1,6 +1,9 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +50,14 @@ public class PosterListViewAdapter extends BaseAdapter implements Serializable, 
         TextView currPeople = view.findViewById(R.id.poster_listview_people);
         TextView introduce = view.findViewById(R.id.poster_listview_introduce);
 
+
         bitmap.setImageBitmap(listItem.getBitmap());
+        GradientDrawable drawable= (GradientDrawable) context.getDrawable(R.drawable.background_rounding);
+//        bitmap.setBackground(new ShapeDrawable(new OvalShape()));
+        bitmap.setBackground(drawable);
+        bitmap.setClipToOutline(true);
+
+
         title.setText(listItem.getTitle());
         profName.setText(listItem.getProfName());
         currPeople.setText(listItem.getCurrPeople() + "명");
