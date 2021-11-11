@@ -81,7 +81,8 @@
             android:onClick="loginButton_onClick"
             android:text="로그인"
             android:textColor="@color/white"
-            android:textSize="17dp" />
+            android:textSize="17dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -68,9 +68,10 @@
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
         android:layout_weight="2"
+        android:gravity="center"
         android:text="가입한 게시판"
         android:textColor="@color/blueFacebook"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -84,8 +85,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2" />
+        android:layout_height="24dp"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -93,9 +93,10 @@
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
         android:layout_weight="2"
+        android:gravity="center"
         android:text="가입한 스터디 그룹"
         android:textColor="@color/blueFacebook"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
