@@ -18,11 +18,15 @@
             android:text="스터디 그룹"
             android:textSize="24sp" />
     </LinearLayout>
-    <ListView
-        android:id="@+id/framentStudyList_listView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragmentStudyList_study_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15" />
+        android:layout_weight="15"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:scrollbars="vertical" />
 
     <Button
         android:id="@+id/fragmentStudyList_addButton"

@@ -1,30 +1,19 @@
 package kr.ac.koreatech.teamproject;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import adapter.RecyclerViewAdapter;
+import adapter.FrontRecyclerViewAdapter;
 import entity.FrontPoster;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 
@@ -36,8 +25,8 @@ import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 public class MainFragment extends Fragment{
     private FragmentMainBinding binding;
 
-    private RecyclerViewAdapter m1Adapter;
-    private RecyclerViewAdapter m2Adapter;
+    private FrontRecyclerViewAdapter m1Adapter;
+    private FrontRecyclerViewAdapter m2Adapter;
     private LinearLayoutManager m1LayoutManager;
     private LinearLayoutManager m2LayoutManager;
 
@@ -113,8 +102,8 @@ public class MainFragment extends Fragment{
 
 
         // init Adapter
-        m1Adapter = new RecyclerViewAdapter();
-        m2Adapter = new RecyclerViewAdapter();
+        m1Adapter = new FrontRecyclerViewAdapter();
+        m2Adapter = new FrontRecyclerViewAdapter();
         // set Data
         m1Adapter.setData(data1);
         m2Adapter.setData(data2);

@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import entity.FrontPoster;
 import kr.ac.koreatech.teamproject.R;
 
-class RecyclerViewHolder extends RecyclerView.ViewHolder {
+class FrontRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView icon;
     public TextView description;
 
-    public RecyclerViewHolder(View itemView, ArrayList<FrontPoster> items) {
+    public FrontRecyclerViewHolder(View itemView, ArrayList<FrontPoster> items) {
         super(itemView);
         icon = (ImageView) itemView.findViewById(R.id.controll_recycler_imageView);
         description = (TextView) itemView.findViewById(R.id.controll_recycler_textView);
@@ -35,7 +35,7 @@ class RecyclerViewHolder extends RecyclerView.ViewHolder {
 }
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+public class FrontRecyclerViewAdapter extends RecyclerView.Adapter<FrontRecyclerViewHolder> {
 
     private ArrayList<FrontPoster> datas;
 
@@ -44,20 +44,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     }
 
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FrontRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
 
 // 사용할 아이템의 뷰를 생성해준다.
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.controll_recyclerview_poster, parent, false);
 
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, datas);
+        FrontRecyclerViewHolder holder = new FrontRecyclerViewHolder(view, datas);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(FrontRecyclerViewHolder holder, int position) {
         FrontPoster data = datas.get(position);
 
         holder.description.setText(data.getTitle());
