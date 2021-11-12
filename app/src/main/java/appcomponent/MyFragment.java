@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import kr.ac.koreatech.teamproject.MainActivity;
 import kr.ac.koreatech.teamproject.R;
-
+// test commit
 public class MyFragment {
     private static MainActivity context;
 
