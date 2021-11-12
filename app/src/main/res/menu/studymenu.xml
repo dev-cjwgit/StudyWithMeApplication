@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_online"
-        android:icon="@drawable/icon_setting"
-        app:showAsAction="always"/>
+        android:icon="@drawable/icon_more"
+        android:title="setting_btn"
+        app:showAsAction="always" />
 </menu>

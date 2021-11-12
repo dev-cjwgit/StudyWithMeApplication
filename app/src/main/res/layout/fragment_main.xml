@@ -85,7 +85,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="24dp"/>
+        android:layout_height="24dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -230,4 +230,5 @@
 
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

@@ -3,6 +3,9 @@ package kr.ac.koreatech.teamproject;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,6 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +39,11 @@ public class StudyMainFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String title;
+
+
+    // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
+    private ActionBarDrawerToggle drawerToggle;
+
 
     public StudyMainFragment(String title) {
         this(title, false);
@@ -71,7 +82,7 @@ public class StudyMainFragment extends Fragment {
         }
         binding = FragmentStudyMainBinding.inflate(getLayoutInflater());
 
-
+//        binding.navView.setEnabled(false);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         binding.framentStudyListView.setAdapter(adapter);
 
@@ -80,6 +91,8 @@ public class StudyMainFragment extends Fragment {
             binding.fragmentStudyEditTextSend.setText("");
             adapter.notifyDataSetChanged();
         });
+
+
     }
 
     // Hi
@@ -99,6 +112,8 @@ public class StudyMainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.studymenu, menu);
+
+
     }
 
     @Override
@@ -107,7 +122,8 @@ public class StudyMainFragment extends Fragment {
         switch (curId) {
             case R.id.action_online:
                 System.out.println("현활 보려고??");
-                break;
+                return true;
+
             default:
                 break;
         }

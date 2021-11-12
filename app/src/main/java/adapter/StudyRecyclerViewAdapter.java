@@ -36,7 +36,6 @@ class StudyRecyclerViewHolder extends RecyclerView.ViewHolder {
         introduce = itemView.findViewById(R.id.study_recyclerview_introduce);
 
         itemView.setOnClickListener(v -> {
-            // TODO : process click event.
             int pos = getAdapterPosition();
             if (pos != RecyclerView.NO_POSITION) {
                 MyFragment.changeFragment(new StudyMainFragment(items.get(pos).getTitle(), true));
