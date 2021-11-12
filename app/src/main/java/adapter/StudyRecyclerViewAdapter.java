@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import appcomponent.MyFragment;
 import entity.FrontPoster;
 import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.R;
+import kr.ac.koreatech.teamproject.StudyMainFragment;
 
 class StudyRecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -37,6 +39,7 @@ class StudyRecyclerViewHolder extends RecyclerView.ViewHolder {
             // TODO : process click event.
             int pos = getAdapterPosition();
             if (pos != RecyclerView.NO_POSITION) {
+                MyFragment.changeFragment(new StudyMainFragment(items.get(pos).getTitle(), true));
                 System.out.println(items.get(pos).getTitle() + " 에 접속함?");
             }
         });

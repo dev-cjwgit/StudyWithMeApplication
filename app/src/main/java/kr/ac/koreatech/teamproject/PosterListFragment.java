@@ -24,6 +24,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import adapter.PosterListViewAdapter;
+import appcomponent.MyFragment;
 import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
 
@@ -88,11 +89,7 @@ public class PosterListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 final PosterEntity item = (PosterEntity) posterListViewAdapter.getItem(a_position);
-                MainActivity main = ((MainActivity) getActivity());
-                FragmentManager fm = main.getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment1, new PosterMainFragment(item.getTitle(), true));
-                fragmentTransaction.commit();
+                MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
 
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 접속함?");
@@ -129,7 +126,7 @@ public class PosterListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle("게시판");
+        actionBar.setTitle("참여중인 게시판");
         actionBar.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
         return binding.getRoot();

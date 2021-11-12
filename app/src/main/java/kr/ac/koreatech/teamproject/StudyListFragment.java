@@ -123,7 +123,7 @@ public class StudyListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle("스터디 그룹 리스트");
+        actionBar.setTitle("참여중인 스터디 그룹");
         actionBar.setDisplayHomeAsUpEnabled(back_btn);
         return binding.getRoot();
     }

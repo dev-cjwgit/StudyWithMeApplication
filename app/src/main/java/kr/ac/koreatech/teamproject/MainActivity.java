@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
+import appcomponent.MyFragment;
 import kr.ac.koreatech.teamproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyFragment.setMainActivity(this);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.fragment1, new MainFragment());
@@ -72,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
             TODO: 프래그먼트에 대한 정적인 값으로 할지 고민 해야함.
             (기본적으로 프래그먼트 4개에 대한 값을 전부 다 만들어 놓을 것인가.)
          */
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
         Fragment fragment = null;
 
         switch (view.getId()) {
@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
                 fragment = fragmentMap.get("main");
             }
         }
-        fragmentTransaction.replace(R.id.fragment1, fragment);
-        fragmentTransaction.commit();
+        MyFragment.changeFragment(fragment);
+
     }
 
 

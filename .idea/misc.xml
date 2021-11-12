@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/drawable/background_rounding.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.26458333333333334" />
         <entry key="app/src/main/res/drawable/button_shape_circle.xml" value="0.26458333333333334" />
+        <entry key="app/src/main/res/drawable/layout_border.xml" value="0.2557291666666667" />
         <entry key="app/src/main/res/font/font_lucida_grande.xml" value="0.29322916666666665" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1916167905985154" />

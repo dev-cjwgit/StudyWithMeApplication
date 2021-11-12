@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="horizontal"
+    android:layout_margin="8dp"
+    android:background="@drawable/layout_border"
     android:weightSum="9">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/study_recyclerview_image"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_margin="16dp"
         android:layout_weight="2"
         android:src="@drawable/default_image" />
 

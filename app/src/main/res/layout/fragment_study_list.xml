@@ -8,8 +8,8 @@
     tools:context=".StudyListFragment">
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
 
         <TextView
@@ -18,13 +18,15 @@
             android:text="스터디 그룹"
             android:textSize="24sp" />
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentStudyList_study_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_weight="15"
+        android:background="#f0f0f0"
         android:gravity="center"
         android:scrollbars="vertical" />
 
@@ -34,9 +36,9 @@
         android:layout_height="50dp"
         android:layout_gravity="right"
         android:layout_margin="8dp"
-        android:textColor="@color/white"
         android:background="@drawable/button_shape_circle"
         android:backgroundTint="@color/blueFacebook_background"
         android:text="+"
+        android:textColor="@color/white"
         android:textSize="30sp" />
 </LinearLayout>
