@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //endregion
+    //주석
 
     public void navigation_onClick(View view) {
         /*
