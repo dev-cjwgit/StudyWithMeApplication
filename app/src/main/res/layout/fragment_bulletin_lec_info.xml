@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +12,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/lecture_basic_info_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="강의 기본 정보"
@@ -27,14 +27,14 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="4">
 
         <TextView
-            android:id="@+id/tv1_1"
+            android:id="@+id/lecIDTextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
             android:text="강의명"
             android:textSize="12sp" />
         <TextView
-            android:id="@+id/tv2_1"
+            android:id="@+id/LecIDTextview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
@@ -49,7 +49,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="4">
 
         <TextView
-            android:id="@+id/tv1_2"
+            android:id="@+id/profIDTextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
@@ -57,7 +57,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv2_2"
+            android:id="@+id/profIDTextview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
@@ -72,7 +72,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="4">
 
         <TextView
-            android:id="@+id/tv1_3"
+            android:id="@+id/profemailTextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
@@ -80,7 +80,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv2_3"
+            android:id="@+id/profemailTextview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
@@ -95,7 +95,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="4">
 
         <TextView
-            android:id="@+id/tv1_6"
+            android:id="@+id/profdiaTextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
@@ -103,7 +103,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv2_6"
+            android:id="@+id/profdiaTextview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
@@ -118,7 +118,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="4">
 
         <TextView
-            android:id="@+id/tv1_7"
+            android:id="@+id/assi_email_Textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
@@ -126,7 +126,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv2_7"
+            android:id="@+id/assi_email_Textview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
@@ -135,7 +135,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/lecture_plan_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="주차별 강의계획"
@@ -156,7 +156,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textbook_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="교재"
@@ -169,7 +169,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="4">
 
         <TextView
-            android:id="@+id/tv1_4"
+            android:id="@+id/main_tb_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
@@ -177,7 +177,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv2_4"
+            android:id="@+id/main_tb_textview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
@@ -191,7 +191,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="4">
 
         <TextView
-            android:id="@+id/tv1_5"
+            android:id="@+id/sub_tb_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
@@ -199,7 +199,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv2_5"
+            android:id="@+id/sub_tb_textview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
