@@ -31,6 +31,7 @@
         <entry key="app/src/main/res/layout/bulletin_sharing_info.xml" value="0.1598731884057971" />
         <entry key="app/src/main/res/layout/bulletin_sharing_studymaterial.xml" value="0.1598731884057971" />
         <entry key="app/src/main/res/layout/controll_listview_poster.xml" value="0.5419126328217237" />
+        <entry key="app/src/main/res/layout/controll_question_answer_listview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/controll_questionlist_listview.xml" value="0.375" />
         <entry key="app/src/main/res/layout/controll_recyclerview_poster.xml" value="0.3375" />
         <entry key="app/src/main/res/layout/controll_recyclerview_study.xml" value="0.16576086956521738" />
