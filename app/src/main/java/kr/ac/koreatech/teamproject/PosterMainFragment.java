@@ -104,5 +104,19 @@ public class PosterMainFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
+            case R.id.question:
+                System.out.println("질의 응답방 접속하려고?");
+                return true;
+
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }
