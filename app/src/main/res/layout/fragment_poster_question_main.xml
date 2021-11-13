@@ -93,13 +93,15 @@
             android:scrollbars="vertical" />
 
         <TextView
+            android:id="@+id/answerTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@color/blueFacebook"
-            android:text="답변" />
+            android:text="답변하기"
+            android:onClick="answerTextView_onClick"/>
 
         <ListView
             android:id="@+id/framentPosterQuestionMain_listView"
