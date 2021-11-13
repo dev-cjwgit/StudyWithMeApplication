@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import entity.PosterEntity;
@@ -55,7 +56,9 @@ public class PosterQuestionListViewAdapter extends BaseAdapter implements Serial
         title.setText(listItem.getTitle());
         name.setText(listItem.getName());
         answer.setText(listItem.getAnswer() + "개");
-        date.setText(listItem.getDate().toString());
+
+        SimpleDateFormat sDate2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+        date.setText(sDate2.format(listItem.getDate()));
 
         return view;
     }

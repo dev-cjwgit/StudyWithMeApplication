@@ -16,8 +16,7 @@
         android:gravity="left"
         android:maxLines="1"
         android:text="question title"
-        android:textColor="@color/blueFacebook"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <LinearLayout
