@@ -1,5 +1,6 @@
 package kr.ac.koreatech.teamproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -22,7 +23,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterQuestionMainBinding
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PosterQuestionMainFragment#newInstance} factory method to
+ * Use the {@link PosterQuestionMainFragment} factory method to
  * create an instance of this fragment.
  */
 public class PosterQuestionMainFragment extends Fragment {
@@ -60,6 +61,9 @@ public class PosterQuestionMainFragment extends Fragment {
         binding.questionMainBodyTextView.setMovementMethod(new ScrollingMovementMethod());
         binding.answerTextView.setOnClickListener(v -> {
             System.out.println("답변 달꺼지?");
+            Intent intent = new Intent(getActivity(), AnswerDialogActivity.class);
+            startActivity(intent);
+
         });
 
         posterQuestionAnswerListViewAdapter = new PosterQuestionAnswerListViewAdapter();
@@ -77,6 +81,8 @@ public class PosterQuestionMainFragment extends Fragment {
 
         }
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
