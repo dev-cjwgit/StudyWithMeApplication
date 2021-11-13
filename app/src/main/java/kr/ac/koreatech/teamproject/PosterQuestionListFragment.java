@@ -1,6 +1,5 @@
 package kr.ac.koreatech.teamproject;
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,13 +11,8 @@ import android.widget.AdapterView;
 
 import java.util.Date;
 
-import adapter.PosterListViewAdapter;
 import adapter.PosterQuestionListViewAdapter;
-import appcomponent.MyFragment;
-import entity.PosterEntity;
-import entity.QuestionListEntity;
-import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
-import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
+import entity.PosterQuestionEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterQuestionListBinding;
 
 /**
@@ -68,15 +62,15 @@ public class PosterQuestionListFragment extends Fragment {
         posterQuestionListViewAdapter = new PosterQuestionListViewAdapter();
 
         binding.framentPosterQuestionListListView.setAdapter(posterQuestionListViewAdapter);
-        posterQuestionListViewAdapter.append(new QuestionListEntity("질문있습니다", "아두이노조아용", 3, new Date()));
-        posterQuestionListViewAdapter.append(new QuestionListEntity("액티비티란 무엇입니까?", "홍길동", 1, new Date()));
-        posterQuestionListViewAdapter.append(new QuestionListEntity("객체지향 5대 원칙이 궁금합니다", "김철수", 5, new Date()));
-        posterQuestionListViewAdapter.append(new QuestionListEntity("라즈베리파이 고장났는데 어케 하나요 ㅠ", "김영희", 7, new Date()));
+        posterQuestionListViewAdapter.append(new PosterQuestionEntity("질문있습니다", "아두이노 우노를 사용하고 있습니다.\n 혹시 전압강하 조절을 어떻게합니까?", "아두이노조아용", 3, new Date()));
+        posterQuestionListViewAdapter.append(new PosterQuestionEntity("액티비티란 무엇입니까?", "액티비티 생명주기등이 이해가안갑니다 ㅠㅠ\n설명해주실 고수의 답변을 기다립니다...!!", "홍길동", 1, new Date()));
+        posterQuestionListViewAdapter.append(new PosterQuestionEntity("객체지향 5대 원칙이 궁금합니다", "ISP, DIP ..등등 기억이 잘 안납니다.\n혹시 자세한 설명 또는 링크를 달아주실 분 계십니까?\n감사합니다 ㅠ", "김철수", 5, new Date()));
+        posterQuestionListViewAdapter.append(new PosterQuestionEntity("라즈베리파이 고장났는데 어케 하나요 ㅠ", "안녕하세요 컴공 김영희입니다..\n제가 라즈비안을 깔고 부팅하는데 부팅이 안됩니다.\n혹시 어느 부분이 문제인지 알려주실 수 있으십니까...? 부탁드립니다 ㅠ\n이문제로 진짜 몇 밤을 넘게 못잤습니다 ㅠㅠ", "김영희", 7, new Date()));
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
         binding.framentPosterQuestionListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                final QuestionListEntity item = (QuestionListEntity) posterQuestionListViewAdapter.getItem(a_position);
+                final PosterQuestionEntity item = (PosterQuestionEntity) posterQuestionListViewAdapter.getItem(a_position);
 
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 질문글에 접속함?");

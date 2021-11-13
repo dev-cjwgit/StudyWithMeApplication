@@ -1,26 +1,21 @@
 package adapter;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import entity.PosterEntity;
-import entity.QuestionListEntity;
+import entity.PosterQuestionEntity;
 import kr.ac.koreatech.teamproject.R;
 
 public class PosterQuestionListViewAdapter extends BaseAdapter implements Serializable, Cloneable {
-    public ArrayList<QuestionListEntity> list;
+    public ArrayList<PosterQuestionEntity> list;
 
     public PosterQuestionListViewAdapter() {
         list = new ArrayList<>();
@@ -40,7 +35,7 @@ public class PosterQuestionListViewAdapter extends BaseAdapter implements Serial
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         final Context context = viewGroup.getContext();
-        QuestionListEntity listItem = list.get(i);
+        PosterQuestionEntity listItem = list.get(i);
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,7 +52,7 @@ public class PosterQuestionListViewAdapter extends BaseAdapter implements Serial
         name.setText(listItem.getName());
         answer.setText(listItem.getAnswer() + "개");
 
-        SimpleDateFormat sDate2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+        SimpleDateFormat sDate2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         date.setText(sDate2.format(listItem.getDate()));
 
         return view;
@@ -68,7 +63,7 @@ public class PosterQuestionListViewAdapter extends BaseAdapter implements Serial
         return list.size();
     }
 
-    public ArrayList<QuestionListEntity> getList() {
+    public ArrayList<PosterQuestionEntity> getList() {
         return this.list;
     }
 
@@ -88,7 +83,7 @@ public class PosterQuestionListViewAdapter extends BaseAdapter implements Serial
         notifyDataSetChanged();
     }
 
-    public void append(QuestionListEntity obj) {
+    public void append(PosterQuestionEntity obj) {
         list.add(obj);
         notifyDataSetChanged();
     }
