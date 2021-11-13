@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import kr.ac.koreatech.teamproject.MainActivity;
 import kr.ac.koreatech.teamproject.R;
+
 // test commit
 public class MyFragment {
     private static MainActivity context;
@@ -21,5 +22,13 @@ public class MyFragment {
         fragmentTransaction.replace(R.id.fragment1, frag);
         fragmentTransaction.commit();
 
+    }
+
+    public static Fragment getCurrFragment() {
+        for (Fragment fragment : context.getSupportFragmentManager().getFragments()) {
+            if (fragment.isVisible())
+                return fragment;
+        }
+        return null;
     }
 }
