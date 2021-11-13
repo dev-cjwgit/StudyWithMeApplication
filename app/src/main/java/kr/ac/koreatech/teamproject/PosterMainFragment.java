@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import appcomponent.MyFragment;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
 
 
@@ -109,6 +110,7 @@ public class PosterMainFragment extends Fragment {
         int curId = item.getItemId();
         switch (curId) {
             case R.id.question:
+                MyFragment.changeFragment(new PosterQuestionListFragment());
                 System.out.println("질의 응답방 접속하려고?");
                 return true;
 
