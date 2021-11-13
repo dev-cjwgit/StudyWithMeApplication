@@ -53,12 +53,6 @@
             android:gravity="center"
             android:text="date" />
 
-        <TextView
-            android:id="@+id/question_answer_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="0개" />
 
     </LinearLayout>
 
