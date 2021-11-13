@@ -12,7 +12,6 @@
         android:layout_weight="10"
         android:ellipsize="end"
         android:ems="5"
-        android:fontFamily="@font/font_lucida_grande"
         android:gravity="left"
         android:maxLines="1"
         android:text="question title"
@@ -28,32 +27,42 @@
 
         <TextView
             android:id="@+id/question_name_textView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="3.5"
             android:ellipsize="end"
-            android:ems="5"
-            android:fontFamily="@font/font_lucida_grande"
+            android:ems="3"
             android:gravity="center"
             android:maxLines="1"
             android:text="name"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="/" />
 
         <TextView
             android:id="@+id/question_date_textView"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="date" />
 
         <TextView
-            android:id="@+id/question_answer_textView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:gravity="center" />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="/" />
+
+        <TextView
+            android:id="@+id/question_answer_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="0개" />
 
     </LinearLayout>
 </LinearLayout>

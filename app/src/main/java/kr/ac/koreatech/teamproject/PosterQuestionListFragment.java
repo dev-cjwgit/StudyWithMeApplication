@@ -68,7 +68,7 @@ public class PosterQuestionListFragment extends Fragment {
         posterQuestionListViewAdapter = new PosterQuestionListViewAdapter();
 
         binding.framentPosterQuestionListListView.setAdapter(posterQuestionListViewAdapter);
-        posterQuestionListViewAdapter.append(new QuestionListEntity("질문있습니다", "최진우", 3, new Date()));
+        posterQuestionListViewAdapter.append(new QuestionListEntity("질문있습니다", "아두이노조아용", 3, new Date()));
         posterQuestionListViewAdapter.append(new QuestionListEntity("액티비티란 무엇입니까?", "홍길동", 1, new Date()));
         posterQuestionListViewAdapter.append(new QuestionListEntity("객체지향 5대 원칙이 궁금합니다", "김철수", 5, new Date()));
         posterQuestionListViewAdapter.append(new QuestionListEntity("라즈베리파이 고장났는데 어케 하나요 ㅠ", "김영희", 7, new Date()));
@@ -76,11 +76,10 @@ public class PosterQuestionListFragment extends Fragment {
         binding.framentPosterQuestionListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                final PosterEntity item = (PosterEntity) posterQuestionListViewAdapter.getItem(a_position);
-                MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
+                final QuestionListEntity item = (QuestionListEntity) posterQuestionListViewAdapter.getItem(a_position);
 
                 //텍스트뷰에 출력
-                System.out.println(item.getTitle() + " 에 클릭함?");
+                System.out.println(item.getTitle() + " 에 질문글에 접속함?");
             }
         });
     }
