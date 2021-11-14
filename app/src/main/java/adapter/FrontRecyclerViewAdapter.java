@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import appcomponent.MyFragment;
 import entity.FrontPoster;
+import kr.ac.koreatech.teamproject.PosterMainFragment;
 import kr.ac.koreatech.teamproject.R;
 import kr.ac.koreatech.teamproject.StudyMainFragment;
 
@@ -30,7 +31,7 @@ class FrontRecyclerViewHolder extends RecyclerView.ViewHolder {
             int pos = getAdapterPosition();
             if (pos != RecyclerView.NO_POSITION) {
                 // TODO 김채연: 구현
-                MyFragment.changeFragment(new StudyMainFragment(items.get(pos).getTitle(), false));
+                MyFragment.changeFragment(new PosterMainFragment(items.get(pos).getTitle(), false));
                 System.out.println(items.get(pos).getTitle() + " 에 접속함?");
             }
         });

@@ -1,5 +1,6 @@
 package kr.ac.koreatech.teamproject;
 
+import android.content.ClipData;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -8,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -122,6 +125,18 @@ public class StudyMainFragment extends Fragment {
         switch (curId) {
             case R.id.action_online:
                 System.out.println("현활 보려고??");
+
+                DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerLayout);
+                View btn_setting=getActivity().findViewById(curId);
+
+                btn_setting.setOnClickListener(new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View view) {
+                        drawerLayout.openDrawer(Gravity.RIGHT);
+                    }
+                });
+
                 return true;
 
             default:
