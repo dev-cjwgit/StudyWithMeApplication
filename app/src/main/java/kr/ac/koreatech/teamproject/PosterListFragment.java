@@ -5,10 +5,12 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SearchView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,23 +106,6 @@ public class PosterListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.poster_search_menu, menu);
-        //MenuItem searchItem = menu.findItem(R.id.action_poster_search);
-
-        //SearchView searchView = (SearchView) searchItem.getActionView();
-        //searchView.setQueryHint("plz in search");
-        //searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
-
-            /*@Override
-            public boolean onQueryTextSubmit(String s) {
-                System.out.println(s + " 검색하려고?");
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }*/
-        /*});*/
     }
 
     @Override
@@ -132,5 +117,23 @@ public class PosterListFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
         return binding.getRoot();
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int curId=item.getItemId();
+        switch(curId){
+            case R.id.poster_category:
+                DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerlayout_poster_list);
+                View btn_B=getActivity().findViewById(R.id.poster_category);
+                btn_B.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View view){
+                        drawerLayout.openDrawer(Gravity.RIGHT);
+                    }
+                });
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
