@@ -79,6 +79,14 @@ public class PosterListFragment extends Fragment {
         posterListViewAdapter = new PosterListViewAdapter();
         binding.framentPosterListListView.setAdapter(posterListViewAdapter);
 
+        binding.searchLayout.getLayoutParams().height = 0;
+        ArrayList kind = new ArrayList();
+        kind.add("강의");
+        kind.add("자격증");
+        kind.add("기타");
+        ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, kind);
+        binding.fragmentPosterListSpiner1.setAdapter(adapter);
+
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍", "강승우", 38, "안드로이드 스튜디오를 이용하여 앱을 만듭니다."));
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "객체지향개발론및실습", "김상진", 42, "객체지향의 5대 원칙 등을 배웁니다."));
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "컴퓨터네트워크", "박승철", 45, "컴퓨터의 OSI 7계층에 대해서 "));
@@ -119,17 +127,17 @@ public class PosterListFragment extends Fragment {
         return binding.getRoot();
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        int curId=item.getItemId();
-        switch(curId){
-            case R.id.poster_category:
-                DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerlayout_poster_list);
-                View btn_B=getActivity().findViewById(R.id.poster_category);
-                btn_B.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View view){
-                        drawerLayout.openDrawer(Gravity.RIGHT);
-                    }
-                });
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
+            case R.id.action_poster_search:
+                ViewGroup.LayoutParams params = binding.searchLayout.getLayoutParams();
+                if (params.height == 0) {
+                    params.height = 150;
+                } else {
+                    params.height = 0;
+                }
+                binding.searchLayout.setLayoutParams(params);
                 return true;
             default:
                 break;

@@ -46,31 +46,84 @@
             android:weightSum="20"
             android:orientation="vertical"
             android:layout_gravity="right">
-            <TextView
-                android:id="@+id/question_answer_moveTextView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="4"
-                android:text="질의응답"
-                android:textSize="20sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/icon_question">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/question_answer_moveTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="4"
+                        android:text="질의응답"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/icon_lecture_info">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/lecture_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="4"
+                        android:text="강의정보"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/icon_share_info">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/share_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="4"
+                        android:text="정보공유"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
-        <!--<ListView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="19" />
 
-        <Button
-            android:layout_marginRight="8dp"
-            android:id="@+id/button6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center|right"
-            android:background="@drawable/button_shape_circle"
-            android:backgroundTint="@color/blueFacebook_background"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="17dp"
-            android:textStyle="bold" />-->
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
