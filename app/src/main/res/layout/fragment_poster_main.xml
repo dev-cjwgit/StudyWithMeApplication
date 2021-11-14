@@ -43,7 +43,16 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             android:padding="10dp"
+            android:weightSum="20"
+            android:orientation="vertical"
             android:layout_gravity="right">
+            <TextView
+                android:id="@+id/question_answer_moveTextView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:text="질의응답"
+                android:textSize="20sp"/>
 
         </LinearLayout>
         <!--<ListView
