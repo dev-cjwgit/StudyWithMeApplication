@@ -70,6 +70,11 @@ public class PosterMainFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentPosterMainBinding.inflate(getLayoutInflater());
+
+        binding.questionAnswerMoveTextView.setOnClickListener(v -> {
+            MyFragment.changeFragment(new PosterQuestionListFragment());
+            System.out.println("질의 응답방에 접속하려고?");
+        });
     }
 
     //menu 생성 부분
@@ -118,10 +123,10 @@ public class PosterMainFragment extends Fragment {
                 return true;*/
 
             case R.id.post_category:
-                DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerLayout_poster_main);
-                View btn_A=getActivity().findViewById(R.id.post_category);
-                btn_A.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View view){
+                DrawerLayout drawerLayout = getActivity().findViewById(R.id.drawerLayout_poster_main);
+                View btn_A = getActivity().findViewById(R.id.post_category);
+                btn_A.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
                         drawerLayout.openDrawer(Gravity.RIGHT);
                     }
                 });
