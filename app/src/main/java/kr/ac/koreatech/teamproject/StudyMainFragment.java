@@ -115,8 +115,6 @@ public class StudyMainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.studymenu, menu);
-
-
     }
 
     @Override
