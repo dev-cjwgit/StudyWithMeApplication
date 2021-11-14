@@ -60,21 +60,19 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
                         android:src="@drawable/icon_question">
 
                     </ImageView>
-                    <TextView
-                        android:layout_width="10dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="1"
-                        android:text=" "
-                        android:textSize="20sp"/> <!--아이콘과 글자 사이 공백 만들기 위함-->
+
                     <TextView
                         android:id="@+id/question_answer_moveTextView"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:layout_weight="1"
-                        android:text=" 질의응답"
+                        android:layout_weight="4"
+                        android:text="질의응답"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -86,22 +84,41 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
                         android:src="@drawable/icon_lecture_info">
                     </ImageView>
-
-                    <TextView
-                        android:layout_width="10dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="1"
-                        android:text=" "
-                        android:textSize="20sp"/>  <!--아이콘과 글자 사이 공백 만들기 위함-->
 
                     <TextView
                         android:id="@+id/lecture_info"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
+                        android:layout_weight="4"
+                        android:text="강의정보"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:layout_weight="1"
-                        android:text=" 강의정보"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/icon_share_info">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/share_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="4"
+                        android:text="정보공유"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
