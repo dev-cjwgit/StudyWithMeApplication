@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="20"
@@ -23,15 +23,14 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textAlignment="center"
                             android:text="스터디 그룹 채팅방" />
 
                     </LinearLayout>
@@ -72,76 +71,12 @@
                 </LinearLayout>
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:orientation="vertical"
             android:padding="10dp"
-            android:background="#ffffff">
-
-            <TextView
-                android:id="@+id/navi_studyName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:text="활동 중인 멤버"
-                android:textColor="#3c3c3c"
-                android:layout_marginBottom="15dp"
-                >
-            </TextView>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.3dp"
-                android:background="#808080" />
-
-            <TextView
-                android:layout_marginBottom="10dp"
-                android:id="@+id/navi_studyInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="공지사항"
-                android:textColor="#4e4e4e"
-                android:drawableLeft="@drawable/study_text_deco"
-                android:drawablePadding="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#4e4e4e"
-                android:text="-사담 금지/도배 금지/질문 가능"
-                android:layout_marginBottom="10dp"
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.3dp"
-                android:background="#808080" />
-
-            <TextView
-                android:id="@+id/navi_userInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:text="User1"
-                android:textColor="#4e4e4e"
-                android:drawableLeft="@drawable/study_user_deco"
-                android:drawablePadding="10dp"
-                android:layout_marginBottom="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#4e4e4e"
-                android:text="공부 시간: 00시간 00분"
-                />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.3dp"
-                android:background="#a0a0a0" />
+            android:background="#ff0000">
 
         </LinearLayout>
 

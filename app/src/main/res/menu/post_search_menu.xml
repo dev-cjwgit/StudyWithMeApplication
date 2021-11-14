@@ -8,6 +8,13 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView">
     </item>
     <item
+        android:id="@+id/post_category"
+        android:icon="@drawable/icon_more"
+        android:title="post_drawer"
+        app:showAsAction="always"/>
+
+
+    <!--<item
         android:id="@+id/question"
         app:showAsAction="never"
         android:title="질의응답">
@@ -31,7 +38,7 @@
         app:showAsAction="never"
         android:title="자료공유">
 
-    </item>
+    </item>-->
 
 
 </menu>

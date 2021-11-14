@@ -4,8 +4,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SearchView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,6 +70,11 @@ public class PosterMainFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentPosterMainBinding.inflate(getLayoutInflater());
+
+        binding.questionAnswerMoveTextView.setOnClickListener(v -> {
+            MyFragment.changeFragment(new PosterQuestionListFragment());
+            System.out.println("질의 응답방에 접속하려고?");
+        });
     }
 
     //menu 생성 부분
@@ -109,11 +116,21 @@ public class PosterMainFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int curId = item.getItemId();
         switch (curId) {
-            case R.id.question:
+            //기존 질의응답 등 오버플로우 메뉴에 구현한 부분은 네비게이션 드로우로 다시 구현해야합니다.
+            /*case R.id.question:
                 MyFragment.changeFragment(new PosterQuestionListFragment());
                 System.out.println("질의 응답방 접속하려고?");
-                return true;
+                return true;*/
 
+            case R.id.post_category:
+                DrawerLayout drawerLayout = getActivity().findViewById(R.id.drawerLayout_poster_main);
+                View btn_A = getActivity().findViewById(R.id.post_category);
+                btn_A.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        drawerLayout.openDrawer(Gravity.RIGHT);
+                    }
+                });
+                return true;
             default:
                 break;
         }
