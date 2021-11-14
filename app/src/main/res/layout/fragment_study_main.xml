@@ -17,58 +17,59 @@
         tools:layout_editor_absoluteY="119dp"
         android:id="@+id/drawerLayout">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="스터디 그룹 채팅방" />
-
-            </LinearLayout>
-
-            <ListView
-                android:id="@+id/framentStudy_listView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="15" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                android:weightSum="5">
-
-                <EditText
-                    android:id="@+id/fragmentStudy_editText_send"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="8dp"
-                    android:layout_weight="5"
-                    android:hint="plz in send message" />
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/fragmentStudy_button_send"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/button_shape_circle"
-                    android:backgroundTint="@color/blueFacebook_background"
-                    android:text="+"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            </LinearLayout>
-        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="스터디 그룹 채팅방" />
+
+                    </LinearLayout>
+
+                    <ListView
+                        android:id="@+id/framentStudy_listView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="15" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:orientation="horizontal"
+                        android:weightSum="5">
+
+                        <EditText
+                            android:id="@+id/fragmentStudy_editText_send"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="5"
+                            android:hint="plz in send message" />
+
+                        <Button
+                            android:id="@+id/fragmentStudy_button_send"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button_shape_circle"
+                            android:backgroundTint="@color/blueFacebook_background"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
 
         <LinearLayout
             android:layout_width="200dp"
@@ -90,76 +91,76 @@
     <!--        android:fitsSystemWindows="false"/>-->
 
 
-    <!--    <androidx.drawerlayout.widget.DrawerLayout-->
-    <!--        android:id="@+id/drawerLayout"-->
-    <!--        android:layout_width="152dp"-->
-    <!--        android:layout_height="0dp">-->
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        android:id="@+id/drawerLayout"-->
+<!--        android:layout_width="152dp"-->
+<!--        android:layout_height="0dp">-->
 
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:orientation="vertical">-->
-    <!--            <TextView-->
-    <!--                android:text="for test"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"/>-->
-    <!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_height="wrap_content">&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+<!--            <TextView-->
+<!--                android:text="for test"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+<!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content">&ndash;&gt;-->
 
 
-    <!--&lt;!&ndash;                <Button&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:id="@+id/fragmentStudy_button_send"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_width="50dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_height="50dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_gravity="center"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:background="@drawable/button_shape_circle"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:backgroundTint="@color/blueFacebook_background"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:text="+"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:textColor="@color/white"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:textSize="20sp" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/fragmentStudy_button_send"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="50dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="50dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:background="@drawable/button_shape_circle"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:backgroundTint="@color/blueFacebook_background"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="+"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="20sp" />&ndash;&gt;-->
 
-    <!--&lt;!&ndash;                <TextView&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_gravity="center"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:text="스터디 그룹 채팅방" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="스터디 그룹 채팅방" />&ndash;&gt;-->
 
-    <!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
 
-    <!--&lt;!&ndash;            <ListView&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:id="@+id/framentStudy_listView"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_weight="15" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <ListView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/framentStudy_listView"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_weight="15" />&ndash;&gt;-->
 
-    <!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_weight="2"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:orientation="horizontal"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:weightSum="5">&ndash;&gt;-->
+<!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_weight="2"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:weightSum="5">&ndash;&gt;-->
 
-    <!--&lt;!&ndash;                <EditText&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:id="@+id/fragmentStudy_editText_send"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_width="0dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_height="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_margin="8dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:layout_weight="5"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    android:hint="plz in send message" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <EditText&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/fragmentStudy_editText_send"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_margin="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight="5"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:hint="plz in send message" />&ndash;&gt;-->
 
-    <!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
-    <!--        </LinearLayout>-->
+<!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
+<!--        </LinearLayout>-->
 
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="200dp"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:layout_gravity="right"-->
-    <!--            android:background="#ff0000"-->
-    <!--            android:orientation="vertical"-->
-    <!--            android:padding="10dp">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:background="#ff0000"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="10dp">-->
 
-    <!--        </LinearLayout>-->
-    <!--    </androidx.drawerlayout.widget.DrawerLayout>-->
+<!--        </LinearLayout>-->
+<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
 
 </LinearLayout>
