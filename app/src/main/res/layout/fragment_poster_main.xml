@@ -59,54 +59,54 @@
 
                     <ImageView
                         android:layout_width="45dp"
-                        android:layout_height="35dp"
+                        android:layout_height="45dp"
                         android:src="@drawable/icon_question">
 
                     </ImageView>
-
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:text=" "
+                        android:textSize="20sp"/> <!--아이콘과 글자 사이 공백 만들기 위함-->
                     <TextView
                         android:id="@+id/question_answer_moveTextView"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="45dp"
                         android:layout_weight="1"
                         android:text=" 질의응답"
                         android:textSize="20sp" />
                 </LinearLayout>
 
-                <!--<TextView
-                    android:id="@+id/question_answer_moveTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="질의응답"
-                    android:textSize="20sp" />-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <!--<TextView
-                    android:id="@+id/lecture_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="강의 정보"
-                    android:textSize="20sp" />-->
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/icon_lecture_info">
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:text=" "
+                        android:textSize="20sp"/>  <!--아이콘과 글자 사이 공백 만들기 위함-->
+
+                    <TextView
+                        android:id="@+id/lecture_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:text=" 강의정보"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-        <!--<ListView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="19" />
 
-        <Button
-            android:layout_marginRight="8dp"
-            android:id="@+id/button6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center|right"
-            android:background="@drawable/button_shape_circle"
-            android:backgroundTint="@color/blueFacebook_background"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="17dp"
-            android:textStyle="bold" />-->
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
