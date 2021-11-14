@@ -62,7 +62,7 @@ public class PosterQuestionListFragment extends Fragment {
         }
         binding = FragmentPosterQuestionListBinding.inflate(getLayoutInflater());
         posterQuestionListViewAdapter = new PosterQuestionListViewAdapter();
-
+//hi
         binding.framentPosterQuestionListListView.setAdapter(posterQuestionListViewAdapter);
         posterQuestionListViewAdapter.append(new PosterQuestionEntity("질문있습니다", "아두이노 우노를 사용하고 있습니다.\n 혹시 전압강하 조절을 어떻게합니까?", "아두이노조아용", 3, new Date()));
         posterQuestionListViewAdapter.append(new PosterQuestionEntity("액티비티란 무엇입니까?", "액티비티 생명주기등이 이해가안갑니다 ㅠㅠ\n설명해주실 고수의 답변을 기다립니다...!!", "홍길동", 1, new Date()));
