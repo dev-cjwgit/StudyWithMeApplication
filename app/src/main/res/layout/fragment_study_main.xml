@@ -76,7 +76,7 @@
             android:layout_gravity="right"
             android:orientation="vertical"
             android:padding="10dp"
-            android:background="#ff0000">
+            android:background="@color/white">
 
         </LinearLayout>
 

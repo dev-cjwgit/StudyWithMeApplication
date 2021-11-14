@@ -3,51 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="20"
     android:orientation="vertical"
+    android:weightSum="20"
     tools:context=".PosterListFragment">
 
-    <androidx.drawerlayout.widget.DrawerLayout
+    <LinearLayout
+        android:id="@+id/search_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="119dp"
-        android:id="@+id/drawerlayout_poster_list">
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="20">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/fragmentPosterList_spiner1"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_weight="7" />
 
-            <ListView
-                android:id="@+id/framentPosterList_listView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="15" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="300dp"
+        <EditText
+            android:id="@+id/fragmentPosterList_searchTextView"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            android:padding="10dp"
-            android:layout_gravity="right">
-            <!--<com.google.android.material.navigation.NavigationView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="start"
-                            app:menu="@menu/poster_nav"/>-->
+            android:layout_weight="13"
+            android:maxLines="1" />
+    </LinearLayout>
 
-
-        </LinearLayout>
-    </androidx.drawerlayout.widget.DrawerLayout>
-
- <!--   <ListView
+    <ListView
         android:id="@+id/framentPosterList_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="15" />
--->
+
+
+    <!--   <ListView
+           android:id="@+id/framentPosterList_listView"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_weight="15" />
+   -->
 
 </LinearLayout>
