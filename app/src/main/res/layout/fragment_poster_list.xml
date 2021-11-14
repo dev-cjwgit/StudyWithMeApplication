@@ -7,11 +7,41 @@
     android:orientation="vertical"
     tools:context=".PosterListFragment">
 
-    <ListView
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="119dp"
+        android:id="@+id/drawerlayout_poster_list">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/framentPosterList_listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_gravity="right">
+
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+ <!--   <ListView
         android:id="@+id/framentPosterList_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="15" />
-
+-->
 
 </LinearLayout>
