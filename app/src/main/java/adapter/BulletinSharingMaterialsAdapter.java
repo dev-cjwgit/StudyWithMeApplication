@@ -14,17 +14,17 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class BulletinSharingMaterials extends BaseAdapter implements Serializable, Cloneable {
+public class BulletinSharingMaterialsAdapter extends BaseAdapter implements Serializable, Cloneable {
     public ArrayList<BulletinSharingMaterialsEntity> list;
 
-    public BulletinSharingMaterials(){
+    public BulletinSharingMaterialsAdapter(){
         list = new ArrayList<>();
     }
 
     public Object clone() {
-        BulletinSharingMaterials vo = null;
+        BulletinSharingMaterialsAdapter vo = null;
         try{
-            vo = (BulletinSharingMaterials) super.clone();
+            vo = (BulletinSharingMaterialsAdapter) super.clone();
         } catch (CloneNotSupportedException e){
             e.printStackTrace();
         }
