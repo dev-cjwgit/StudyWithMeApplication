@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".StudyJoinFragment">
 
-    <LinearLayout
+    <!--<LinearLayout
          android:layout_height="wrap_content"
          android:layout_width="match_parent"
          android:layout_marginTop="20dp">
@@ -16,6 +16,27 @@
             android:layout_height="wrap_content"
             android:text="스터디 모집"
             android:textSize="24sp" />
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/studyJoin_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="20">
+
+        <Spinner
+            android:id="@+id/fragmentStudyJoin_spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"/>
+
+        <EditText
+            android:id="@+id/fragmentStudyJoin_searchTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="13"
+            android:maxLines="1"/>
     </LinearLayout>
 
     <ListView

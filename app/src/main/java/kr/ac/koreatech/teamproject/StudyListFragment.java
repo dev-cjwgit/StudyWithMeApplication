@@ -10,6 +10,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -77,6 +80,16 @@ public class StudyListFragment extends Fragment {
         }
         binding = FragmentStudyListBinding.inflate(getLayoutInflater());
 
+        /*//
+        binding.studySearchLayout.getLayoutParams().height=0;
+        ArrayList search_kind=new ArrayList();
+        search_kind.add("강의");
+        search_kind.add("자격증");
+        search_kind.add("기타");
+        ArrayAdapter adapter2=new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,search_kind);
+        binding.fragmentStudyListSpinner.setAdapter(adapter2);
+        //*/
+
         ArrayList<StudyEntity> data1 = new ArrayList<>();
 
 
@@ -117,6 +130,12 @@ public class StudyListFragment extends Fragment {
 
         });
     }
+    /*//새로 만듬
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.study_list_menu, menu);
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -127,4 +146,23 @@ public class StudyListFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(back_btn);
         return binding.getRoot();
     }
+
+    //menu
+    /*public boolean onOptionsItemSelected(MenuItem item){
+        int curId=item.getItemId();
+        switch (curId){
+            case R.id.action_studyList_search:
+                ViewGroup.LayoutParams params2=binding.studySearchLayout.getLayoutParams();
+                if(params2.height==0){
+                    params2.height=150;
+                }else{
+                    params2.height=0;
+                }
+                binding.studySearchLayout.setLayoutParams(params2);
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }*/
 }
