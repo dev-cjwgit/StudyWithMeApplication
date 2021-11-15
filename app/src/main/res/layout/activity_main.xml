@@ -37,7 +37,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="navigation_onClick"
-            android:src="@drawable/icon_subject" />
+            android:src="@drawable/icon_subject"/>
+        <!--주석-->
 
         <ImageView
             android:layout_margin="8dp"

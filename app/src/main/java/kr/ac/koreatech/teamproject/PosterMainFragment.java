@@ -75,6 +75,14 @@ public class PosterMainFragment extends Fragment {
             MyFragment.changeFragment(new PosterQuestionListFragment());
             System.out.println("질의 응답방에 접속하려고?");
         });
+        binding.lectureInfo.setOnClickListener(v -> {
+            MyFragment.changeFragment(new fragment_bulletin_lec_info());
+            System.out.println("강의 정보에 접속하려고?");
+        });
+        binding.shareInfo.setOnClickListener(v -> {
+            MyFragment.changeFragment(new fragment_bulletin_sharing_materials());
+            System.out.println("정보 공유에 접속하려고?");
+        });
     }
 
     //menu 생성 부분

@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/questionMain_title_textView"
+            android:id="@+id/questionMainTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -104,7 +104,7 @@
             android:onClick="answerTextView_onClick"/>
 
         <ListView
-            android:id="@+id/framentPosterQuestionMain_listView"
+            android:id="@+id/framentPosterQuestionMainListView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
