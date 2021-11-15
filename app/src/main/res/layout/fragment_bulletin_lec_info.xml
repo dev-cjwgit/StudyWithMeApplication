@@ -1,207 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fadingEdge="vertical"
-    android:orientation="vertical"
-    android:weightSum="20">
-
-    <TextView
-        android:id="@+id/blank"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/lecture_basic_info_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="강의 기본 정보"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:weightSum="2" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
+        android:layout_height="match_parent"
+        android:fadingEdge="vertical"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lecIDTextview"
+            android:id="@+id/lecture_basic_info_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="강의명"
-            android:textSize="12sp" />
+            android:text="강의 기본 정보"
+            android:textSize="23sp"
+            android:padding="5dp"
+            android:textColor="@color/navi_title"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/lecIDTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:text="강의명"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+
+                <TextView
+                    android:id="@+id/LecIDTextview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="강의명"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/profIDTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:text="교수명"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+
+                <TextView
+                    android:id="@+id/profIDTextview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="교수명"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/profemailTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:text="교수 이메일"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+
+                <TextView
+                    android:id="@+id/profemailTextview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="이메일"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/profdiaTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:text="교수 전화번호"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+
+                <TextView
+                    android:id="@+id/profdiaTextview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="전화번호"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/assi_email_Textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:text="연구원 이메일"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+
+                <TextView
+                    android:id="@+id/assi_email_Textview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="이메일"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#6f6f6f" />
 
         <TextView
-            android:id="@+id/LecIDTextview2"
+            android:id="@+id/lecture_plan_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="강의명"
-            android:textSize="12sp" />
+            android:text="주차별 강의계획"
+            android:textSize="23sp"
+            android:padding="5dp"
+            android:textColor="@color/navi_title"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/lectureplan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginLeft="5dp"
+            android:textSize="14sp"
+            android:textColor="@color/navi_cont"
+            android:layout_marginBottom="15dp"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#6f6f6f" />
+
+        <TextView
+            android:id="@+id/textbook_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="교재"
+            android:textSize="23sp"
+            android:padding="5dp"
+            android:textColor="@color/navi_title"
+            android:layout_marginTop="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/main_tb_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="주교재"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+
+                <TextView
+                    android:id="@+id/main_tb_textview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="교재이름"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/sub_tb_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="부교재"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+
+                <TextView
+                    android:id="@+id/sub_tb_textview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="교재이름"
+                    android:textSize="14sp"
+                    android:textColor="@color/navi_cont"/>
+            </LinearLayout>
+        </LinearLayout>>
+
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/profIDTextview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="교수명"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/profIDTextview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="교수명"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/profemailTextview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="교수 이메일"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/profemailTextview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="이메일"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/profdiaTextview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="교수 전화번호"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/profdiaTextview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="전화번호"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/assi_email_Textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="연구원 이메일"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/assi_email_Textview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="이메일"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/lecture_plan_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="주차별 강의계획"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/lectureplan"
-        android:layout_width="match_parent"
-        android:layout_height="382dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textbook_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="교재"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/main_tb_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="주교재"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/main_tb_textview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="교재이름"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/sub_tb_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="부교재"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/sub_tb_textview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="교재이름"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>
