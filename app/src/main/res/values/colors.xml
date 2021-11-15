@@ -20,4 +20,7 @@
     <color name="whiteBlue">#69DADB</color>
     <color name="gray">#9b9b9b</color>
 
+    <color name="navi_title">#202020</color>
+    <color name="navi_cont">#404040</color>
+
 </resources>
