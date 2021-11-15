@@ -16,8 +16,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -25,6 +27,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.CurrentMemberAdapter;
+import entity.CurrentMemberEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyMainBinding;
 
 /**
@@ -43,10 +47,11 @@ public class StudyMainFragment extends Fragment {
     private String mParam2;
     private String title;
 
+    private CurrentMemberAdapter currentMemberAdapter;
 
     // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
     private ActionBarDrawerToggle drawerToggle;
-
+    private Object CurrentMemberAdapter;
 
     public StudyMainFragment(String title) {
         this(title, false);
@@ -95,7 +100,11 @@ public class StudyMainFragment extends Fragment {
             adapter.notifyDataSetChanged();
         });
 
+        //studygroupmain navigation listview
+        currentMemberAdapter=new CurrentMemberAdapter();
+        binding.fragmentCurmemlist.setAdapter(currentMemberAdapter);
 
+        currentMemberAdapter.append(new CurrentMemberEntity("홍길동"));
     }
 
     // Hi
