@@ -43,9 +43,9 @@ public class PosterQuestionListViewAdapter extends BaseAdapter implements Serial
         }
 
         TextView title = view.findViewById(R.id.question_title_textView);
-        TextView name = view.findViewById(R.id.sharing_name_textView);
+        TextView name = view.findViewById(R.id.question_name_textView);
         TextView answer = view.findViewById(R.id.question_answer_textView);
-        TextView date = view.findViewById(R.id.sharing_date_textView);
+        TextView date = view.findViewById(R.id.question_date_textView);
 
 
         title.setText(listItem.getTitle());

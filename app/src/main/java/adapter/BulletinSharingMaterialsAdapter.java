@@ -41,8 +41,8 @@ public class BulletinSharingMaterialsAdapter extends BaseAdapter implements Seri
             view = inflater.inflate(R.layout.controll_bulletin_sharing_materials, viewGroup, false);
         }
         TextView title = view.findViewById(R.id.sharingmat_title_textView);
-        TextView name = view.findViewById(R.id.sharing_name_textView);
-        TextView date = view.findViewById(R.id.sharing_date_textView);
+        TextView name = view.findViewById(R.id.question_name_textView);
+        TextView date = view.findViewById(R.id.question_date_textView);
 
         title.setText(listItem.getTitle());
         name.setText(listItem.getName());
