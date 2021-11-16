@@ -59,6 +59,7 @@ public class fragment_bulletin_sharing_materials extends Fragment {
 
         binding.framentsharingLecture.setAdapter(bulletinSharingMaterialsAdapter);
         bulletinSharingMaterialsAdapter.append(new BulletinSharingMaterialsEntity("오늘 모프", "실강임?","춘식이",3, new Date()));
+        bulletinSharingMaterialsAdapter.append(new BulletinSharingMaterialsEntity("중간고사", "중간고사 점수 평균 올려주셨나요?","미쯔",2, new Date()));
         // click 이벤트 더 구현해야함
 
         binding.framentsharingLecture.setOnItemClickListener(new AdapterView.OnItemClickListener() {

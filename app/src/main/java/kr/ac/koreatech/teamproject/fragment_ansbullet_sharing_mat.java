@@ -47,7 +47,7 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
         binding = FragmentAnsbulletSharingMatBinding.inflate(getLayoutInflater());
         binding.anssharingTitleTextView.setText(entity.getTitle());
         binding.anssharingNameTextView.setText(entity.getName());
-        binding.anssharingAnsTextView.setText(entity.getBody());
+        binding.anssharingMainBody.setText(entity.getBody());
         SimpleDateFormat sDate4 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         binding.anssharingDateTextView.setText(sDate4.format(entity.getDate()));
 
@@ -63,7 +63,8 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
 
         binding.fragmentAnssharingListView.setAdapter(ansbulletSharingMatAdapter);
         for (int i = 0; i < entity.getAnswer(); i++) {
-            ansbulletSharingMatAdapter.append(new AnssharingEntity("실강","곰돌", 3, new Date(),"실강없어요."));
+            ansbulletSharingMatAdapter.append(new AnssharingEntity("실강","곰돌", 1, new Date(),"실강없어요."));
+            ansbulletSharingMatAdapter.append(new AnssharingEntity("연구원 ㄱ","뷔뷔", 1, new Date(),"흠 정 불안하면 조교님한테 메일 드려봐요."));
         }
     }
 
