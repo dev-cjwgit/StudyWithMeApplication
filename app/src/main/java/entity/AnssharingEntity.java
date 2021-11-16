@@ -3,14 +3,12 @@ package entity;
 import java.util.Date;
 
 public class AnssharingEntity {
-    private String title;
     private String name;
     private Date date;
     private String body;
     private Integer answer;
 
-    public AnssharingEntity(String title, String name, Integer answer, Date date, String body) {
-        this.title = title;
+    public AnssharingEntity(String name, Integer answer, Date date, String body) {
         this.body = body;
         this.name = name;
         this.answer = answer;
@@ -20,7 +18,6 @@ public class AnssharingEntity {
     @Override
     public String toString(){
         return "AnssharingEntity{" +
-                "title='" + title + '\'' +
                 ", name='" + name + '\'' +
                 ", date=" + date +
                 ", answer=" + answer +
@@ -34,14 +31,6 @@ public class AnssharingEntity {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getName() {
