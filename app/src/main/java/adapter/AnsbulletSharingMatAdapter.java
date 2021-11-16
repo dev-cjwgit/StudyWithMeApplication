@@ -41,12 +41,12 @@ public class AnsbulletSharingMatAdapter extends BaseAdapter implements Serializa
 
         }
 
-        TextView title = view.findViewById(R.id.anssharing_anstitle_TextView);
+//        TextView title = view.findViewById(R.id.anssharing_anstitle_TextView);
         TextView name = view.findViewById(R.id.anssharing_ansname_TextView);
         TextView date = view.findViewById(R.id.anssharing_ansdate_TextView);
         TextView body = view.findViewById(R.id.anssharing_ansbody_TextView);
 
-        title.setText(listItem.getTitle());
+//        title.setText(listItem.getTitle());
         name.setText(listItem.getName());
 
         SimpleDateFormat sDate4 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
