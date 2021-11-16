@@ -7,7 +7,7 @@
     android:weightSum="20"
     tools:context=".StudyListFragment">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
@@ -17,6 +17,29 @@
             android:layout_height="wrap_content"
             android:text="스터디 그룹"
             android:textSize="24sp" />
+    </LinearLayout>-->
+
+    <!--게시판과 동일하게 검색하는 부분 추가함-->
+
+    <LinearLayout
+        android:id="@+id/study_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="20">
+
+        <Spinner
+            android:id="@+id/fragmentStudyList_spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"/>
+
+        <EditText
+            android:id="@+id/fragmentStudyList_searchTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="13"
+            android:maxLines="1"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
