@@ -22,14 +22,15 @@ import java.util.List;
 
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyJoinBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
+import kr.ac.koreatech.teamproject.databinding.FragmentStudyMakeBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link StudyJoinFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StudyJoinFragment extends Fragment {
-    private FragmentStudyJoinBinding binding;
+public class StudyMakeFragment extends Fragment {
+    private FragmentStudyMakeBinding binding;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -37,11 +38,11 @@ public class StudyJoinFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public StudyJoinFragment() {
+    public StudyMakeFragment() {
         // Required empty public constructor
     }
 
-    public StudyJoinFragment(boolean back_btn) {
+    public StudyMakeFragment(boolean back_btn) {
         // Required empty public constructor
         this.back_btn = back_btn;
     }
@@ -71,9 +72,9 @@ public class StudyJoinFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        binding = FragmentStudyJoinBinding.inflate(getLayoutInflater());
+        binding = FragmentStudyMakeBinding.inflate(getLayoutInflater());
 
-        List<String> list = new ArrayList<>();
+        /*List<String> list = new ArrayList<>();
         list.add("(가입가능)01번 스터디 그룹");
         list.add("(가입가능)02번 스터디 그룹");
         list.add("(가입가능)03번 스터디 그룹");
@@ -99,7 +100,7 @@ public class StudyJoinFragment extends Fragment {
                 //텍스트뷰에 출력
                 System.out.println(selected_item + " 에 가입하려고?");
             }
-        });
+        });*/
     }
 
     @Override
@@ -108,14 +109,14 @@ public class StudyJoinFragment extends Fragment {
         // Inflate the layout for this fragment
 
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle("스터디 그룹 모집");
+        actionBar.setTitle("스터디 그룹 생성");
         actionBar.setDisplayHomeAsUpEnabled(back_btn);
         //actionBar.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
 
-    @Override
+    /*@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.study_join_menu, menu);
@@ -136,10 +137,10 @@ public class StudyJoinFragment extends Fragment {
                 return false;
             }
         });
-    }
+    }*/
 
     //새로추가함
-    public boolean onOptionsItemSelected(MenuItem item){
+    /*public boolean onOptionsItemSelected(MenuItem item){
         int curId=item.getItemId();
         switch (curId){
             case R.id.action_search:
@@ -155,5 +156,5 @@ public class StudyJoinFragment extends Fragment {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

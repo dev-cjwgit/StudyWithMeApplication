@@ -119,8 +119,7 @@ public class StudyListFragment extends Fragment {
         binding.fragmentStudyListStudyRecyclerview.setAdapter(m1Adapter);
 
 
-
-        binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
+        /*binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
 
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
@@ -128,7 +127,18 @@ public class StudyListFragment extends Fragment {
             fragmentTransaction.replace(R.id.fragment1, new StudyJoinFragment(true));
             fragmentTransaction.commit();
 
+        });*/
+        binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
+
+            MainActivity main = ((MainActivity) getActivity());
+            FragmentManager fm = main.getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment1, new StudyMakeFragment(true));
+            fragmentTransaction.commit();
+
         });
+
+
     }
     //새로 만듬
     @Override
