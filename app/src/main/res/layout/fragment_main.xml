@@ -48,17 +48,58 @@
 
     </LinearLayout>
 
-    <TextView
-
-        android:id="@+id/tvCounter"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:text="02 : 12 : 35"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:weightSum="10">
 
+        <TextView
+            android:id="@+id/hour"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="00"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text=":"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/min"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text=":"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/sec"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <!-- TODO 김채연: 이 밑으론 listView을 통하여 구현해보세요. -->
     <!-- 만약 작은 화면에서는 화면이 짤릴 수 있으니 리스트뷰로 내려서도 확인이 가능하게 -->
@@ -80,7 +121,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
         android:layout_weight="2"
-        android:gravity="center"
+        android:gravity="left"
         android:text="가입한 게시판"
         android:textColor="@color/blueFacebook"
         android:textSize="16sp"
@@ -105,7 +146,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
         android:layout_weight="2"
-        android:gravity="center"
+        android:gravity="left"
         android:text="가입한 스터디 그룹"
         android:textColor="@color/blueFacebook"
         android:textSize="16sp"
