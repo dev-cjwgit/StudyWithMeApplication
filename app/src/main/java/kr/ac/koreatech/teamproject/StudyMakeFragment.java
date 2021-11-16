@@ -73,34 +73,6 @@ public class StudyMakeFragment extends Fragment {
         }
 
         binding = FragmentStudyMakeBinding.inflate(getLayoutInflater());
-
-        /*List<String> list = new ArrayList<>();
-        list.add("(가입가능)01번 스터디 그룹");
-        list.add("(가입가능)02번 스터디 그룹");
-        list.add("(가입가능)03번 스터디 그룹");
-        list.add("(가입가능)04번 스터디 그룹");
-        list.add("(가입가능)05번 스터디 그룹");
-        list.add("(가입가능)06번 스터디 그룹");
-        list.add("(가입가능)07번 스터디 그룹");
-        list.add("(가입가능)08번 스터디 그룹");
-        list.add("(가입가능)09번 스터디 그룹");
-        list.add("(가입가능)10번 스터디 그룹");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
-        binding.framentStudyJoinListView.setAdapter(adapter);
-
-        //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
-        binding.framentStudyJoinListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView,
-                                    View view, int position, long id) {
-
-                //클릭한 아이템의 문자열을 가져옴
-                String selected_item = (String) adapterView.getItemAtPosition(position);
-
-                //텍스트뷰에 출력
-                System.out.println(selected_item + " 에 가입하려고?");
-            }
-        });*/
     }
 
     @Override
@@ -116,35 +88,12 @@ public class StudyMakeFragment extends Fragment {
         return binding.getRoot();
     }
 
-    /*@Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.study_join_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setQueryHint("plz in search");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
-
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                System.out.println(s + " 검색하려고?");
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }
-        });
-    }*/
-
     //새로추가함
     /*public boolean onOptionsItemSelected(MenuItem item){
         int curId=item.getItemId();
         switch (curId){
-            case R.id.action_search:
-                ViewGroup.LayoutParams params2=binding.studyJoinSearchLayout.getLayoutParams();
+            case R.id.btn_studyGroupMake:
+                *//*ViewGroup.LayoutParams params2=binding.studyJoinSearchLayout.getLayoutParams();
                 if(params2.height==0){
                     params2.height=150;
                 }else{
@@ -153,7 +102,7 @@ public class StudyMakeFragment extends Fragment {
                 binding.studyJoinSearchLayout.setLayoutParams(params2);
                 return true;
             default:
-                break;
+                break;*//*
         }
         return super.onOptionsItemSelected(item);
     }*/
