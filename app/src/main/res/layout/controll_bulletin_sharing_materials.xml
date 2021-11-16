@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:ellipsize="end"
             android:ems="5"
-            android:gravity="center"
+            android:gravity="left"
             android:maxLines="1"
             android:text="name"
             android:textSize="12sp" />
@@ -42,13 +42,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="/" />
+            android:text="|" />
 
         <TextView
             android:id="@+id/question_date_textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_height="match_parent"
+            android:gravity="left"
             android:text="date" />
 
     </LinearLayout>

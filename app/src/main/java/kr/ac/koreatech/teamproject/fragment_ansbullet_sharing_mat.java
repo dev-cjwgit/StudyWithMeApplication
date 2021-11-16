@@ -73,7 +73,7 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
-        actionBar.setTitle("정보 공유 답변");
+        actionBar.setTitle("정보 공유");
         actionBar.setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
         return binding.getRoot();

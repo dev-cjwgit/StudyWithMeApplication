@@ -6,15 +6,6 @@
     android:orientation="vertical"
     android:weightSum="20">
 
-    <TextView
-        android:id="@+id/sharingLecture_title"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="강의 정보 공유"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
     <ListView
         android:layout_margin="8dp"
         android:id="@+id/framentsharingLecture"

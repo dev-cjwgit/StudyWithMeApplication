@@ -43,7 +43,7 @@
             android:id="@+id/anssharingNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="left"
             android:text="name"
             android:textSize="12sp" />
 
@@ -51,19 +51,27 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="/" />
+            android:gravity="center_horizontal"
+            android:text="|" />
 
         <TextView
             android:id="@+id/anssharingDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="left"
             android:text="date" />
 
     </LinearLayout>
 
-    <TextView
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#6f6f6f" />
+
+        <TextView
         android:id="@+id/anssharingMain_Body"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -76,7 +84,15 @@
         android:scrollbarTrackVertical="@color/white"
         android:scrollbars="vertical" />
 
-    <TextView
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#6f6f6f" />
+
+        <TextView
         android:id="@+id/anssharingAnsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
