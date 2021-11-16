@@ -26,6 +26,9 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
  */
 public class PosterMainFragment extends Fragment {
     private FragmentPosterMainBinding binding;
+
+    private DrawerLayout drawerLayout;
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -83,6 +86,14 @@ public class PosterMainFragment extends Fragment {
             MyFragment.changeFragment(new fragment_bulletin_sharing_materials());
             System.out.println("정보 공유에 접속하려고?");
         });
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        System.out.println("파괴됨..");
     }
 
     //menu 생성 부분
@@ -90,7 +101,6 @@ public class PosterMainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.post_search_menu, menu);
-
     }
 
     @Override
@@ -115,13 +125,9 @@ public class PosterMainFragment extends Fragment {
                 return true;*/
 
             case R.id.post_category:
-                DrawerLayout drawerLayout = getActivity().findViewById(R.id.drawerLayout_poster_main);
-                View btn_A = getActivity().findViewById(R.id.post_category);
-                btn_A.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        drawerLayout.openDrawer(Gravity.RIGHT);
-                    }
-                });
+                drawerLayout = getActivity().findViewById(R.id.drawerLayout_poster_main);
+                drawerLayout.openDrawer(Gravity.RIGHT);
+
                 return true;
             default:
                 break;
