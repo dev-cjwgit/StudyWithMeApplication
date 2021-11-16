@@ -26,7 +26,6 @@ public class AnswerDialogActivity extends Activity {
         int height = (int) (display.getHeight() * 0.6);  //Display 사이즈의 90%
 
         getWindow().getAttributes().width = width;
-
         getWindow().getAttributes().height = height;
 
 
