@@ -120,6 +120,7 @@ public class StudyJoinFragment extends Fragment {
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("스터디 그룹 모집");
         actionBar.setDisplayHomeAsUpEnabled(back_btn);
+        //actionBar.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
