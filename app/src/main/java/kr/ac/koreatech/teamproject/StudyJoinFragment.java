@@ -71,6 +71,17 @@ public class StudyJoinFragment extends Fragment {
         }
 
         binding = FragmentStudyJoinBinding.inflate(getLayoutInflater());
+
+        /*//
+        binding.studyJoinSearchLayout.getLayoutParams().height=0;
+        ArrayList search_kind2=new ArrayList();
+        search_kind2.add("강의");
+        search_kind2.add("자격증");
+        search_kind2.add("기타");
+        ArrayAdapter adapter3=new ArrayAdapter(getContext(),android.R.layout.simple_list_item_2,search_kind2);
+        binding.fragmentStudyJoinSpinner.setAdapter(adapter3);
+        //*/
+
         List<String> list = new ArrayList<>();
         list.add("(가입가능)01번 스터디 그룹");
         list.add("(가입가능)02번 스터디 그룹");
@@ -109,6 +120,7 @@ public class StudyJoinFragment extends Fragment {
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("스터디 그룹 모집");
         actionBar.setDisplayHomeAsUpEnabled(back_btn);
+        //actionBar.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
@@ -117,7 +129,7 @@ public class StudyJoinFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.study_join_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        /*MenuItem searchItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("plz in search");
@@ -133,6 +145,25 @@ public class StudyJoinFragment extends Fragment {
             public boolean onQueryTextChange(String s) {
                 return false;
             }
-        });
+        });*/
+    }
+
+    //새로추가함
+    public boolean onOptionsItemSelected(MenuItem item){
+        int curId=item.getItemId();
+        switch (curId){
+            case R.id.action_search:
+                ViewGroup.LayoutParams params2=binding.studyJoinSearchLayout.getLayoutParams();
+                if(params2.height==0){
+                    params2.height=150;
+                }else{
+                    params2.height=0;
+                }
+                binding.studyJoinSearchLayout.setLayoutParams(params2);
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
