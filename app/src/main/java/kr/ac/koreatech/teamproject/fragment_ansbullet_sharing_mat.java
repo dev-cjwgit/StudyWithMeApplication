@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import adapter.AnsbulletSharingMatAdapter;
 import entity.AnssharingEntity;
@@ -27,6 +29,8 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private BulletinSharingMaterialsEntity entity;
+
+    private List<String> list = new ArrayList<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -56,8 +60,9 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
             System.out.println("답변 달꺼지?");
             Intent intent = new Intent(getActivity(), AnswerDialogActivity.class);
             startActivity(intent);
-
+//            list.add(binding.fra)
         });
+
 
         ansbulletSharingMatAdapter = new AnsbulletSharingMatAdapter();
 

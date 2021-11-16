@@ -37,7 +37,6 @@ public class MainFragment extends Fragment{
     private String mParam1;
     private String mParam2;
 
-
     public MainFragment() {
         // Required empty public constructor
     }
@@ -112,8 +111,6 @@ public class MainFragment extends Fragment{
         binding.fragmentMainPosterListView.setAdapter(m1Adapter);
 
         binding.fragmentMainStudyListView.setAdapter(m2Adapter);
-
-
     }
 
     @Override
@@ -125,6 +122,5 @@ public class MainFragment extends Fragment{
         actionBar.setDisplayHomeAsUpEnabled(false);
         return binding.getRoot();
     }
-
 
 }
