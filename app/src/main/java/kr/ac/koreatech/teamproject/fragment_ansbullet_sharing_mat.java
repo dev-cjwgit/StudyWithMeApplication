@@ -58,7 +58,7 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
         binding.anssharingMainBody.setMovementMethod(new ScrollingMovementMethod());
         binding.anssharingAnsTextView.setOnClickListener(v -> {
             System.out.println("답변 달꺼지?");
-            Intent intent = new Intent(getActivity(), AnswerSharingDialogActivity.class);
+            Intent intent = new Intent(getActivity(),AnswerSharingDialogActivity.class);
             startActivity(intent);
         });
 
