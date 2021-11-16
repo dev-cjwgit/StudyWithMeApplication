@@ -2,8 +2,4 @@
     <string name="app_name">StudyWithMeApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="menu_license">license(자격증)</string>
-    <string name="menu_subject">Subject(교과목)</string>
-    <string name="menu_etc">etc(기타)</string>
-
 </resources>
