@@ -108,6 +108,8 @@ public class StudyMainFragment extends Fragment {
         currentMemberAdapter.append(new CurrentMemberEntity("춘식이"));
         currentMemberAdapter.append(new CurrentMemberEntity("라이언"));
         currentMemberAdapter.append(new CurrentMemberEntity("어피치"));
+
+
     }
 
     // Hi

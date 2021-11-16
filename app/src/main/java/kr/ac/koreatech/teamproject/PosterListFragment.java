@@ -1,26 +1,19 @@
 package kr.ac.koreatech.teamproject;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.SearchView;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -107,6 +100,8 @@ public class PosterListFragment extends Fragment {
                 System.out.println(item.getTitle() + " 에 접속함?");
             }
         });
+
+        //---------------------------------
     }
 
 
