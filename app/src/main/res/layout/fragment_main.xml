@@ -51,7 +51,7 @@
 
     <TextView
 
-        android:id="@+id/textView15"
+        android:id="@+id/tvCounter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -62,6 +62,18 @@
 
     <!-- TODO 김채연: 이 밑으론 listView을 통하여 구현해보세요. -->
     <!-- 만약 작은 화면에서는 화면이 짤릴 수 있으니 리스트뷰로 내려서도 확인이 가능하게 -->
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PL:AY" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ST:OP" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
