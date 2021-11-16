@@ -9,7 +9,7 @@ public class AnssharingEntity {
     private String body;
     private Integer answer;
 
-    public AnssharingEntity(String title, String name, Integer answer, Date date, String body) {
+    public AnssharingEntity(String title, String name, Date date, String body) {
         this.title = title;
         this.body = body;
         this.name = name;
