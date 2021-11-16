@@ -126,7 +126,10 @@ public class PosterMainFragment extends Fragment {
                 return true;*/
 
             case R.id.post_category:
-                drawerLayout.openDrawer(Gravity.RIGHT);
+                if (drawerLayout.isDrawerOpen(Gravity.RIGHT))
+                    drawerLayout.closeDrawer(Gravity.RIGHT);
+                else
+                    drawerLayout.openDrawer(Gravity.RIGHT);
                 return true;
             default:
                 break;
