@@ -51,7 +51,7 @@ public class StudyMainFragment extends Fragment {
 
     // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
     private ActionBarDrawerToggle drawerToggle;
-    private Object CurrentMemberAdapter;
+//    private Object CurrentMemberAdapter;
 
     public StudyMainFragment(String title) {
         this(title, false);
@@ -104,7 +104,10 @@ public class StudyMainFragment extends Fragment {
         currentMemberAdapter=new CurrentMemberAdapter();
         binding.fragmentCurmemlist.setAdapter(currentMemberAdapter);
 
-        currentMemberAdapter.append(new CurrentMemberEntity("홍길동"));
+        currentMemberAdapter.append(new CurrentMemberEntity("죠르디"));
+        currentMemberAdapter.append(new CurrentMemberEntity("춘식이"));
+        currentMemberAdapter.append(new CurrentMemberEntity("라이언"));
+        currentMemberAdapter.append(new CurrentMemberEntity("어피치"));
     }
 
     // Hi

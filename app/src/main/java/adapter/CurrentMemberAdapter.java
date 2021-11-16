@@ -1,16 +1,19 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import entity.CurrentMemberEntity;
+import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.R;
 
 public class CurrentMemberAdapter extends BaseAdapter implements Serializable, Cloneable {
@@ -32,14 +35,14 @@ public class CurrentMemberAdapter extends BaseAdapter implements Serializable, C
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup){
-        final Context context=viewGroup.getContext();
+        final Context context = viewGroup.getContext();
         CurrentMemberEntity listItem = list.get(i);
 
-        if(view == null){
+        if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view=inflater.inflate(R.layout.controll_current_member,viewGroup,false);
+            view = inflater.inflate(R.layout.controll_current_member, viewGroup, false);
         }
-        TextView member=view.findViewById(R.id.cur_mem_name);
+        TextView member = view.findViewById(R.id.cur_mem_name);
 
         member.setText(listItem.getMember());
 
@@ -48,17 +51,17 @@ public class CurrentMemberAdapter extends BaseAdapter implements Serializable, C
 
     @Override
     public int getCount() {
-        return 0;
+        return list.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return list.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     public void clear() {
