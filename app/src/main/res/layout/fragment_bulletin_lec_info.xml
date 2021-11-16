@@ -159,7 +159,8 @@
             android:padding="5dp"
             android:textColor="@color/navi_title"
             android:layout_marginLeft="7dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="7dp"/>
 
         <TextView
             android:id="@+id/lectureplan"
