@@ -35,11 +35,4 @@
         android:layout_weight="15" />
 
 
-    <!--   <ListView
-           android:id="@+id/framentPosterList_listView"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:layout_weight="15" />
-   -->
-
 </LinearLayout>
