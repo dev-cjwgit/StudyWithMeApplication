@@ -8,10 +8,10 @@
     tools:context=".PosterQuestionListFragment">
 
     <ListView
-        android:layout_margin="8dp"
         android:id="@+id/framentPosterQuestionList_listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="8dp"
         android:layout_weight="15" />
 
 

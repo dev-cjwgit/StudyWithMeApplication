@@ -57,48 +57,14 @@
         android:weightSum="10">
 
         <TextView
-            android:id="@+id/hour"
+            android:id="@+id/timertextview"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="00"
-            android:textSize="20sp" />
+            android:text="00 : 00 : 00"
+            android:textSize="30sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text=":"
-            android:textSize="20sp" />
-
-
-        <TextView
-            android:id="@+id/min"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="00"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text=":"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/sec"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="00"
-            android:textSize="20sp" />
     </LinearLayout>
 
     <!-- TODO 김채연: 이 밑으론 listView을 통하여 구현해보세요. -->
