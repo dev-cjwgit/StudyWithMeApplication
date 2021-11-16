@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<!--    <item-->
-<!--        android:id="@+id/poster_category"-->
-<!--        android:icon="@drawable/icon_more"-->
-<!--        android:title="poster_drawer"-->
-<!--        app:showAsAction="always" />-->
-
 
     <item
         android:id="@+id/action_poster_search"
@@ -16,22 +10,5 @@
 
     </item>
 
-    <!--<item
-        android:id="@+id/license"
-        app:showAsAction="never"
-        android:title="자격증">
-    </item>
-
-    <item
-        android:id="@+id/subject"
-        app:showAsAction="never"
-        android:title="교과목">
-    </item>
-
-    <item
-        android:id="@+id/etc"
-        app:showAsAction="never"
-        android:title="기타">
-    </item>-->
 
 </menu>

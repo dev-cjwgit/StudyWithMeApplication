@@ -1,44 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<!--    <item-->
-<!--        android:id="@+id/action_post_search"-->
-<!--        app:showAsAction="always"-->
-<!--        android:icon="@drawable/icon_search"-->
-<!--        app:actionViewClass="androidx.appcompat.widget.SearchView">-->
-<!--    </item>-->
+
     <item
         android:id="@+id/post_category"
         android:icon="@drawable/icon_more"
         android:title="post_drawer"
         app:showAsAction="always"/>
 
-
-    <!--<item
-        android:id="@+id/question"
-        app:showAsAction="never"
-        android:title="질의응답">
-
-    </item>
-    <item
-        android:id="@+id/assignment"
-        app:showAsAction="never"
-        android:title="과제방">
-
-    </item>
-
-    <item
-        android:id="@+id/shareInformation"
-        app:showAsAction="never"
-        android:title="정보공유">
-
-    </item>
-    <item
-        android:id="@+id/shareDocument"
-        app:showAsAction="never"
-        android:title="자료공유">
-
-    </item>-->
 
 
 </menu>
