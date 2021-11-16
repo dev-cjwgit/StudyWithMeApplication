@@ -64,9 +64,10 @@
                             android:layout_gravity="center"
                             android:background="@drawable/button_shape_circle"
                             android:backgroundTint="@color/blueFacebook_background"
-                            android:text="+"
+                            android:text="↑"
+                            android:textStyle="bold"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="30sp" />
 
                     </LinearLayout>
                 </LinearLayout>
