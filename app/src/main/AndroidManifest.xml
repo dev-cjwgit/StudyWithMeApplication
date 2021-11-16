@@ -11,6 +11,10 @@
         android:theme="@style/Theme.StudyWithMeApplication">
 
         <activity
+            android:name=".AnswerSharingDialogActivity"
+            android:exported="false"/>
+
+        <activity
             android:name=".AnswerDialogActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
