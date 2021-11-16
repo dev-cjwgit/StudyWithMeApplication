@@ -101,6 +101,7 @@ public class PosterMainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.post_search_menu, menu);
+        drawerLayout = getActivity().findViewById(R.id.drawerLayout_poster_main);
     }
 
     @Override
@@ -125,9 +126,7 @@ public class PosterMainFragment extends Fragment {
                 return true;*/
 
             case R.id.post_category:
-                drawerLayout = getActivity().findViewById(R.id.drawerLayout_poster_main);
                 drawerLayout.openDrawer(Gravity.RIGHT);
-
                 return true;
             default:
                 break;
