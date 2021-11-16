@@ -67,8 +67,6 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
             android:background="#6f6f6f" />
 
         <TextView
@@ -88,8 +86,6 @@
             android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
             android:background="#6f6f6f" />
 
         <TextView
