@@ -9,6 +9,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/cur_mem_name"
         android:textSize="15dp"
-        android:text="name"/>
+        android:title="name"/>
 
 </LinearLayout>
