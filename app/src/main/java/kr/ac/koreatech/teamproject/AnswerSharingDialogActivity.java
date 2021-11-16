@@ -26,7 +26,7 @@ public class AnswerSharingDialogActivity extends Activity {
         getWindow().getAttributes().height = height;
     }
 
-    public void addButton_onClick(View view) {
+    public void Button_onClick(View view) {
         System.out.println("질문 등록\n" +
                 "" + binding.answerSharingMatDialogBody.getText().toString());
 
