@@ -80,7 +80,7 @@ public class StudyListFragment extends Fragment {
         }
         binding = FragmentStudyListBinding.inflate(getLayoutInflater());
 
-        /*//
+        //
         binding.studySearchLayout.getLayoutParams().height=0;
         ArrayList search_kind=new ArrayList();
         search_kind.add("강의");
@@ -88,7 +88,7 @@ public class StudyListFragment extends Fragment {
         search_kind.add("기타");
         ArrayAdapter adapter2=new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,search_kind);
         binding.fragmentStudyListSpinner.setAdapter(adapter2);
-        //*/
+        //
 
         ArrayList<StudyEntity> data1 = new ArrayList<>();
 
@@ -130,12 +130,13 @@ public class StudyListFragment extends Fragment {
 
         });
     }
-    /*//새로 만듬
+    //새로 만듬
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.study_list_menu, menu);
-    }*/
+    }
+    //
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -144,11 +145,16 @@ public class StudyListFragment extends Fragment {
         ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("참여중인 스터디 그룹");
         actionBar.setDisplayHomeAsUpEnabled(back_btn);
+
+        //새로 추가함 (menu 추가)
+        setHasOptionsMenu(true);
+        //
+
         return binding.getRoot();
     }
 
     //menu
-    /*public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item){
         int curId=item.getItemId();
         switch (curId){
             case R.id.action_studyList_search:
@@ -164,5 +170,5 @@ public class StudyListFragment extends Fragment {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 }
