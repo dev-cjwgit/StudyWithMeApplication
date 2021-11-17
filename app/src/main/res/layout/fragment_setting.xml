@@ -66,16 +66,137 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/help"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textSize="15sp"
             android:text="도움말 및 지원"
+            android:textStyle="bold"
             android:layout_marginLeft="17dp"
             android:layout_marginTop="7dp"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#6f6f6f" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/developer_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="개발자 소개"
+            android:layout_weight="4"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="7dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/developer1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:text="최진우 : 실력자"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="7dp"/>
+            <TextView
+                android:id="@+id/developer2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="김선경 : 잼미니"
+                android:paddingLeft="10dp"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/developer3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="7dp"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:textSize="13sp"
+                android:text="김채연 : 잼미니"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/developer4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="이효민 : 잼미니"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="7dp"/>
+        </LinearLayout>
+        <!--<TextView
+            android:id="@+id/developer1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="13sp"
+            android:text="최진우 : 실력자"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="7dp"/>
+        <TextView
+            android:id="@+id/developer2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="김선경 : 잼미니"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:id="@+id/developer3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:text="김채연 : 잼미니"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/developer4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="이효민 : 잼미니"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="7dp"/>-->
 
     </LinearLayout>
 
