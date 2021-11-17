@@ -1,5 +1,6 @@
 package kr.ac.koreatech.teamproject;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
@@ -16,13 +17,14 @@ import java.util.ArrayList;
 import adapter.FrontRecyclerViewAdapter;
 import entity.FrontPoster;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
+import service.TimerService;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainFragment extends Fragment{
+public class MainFragment extends Fragment {
     private FragmentMainBinding binding;
 
     private FrontRecyclerViewAdapter m1Adapter;
@@ -69,7 +71,13 @@ public class MainFragment extends Fragment{
 
         // init Data
         ArrayList<FrontPoster> data1 = new ArrayList<>();
+        binding.btnPlay.setOnClickListener(v -> {
+            requireActivity().startService(new Intent(getActivity(), TimerService.class));
+        });
 
+        binding.btnStop.setOnClickListener(v -> {
+            requireActivity().stopService(new Intent(getActivity(), TimerService.class));
+        });
         data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍"));
         data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "중국어회화"));
         data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "창의적글쓰기"));
@@ -111,6 +119,10 @@ public class MainFragment extends Fragment{
         binding.fragmentMainPosterListView.setAdapter(m1Adapter);
 
         binding.fragmentMainStudyListView.setAdapter(m2Adapter);
+    }
+
+    public void finishStudy() {
+        System.out.println("공부시간이 측정되었습니다");
     }
 
     @Override
