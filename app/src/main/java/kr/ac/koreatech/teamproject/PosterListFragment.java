@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +41,8 @@ public class PosterListFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private Object MenuInflater;
+
+    private PosterListViewAdapter posterListViewAdapter_2;
 
     public PosterListFragment() {
         // Required empty public constructor
@@ -101,7 +105,6 @@ public class PosterListFragment extends Fragment {
             }
         });
 
-        //---------------------------------
     }
 
 
@@ -133,6 +136,22 @@ public class PosterListFragment extends Fragment {
                     params.height = 0;
                 }
                 binding.searchLayout.setLayoutParams(params);
+
+                //--------------------------------
+                posterListViewAdapter_2 = new PosterListViewAdapter();
+                binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
+
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목1", "교수님1", 38, "참여 가능 게시판 테스트1"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목2", "교수님2", 38, "참여 가능 게시판 테스트2"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목3", "교수님3", 38, "참여 가능 게시판 테스트3"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목4", "교수님4", 38, "참여 가능 게시판 테스트4"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목5", "교수님5", 38, "참여 가능 게시판 테스트5"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목6", "교수님6", 38, "참여 가능 게시판 테스트6"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목7", "교수님7", 38, "참여 가능 게시판 테스트7"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목8", "교수님8", 38, "참여 가능 게시판 테스트8"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목9", "교수님9", 38, "참여 가능 게시판 테스트9"));
+                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목10", "교수님10", 38, "참여 가능 게시판 테스트10"));
+
                 return true;
             default:
                 break;
