@@ -108,13 +108,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
-            <TextView
+            <ListView
+                android:id="@+id/settingListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="15" />
+            <!--<TextView
                 android:id="@+id/developer1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="13sp"
                 android:paddingLeft="10dp"
-                android:text="최진우 : 실력자"
+                android:text="최진우 : 귀여운 고양이 ✩彡✩ミ   냥냥펀치는 전설이다."
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:layout_marginLeft="17dp"
@@ -153,50 +158,8 @@
                 android:textSize="13sp"
                 android:layout_weight="1"
                 android:layout_marginLeft="17dp"
-                android:layout_marginTop="7dp"/>
+                android:layout_marginTop="7dp"/>-->
         </LinearLayout>
-        <!--<TextView
-            android:id="@+id/developer1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="13sp"
-            android:text="최진우 : 실력자"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="7dp"/>
-        <TextView
-            android:id="@+id/developer2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="김선경 : 잼미니"
-            android:textStyle="bold"
-            android:textSize="13sp"
-            android:layout_weight="1"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="7dp"/>
-
-        <TextView
-            android:id="@+id/developer3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="7dp"
-            android:layout_weight="1"
-            android:textSize="13sp"
-            android:text="김채연 : 잼미니"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/developer4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="이효민 : 잼미니"
-            android:textStyle="bold"
-            android:textSize="13sp"
-            android:layout_weight="1"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="7dp"/>-->
 
     </LinearLayout>
 
