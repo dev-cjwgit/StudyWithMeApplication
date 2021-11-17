@@ -1,5 +1,7 @@
 package kr.ac.koreatech.teamproject;
 
+import static java.security.AccessController.getContext;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -7,6 +9,10 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.contentcapture.ContentCaptureCondition;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.ac.koreatech.teamproject.databinding.ActivityAnswerSharingMatDialogBinding;
 
@@ -27,6 +33,7 @@ public class AnswerSharingDialogActivity extends Activity {
     }
 
     public void Button_onClick(View view) {
+
         System.out.println("질문 등록\n" +
                 "" + binding.answerSharingMatDialogBody.getText().toString());
 

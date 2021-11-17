@@ -10,9 +10,12 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import adapter.PosterQuestionAnswerListViewAdapter;
 import adapter.PosterQuestionListViewAdapter;
@@ -28,7 +31,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterQuestionMainBinding
  */
 public class PosterQuestionMainFragment extends Fragment {
     private FragmentPosterQuestionMainBinding binding;
-
+    private List<String> list = new ArrayList<>();
     private PosterQuestionAnswerListViewAdapter posterQuestionAnswerListViewAdapter;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,6 +68,8 @@ public class PosterQuestionMainFragment extends Fragment {
             startActivity(intent);
 
         });
+
+
 
         posterQuestionAnswerListViewAdapter = new PosterQuestionAnswerListViewAdapter();
 

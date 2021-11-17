@@ -10,6 +10,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,15 +58,17 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
 
         binding.anssharingMainBody.setMovementMethod(new ScrollingMovementMethod());
         binding.anssharingAnsTextView.setOnClickListener(v -> {
-            System.out.println("답변 달꺼지?");
+            System.out.println("답변 달꺼지? 답변하기 클릭했나?");
             Intent intent = new Intent(getActivity(),AnswerSharingDialogActivity.class);
             startActivity(intent);
-        });
 
+
+        });
 
         ansbulletSharingMatAdapter = new AnsbulletSharingMatAdapter();
 
         binding.fragmentAnssharingListView.setAdapter(ansbulletSharingMatAdapter);
+
         for (int i = 0; i < entity.getAnswer(); i++) {
             ansbulletSharingMatAdapter.append(new AnssharingEntity("곰돌", 1, new Date(),"실강없어요."));
             ansbulletSharingMatAdapter.append(new AnssharingEntity("뷔뷔", 1, new Date(),"흠 정 불안하면 조교님한테 메일 드려봐요."));
