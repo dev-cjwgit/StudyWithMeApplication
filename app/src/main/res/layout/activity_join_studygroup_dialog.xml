@@ -7,20 +7,14 @@
     android:background="@color/white"
     android:backgroundTint="@color/white"
     android:orientation="vertical"
-    android:weightSum="20"
-    tools:context=".joinDialogActivity">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5px"
-        android:background="@color/blueFacebook_background"
-        android:backgroundTint="@color/blueFacebook_background" />
+    android:weightSum="10"
+    tools:context=".JoinDialogActivity">
 
     <EditText
         android:id="@+id/join_dialog_Body"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12.5"
+        android:layout_weight="9"
         android:hint="가입 포부를 작성해주세요.\n학번과 이름은 필수 입력값입니다."
         android:textColor="@color/black" />
 
@@ -28,7 +22,7 @@
         android:id="@+id/btn_joinApply"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:background="@color/blueFacebook_background"
         android:backgroundTint="@color/blueFacebook_background"
         android:onClick="addButton_onClick"

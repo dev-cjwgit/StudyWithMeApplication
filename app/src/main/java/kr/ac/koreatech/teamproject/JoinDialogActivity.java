@@ -13,7 +13,7 @@ import kr.ac.koreatech.teamproject.databinding.ActivityAnswerDialogBinding;
 import kr.ac.koreatech.teamproject.databinding.ActivityJoinStudygroupDialogBinding;
 import kr.ac.koreatech.teamproject.databinding.ActivityLoginBinding;
 
-public class joinDialogActivity extends Activity {
+public class JoinDialogActivity extends Activity {
     private ActivityJoinStudygroupDialogBinding binding;
 
 
