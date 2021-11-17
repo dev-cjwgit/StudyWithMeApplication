@@ -30,8 +30,13 @@
             android:layout_weight="13"
             android:maxLines="1"/>
     </LinearLayout>
+    <ListView
+        android:id="@+id/fragmentStudyList_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="15"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentStudyList_study_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="488dp"
@@ -40,7 +45,7 @@
         android:layout_weight="15"
         android:background="#f0f0f0"
         android:gravity="center"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical" />-->
 
     <Button
         android:id="@+id/fragmentStudyList_addButton"
