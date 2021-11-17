@@ -60,6 +60,8 @@ public class SettingFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentSettingBinding.inflate(getLayoutInflater());
+
+
     }
 
     @Override

@@ -11,6 +11,9 @@
         android:theme="@style/Theme.StudyWithMeApplication">
 
         <activity
+            android:name=".AnswerSharingDialogActivity"
+            android:exported="false"/>
+        <activity
             android:name=".AnswerDialogActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
@@ -22,7 +25,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
