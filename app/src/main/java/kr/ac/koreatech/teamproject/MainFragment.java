@@ -123,6 +123,7 @@ public class MainFragment extends Fragment {
 
     public void finishStudy() {
         System.out.println("공부시간이 측정되었습니다");
+
     }
 
     @Override
