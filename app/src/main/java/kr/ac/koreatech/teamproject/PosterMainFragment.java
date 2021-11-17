@@ -119,12 +119,6 @@ public class PosterMainFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int curId = item.getItemId();
         switch (curId) {
-            //기존 질의응답 등 오버플로우 메뉴에 구현한 부분은 네비게이션 드로우로 다시 구현해야합니다.
-            /*case R.id.question:
-                MyFragment.changeFragment(new PosterQuestionListFragment());
-                System.out.println("질의 응답방 접속하려고?");
-                return true;*/
-
             case R.id.post_category:
                 if (drawerLayout.isDrawerOpen(Gravity.RIGHT))
                     drawerLayout.closeDrawer(Gravity.RIGHT);
