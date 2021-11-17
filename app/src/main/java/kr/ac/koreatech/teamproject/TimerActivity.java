@@ -6,18 +6,19 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TimerActivity extends AppCompatActivity {
-    TextView timertextview;
+
+    TextView timerTextView;
     Button btnPlay, btnStop;
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L;
     Handler handler;
@@ -34,7 +35,7 @@ public class TimerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        timertextview = (TextView)findViewById(R.id.timertextview);
+        timerTextView = (TextView)findViewById(R.id.timerTextView);
         btnPlay = (Button) findViewById(R.id.btnPlay);
         btnStop = (Button) findViewById(R.id.btnStop);
 
@@ -42,9 +43,9 @@ public class TimerActivity extends AppCompatActivity {
 
         ListElementsArrayList = new ArrayList<String>(Arrays.asList(ListElements));
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListElementsArrayList);
-
-        listView.setAdapter(adapter);
+//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListElementsArrayList);
+//
+//        listView.setAdapter(adapter);
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +76,10 @@ public class TimerActivity extends AppCompatActivity {
 
             MillisecondTime = (int) (UpdateTime % 1000);
 
-            timertextview.setText("" + Hours + ":"
+            timerTextView.setText("" + Hours + ":"
                     + String.format("%02d", Minutes) + ":"
                     + String.format("%03d", Seconds));
+
             handler.postDelayed(this,0);
         }
     };
