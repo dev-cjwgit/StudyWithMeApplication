@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.view.contentcapture.ContentCaptureCondition;
 import android.widget.ArrayAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import kr.ac.koreatech.teamproject.databinding.ActivityAnswerSharingMatDialogBin
 
 public class AnswerSharingDialogActivity extends Activity {
     private ActivityAnswerSharingMatDialogBinding binding;
+    private List<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
