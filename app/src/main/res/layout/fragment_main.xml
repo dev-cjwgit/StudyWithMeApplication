@@ -82,7 +82,8 @@
         android:id="@+id/btnStop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ST:OP" />
+        android:text="ST:OP"
+       />
 
     <TextView
         android:id="@+id/textView"
