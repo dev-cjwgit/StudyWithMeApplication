@@ -66,7 +66,6 @@ public class PosterQuestionMainFragment extends Fragment {
             System.out.println("답변 달꺼지?");
             Intent intent = new Intent(getActivity(), AnswerDialogActivity.class);
             startActivity(intent);
-
         });
 
 

@@ -2,6 +2,7 @@ package kr.ac.koreatech.teamproject;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.content.Intent;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
@@ -88,7 +89,6 @@ public class StudyListFragment extends Fragment {
         studyListViewAdapter=new StudyListViewAdapter();
         binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
 
-        //
         binding.studySearchLayout.getLayoutParams().height=0;
         ArrayList search_kind=new ArrayList();
         search_kind.add("강의");
@@ -96,9 +96,7 @@ public class StudyListFragment extends Fragment {
         search_kind.add("기타");
         ArrayAdapter adapter2=new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,search_kind);
         binding.fragmentStudyListSpinner.setAdapter(adapter2);
-        //"컴활1급 아자아자!", "컴활짱", 32, "요즘 시대에 도움이 되는 컴활 1급을 위한 스터디 모임입니다."
 
-        //
         studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"천체연구모임","스타스타",4,"밤하늘을 관측하는 스터디 모임입니다."));
         studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"KafkaS", "백엔드", 7, "백엔드의 카프카에 대해서 공부하는 모임방입니다."));
         studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"아Do!이노", "인호", 12, "아두이노에 대해 공부하는 스터디입니다~"));
@@ -113,62 +111,33 @@ public class StudyListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 final StudyEntity item = (StudyEntity) studyListViewAdapter.getItem(a_position);
-                //MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
+                MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
 
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 접속함?");
             }
         });
+        /*binding.fragmentStudyListListView.setOnClickListener(v->{
+            Intent intent=new Intent(getActivity(),joinDialogActivity.class);
+            startActivity(intent);
+        });*/
         //
 
 
-        /*ArrayList<StudyEntity> data1 = new ArrayList<>();
-
-
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "천체연구모임", "스타스타", 4, "밤하늘을 관측하는 스터디 모임입니다."));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "KafkaS", "백엔드", 7, "백엔드의 카프카에 대해서 공부하는 모임방입니다."));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "아Do!이노", "인호", 12, "아두이노에 대해 공부하는 스터디입니다~"));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "라즈베리PI", "3.14", 3, "라즈베리파이의에 대해서 연구합니다."));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "신박한아이디어", "노력노력", 6, "기가막히다고 생각되는 아이디어를 공유하는 모임"));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "한기대파이썬공부방", "helloPhyton", 23, "파이썬 기초에 대해서 모임하여 공부합니다."));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "일터학습개론", "김영은", 38, "일 또는 일 밖에서 일어나는 학습에 대해서 배웁니다."));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "정보처리기사가 갖고싶어요", "정처기", 17, "전박전인 정처기에 대해서 공부할거예용~!"));
-        data1.add(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "컴활1급 아자아자!", "컴활짱", 32, "요즘 시대에 도움이 되는 컴활 1급을 위한 스터디 모임입니다."));
-        반
-        m1LayoutManager = new LinearLayoutManager(this.getActivity());
-        m1LayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // 기본값이 VERTICAL
-
-
-        // setLayoutManager
-        binding.fragmentStudyListStudyRecyclerview.setLayoutManager(m1LayoutManager);
-
-
-        // init Adapter
-        m1Adapter = new StudyRecyclerViewAdapter();
-        // set Data
-        m1Adapter.setData(data1);
-        // set Adapter
-        binding.fragmentStudyListStudyRecyclerview.setAdapter(m1Adapter);*/
-
         binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
-
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.replace(R.id.fragment1, new StudyMakeFragment(true));
             fragmentTransaction.commit();
-
         });
-
-
     }
-    //새로 만듬
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.study_list_menu, menu);
     }
-    //
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -194,7 +163,6 @@ public class StudyListFragment extends Fragment {
                     params2.height=0;
                 }
                 binding.studySearchLayout.setLayoutParams(params2);
-                //
                 studyListViewAdapter_2=new StudyListViewAdapter();
                 binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
                 studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디1", "사람1", 38, "참여 가능 스터디 테스트1"));
@@ -205,6 +173,11 @@ public class StudyListFragment extends Fragment {
                 studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디6", "사람6", 38, "참여 가능 스터디 테스트6"));
                 studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디7", "사람7", 38, "참여 가능 스터디 테스트7"));
                 //
+
+                /*binding.fragmentStudyListListView.setOnClickListener(v->{
+                    Intent intent=new Intent(getActivity(),joinDialogActivity.class);
+                    startActivity(intent);
+                });*/
 
                 return true;
             default:
