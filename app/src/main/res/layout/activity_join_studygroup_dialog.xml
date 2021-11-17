@@ -8,7 +8,7 @@
     android:backgroundTint="@color/white"
     android:orientation="vertical"
     android:weightSum="20"
-    tools:context=".joinDialogActivity">
+    tools:context=".JoinDialogActivity">
 
     <View
         android:layout_width="match_parent"

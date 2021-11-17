@@ -13,6 +13,9 @@
             android:name="service.TimerService"
             android:enabled="true"
             android:exported="true" />
+        <activity
+            android:name=".JoinDialogActivity"
+            android:exported="false"/>
 
         <activity
             android:name=".AnswerSharingDialogActivity"

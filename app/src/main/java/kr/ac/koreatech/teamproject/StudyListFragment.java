@@ -8,7 +8,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,14 +19,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import adapter.FrontRecyclerViewAdapter;
 import adapter.StudyListViewAdapter;
-import adapter.StudyRecyclerViewAdapter;
 import appcomponent.MyFragment;
-import entity.FrontPoster;
-import entity.PosterEntity;
 import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
 
@@ -172,12 +166,18 @@ public class StudyListFragment extends Fragment {
                 studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디5", "사람5", 38, "참여 가능 스터디 테스트5"));
                 studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디6", "사람6", 38, "참여 가능 스터디 테스트6"));
                 studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디7", "사람7", 38, "참여 가능 스터디 테스트7"));
-                //
 
-                /*binding.fragmentStudyListListView.setOnClickListener(v->{
-                    Intent intent=new Intent(getActivity(),joinDialogActivity.class);
-                    startActivity(intent);
-                });*/
+                binding.fragmentStudyListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
+                        final StudyEntity item = (StudyEntity) studyListViewAdapter_2.getItem(a_position);
+                        //MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
+                        Intent intent=new Intent(getActivity(), JoinDialogActivity.class);
+                        startActivity(intent);
+                        //텍스트뷰에 출력
+                        System.out.println(item.getTitle() + " 에 가입함?");
+                    }
+                });
 
                 return true;
             default:
