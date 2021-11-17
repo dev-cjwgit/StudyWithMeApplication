@@ -51,5 +51,6 @@ public class TimerService extends Service {
         ((MainFragment) MyFragment.getCurrFragment()).finishStudy();
         Toast toast2 = Toast.makeText(getApplicationContext(),"공부시간이 측정되었습니다.", Toast.LENGTH_SHORT);
         toast2.show();
+
     }
 }
