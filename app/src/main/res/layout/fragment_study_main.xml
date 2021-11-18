@@ -83,7 +83,7 @@
             <TextView
                  android:layout_height="wrap_content"
                  android:layout_width="match_parent"
-                 android:text="활동 중인 멤버"
+                 android:text="스터디 그룹 멤버"
                  android:textSize="22sp"
                  android:textColor="#202020"
                  android:layout_marginTop="10dp"

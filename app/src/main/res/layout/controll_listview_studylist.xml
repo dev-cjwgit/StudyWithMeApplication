@@ -28,6 +28,7 @@
             android:weightSum="10">
 
             <TextView
+                android:textColor="@color/navi_title"
                 android:id="@+id/StudyList_listview_title"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -35,7 +36,6 @@
                 android:layout_weight="7"
                 android:ellipsize="end"
                 android:ems="5"
-                android:gravity="center"
                 android:maxLines="1"
                 android:text="그룹명을 입력해주세요"
                 android:textSize="16sp" />
