@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Map<String, Fragment> fragmentMap = new HashMap<>();
     private long backKeyPressedTime = 0;
-
+    private Date startTime;
     private Toast toast;
     private Intent intent;
 
@@ -63,31 +64,8 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         //
-//        setContentView(R.layout.fragment_main);
-//
-////        mbtnStop = (Button) findViewById(R.id.btnStop);
-////        mbtnPlay = (Button) findViewById(R.id.btnPlay);
-////        mtimerTextView = (TextView) findViewById(R.id.timerTextView);
-////
-////        mbtnPlay.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                v.setVisibility(View.GONE);
-////                mbtnStop.setVisibility(View.VISIBLE);
-////
-////                timeThread = new Thread(new timeThread());
-////                timeThread.start();
-////            }
-////        });
-////
-////        mbtnStop.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                v.setVisibility(View.GONE);
-////                mbtnPlay.setVisibility(View.VISIBLE);
-////                timeThread.interrupt();
-////            }
-////        });
+
+
 
     }
 

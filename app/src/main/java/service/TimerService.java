@@ -3,11 +3,13 @@ package service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.IBinder;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import appcomponent.MyFragment;
@@ -24,9 +26,9 @@ public class TimerService extends Service {
 
     }
 
-
     @Override
     public void onCreate() {
+
         super.onCreate();
         startTime = new Date();
         System.out.println("서비스를 시작합니다.");
@@ -41,6 +43,7 @@ public class TimerService extends Service {
         return null;
     }
 
+    TextView watchTextView;
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -54,6 +57,9 @@ public class TimerService extends Service {
         Toast toast2 = Toast.makeText(getApplicationContext(),"공부시간이 측정되었습니다.", Toast.LENGTH_SHORT);
         toast2.show();
 
+
     }
+
+
 
 }

@@ -12,7 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
-            
+import java.util.Date;
+
 import adapter.FrontRecyclerViewAdapter;
 import entity.FrontPoster;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
@@ -25,6 +26,8 @@ import service.TimerService;
  */
 public class MainFragment extends Fragment {
     private FragmentMainBinding binding;
+    private Date startTime = new Date();
+
 
     private FrontRecyclerViewAdapter m1Adapter;
     private FrontRecyclerViewAdapter m2Adapter;
@@ -75,6 +78,7 @@ public class MainFragment extends Fragment {
 
         binding.btnStop.setOnClickListener(v -> {
             requireActivity().stopService(new Intent(getActivity(), TimerService.class));
+            System.out.println("stop 버튼 누름?");
         });
 //        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍"));
 //        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "중국어회화"));
@@ -129,9 +133,10 @@ service cloud.firestore {
         binding.fragmentMainStudyListView.setAdapter(m2Adapter);
     }
 
-    public void finishStudy() {
-        System.out.println("공부시간이 측정되었습니다");
 
+    public void finishStudy() {
+
+        System.out.println("공부시간이 측정되었습니다");
     }
 
     @Override
