@@ -20,10 +20,12 @@
 
         <activity
             android:name=".JoinDialogActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
             android:name=".AnswerSharingDialogActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
             android:name=".AnswerDialogActivity"
             android:exported="false"
