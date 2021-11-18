@@ -326,20 +326,6 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginBottom="15dp"
                         android:layout_weight="1"
-                        android:src="@drawable/icon_lecture_info"></ImageView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight="1"
                         android:src="@drawable/icon_share_info"></ImageView>
 
                     <TextView
