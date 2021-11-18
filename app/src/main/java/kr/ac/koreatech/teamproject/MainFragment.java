@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
-
+            
 import adapter.FrontRecyclerViewAdapter;
 import entity.FrontPoster;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
