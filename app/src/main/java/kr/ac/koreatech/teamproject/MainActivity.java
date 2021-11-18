@@ -37,11 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Toast toast;
     private Intent intent;
+    private boolean running = true;
 
-//    private Button mbtnPlay, mbtnStop;
-//    private TextView mtimerTextView;
-//    private Thread timeThread = null;
-//    private Boolean isRunning = true;
+    TextView watchTextView;
 
     //region Override
     @Override
@@ -63,33 +61,39 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         //
-//        setContentView(R.layout.fragment_main);
-//
-////        mbtnStop = (Button) findViewById(R.id.btnStop);
-////        mbtnPlay = (Button) findViewById(R.id.btnPlay);
-////        mtimerTextView = (TextView) findViewById(R.id.timerTextView);
-////
-////        mbtnPlay.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                v.setVisibility(View.GONE);
-////                mbtnStop.setVisibility(View.VISIBLE);
-////
-////                timeThread = new Thread(new timeThread());
-////                timeThread.start();
-////            }
-////        });
-////
-////        mbtnStop.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                v.setVisibility(View.GONE);
-////                mbtnPlay.setVisibility(View.VISIBLE);
-////                timeThread.interrupt();
-////            }
-////        });
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Calendar cal = Calendar.getInstance();
 
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                String strTime = sdf.format(cal.getTime());
+
+                watchTextView = findViewById(R.id.timerTextView);
+                watchTextView.setText(strTime);
+            }
+        };
+
+        // 새로운 스레드 실행 코드, 1초 단위로 현재 시각 표시 요청
+        class NewRunnable implements Runnable {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    runOnUiThread(runnable);
+                }
+            }
+        }
+        NewRunnable nr = new NewRunnable();
+        Thread t = new Thread(nr);
+        t.start();
     }
+
+
 
     @Override
     public void onBackPressed() {
