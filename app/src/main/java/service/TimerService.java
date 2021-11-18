@@ -4,12 +4,14 @@ package service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Time;
 import java.util.Date;
 
 import appcomponent.MyFragment;
+import kr.ac.koreatech.teamproject.MainActivity;
 import kr.ac.koreatech.teamproject.MainFragment;
 
 public class TimerService extends Service {
@@ -53,4 +55,6 @@ public class TimerService extends Service {
         toast2.show();
 
     }
+
+
 }

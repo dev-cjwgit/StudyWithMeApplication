@@ -1,7 +1,5 @@
 package kr.ac.koreatech.teamproject;
 
-import static java.security.AccessController.getContext;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,15 +8,22 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.contentcapture.ContentCaptureCondition;
 import android.widget.ArrayAdapter;
-
+import androidx.fragment.app.Fragment;
+import android.view.LayoutInflater;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import androidx.fragment.app.Fragment;
+import adapter.AnsbulletSharingMatAdapter;
+import entity.AnssharingEntity;
 
 import kr.ac.koreatech.teamproject.databinding.ActivityAnswerSharingMatDialogBinding;
+import kr.ac.koreatech.teamproject.databinding.FragmentAnsbulletSharingMatBinding;
 
 public class AnswerSharingDialogActivity extends Activity {
     private ActivityAnswerSharingMatDialogBinding binding;
+    private AnsbulletSharingMatAdapter ansbulletSharingMatAdapter;
     private List<String> list = new ArrayList<>();
 
     @Override
@@ -32,12 +37,14 @@ public class AnswerSharingDialogActivity extends Activity {
 
         getWindow().getAttributes().width = width;
         getWindow().getAttributes().height = height;
+
     }
 
     public void Button_onClick(View view) {
 
         System.out.println("질문 등록\n" +
                 "" + binding.answerSharingMatDialogBody.getText().toString());
+        binding = ActivityAnswerSharingMatDialogBinding.inflate(getLayoutInflater());
 
         finish();
     }
