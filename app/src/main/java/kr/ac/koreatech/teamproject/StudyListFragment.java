@@ -105,7 +105,7 @@ public class StudyListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 final StudyEntity item = (StudyEntity) studyListViewAdapter.getItem(a_position);
-                MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
+                MyFragment.changeFragment(new StudyMainFragment(item.getTitle(), true));
 
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 접속함?");
@@ -171,7 +171,7 @@ public class StudyListFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                         final StudyEntity item = (StudyEntity) studyListViewAdapter_2.getItem(a_position);
-                        //MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
+                        //MyFragment.changeFragment(new StudyMainFragment(item.getTitle(), true));
                         Intent intent=new Intent(getActivity(), JoinDialogActivity.class);
                         startActivity(intent);
                         //텍스트뷰에 출력

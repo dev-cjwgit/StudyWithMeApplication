@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:backgroundTint="@color/white"
     android:orientation="vertical"
-    android:weightSum="20"
+    android:weightSum="10"
     tools:context=".AnswerDialogActivity">
 
     <View
@@ -20,7 +20,7 @@
         android:id="@+id/answer_sharing_mat_dialog_Body"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12.5"
+        android:layout_weight="9"
         android:hint="내용을 입력해주세요."
         android:textColor="@color/black" />
 
@@ -28,7 +28,7 @@
         android:id="@+id/anssharingregister"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:background="@color/blueFacebook_background"
         android:backgroundTint="@color/blueFacebook_background"
         android:onClick="Button_onClick"
