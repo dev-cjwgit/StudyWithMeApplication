@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide(); // 액션바 숨기기
         firebaseAuth = FirebaseAuth.getInstance();
 
-
+        //
         if (firebaseAuth.getCurrentUser() != null) {
 //            이미 로그인 되었다면 이 액티비티를 종료함
             finish();
