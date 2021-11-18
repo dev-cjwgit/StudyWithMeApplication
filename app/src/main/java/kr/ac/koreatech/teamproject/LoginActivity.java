@@ -35,13 +35,13 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
 
-//        if (firebaseAuth.getCurrentUser() != null) {
-//            //이미 로그인 되었다면 이 액티비티를 종료함
-//            finish();
-//            //그리고 profile 액티비티를 연다.
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
+        if (firebaseAuth.getCurrentUser() != null) {
+//            이미 로그인 되었다면 이 액티비티를 종료함
+            finish();
+            //그리고 profile 액티비티를 연다.
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void loginButton_onClick(View view) {
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signupButtoon_onClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+        Intent intent = new Intent(this, SignupActivity.class);
         startActivity(intent);
     }
 }

@@ -15,7 +15,6 @@
         android:textSize="23dp"
         android:text="회원가입" />
 
-
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="250dp"
@@ -40,8 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:layout_gravity="center_horizontal"
-        android:onClick="addAccount_onClick"
+        android:onClick="createAccountButton_onClick"
         android:text="회원가입" />
+
 
 
 

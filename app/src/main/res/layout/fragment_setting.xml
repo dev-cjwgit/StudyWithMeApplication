@@ -7,12 +7,12 @@
     tools:context=".SettingFragment">
 
     <LinearLayout
-        android:layout_marginTop="5sp"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_margin="7dp"
+        android:layout_marginTop="5sp"
         android:orientation="horizontal"
-        android:weightSum="9"
-        android:layout_margin="7dp">
+        android:weightSum="9">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="match_parent"
@@ -23,8 +23,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_weight="2"
+            android:orientation="vertical"
             android:weightSum="4">
 
             <TextView
@@ -32,27 +32,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24sp"
-                android:textColor="@color/navi_title"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Name" />
+                android:text="Name"
+                android:textColor="@color/navi_title"
+                android:textSize="24sp" />
 
             <TextView
-                android:paddingLeft="10dp"
                 android:id="@+id/profile_image_change"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
                 android:text="프로필 사진 변경"
-                android:textColor="@color/navi_cont"/>
+                android:textColor="@color/navi_cont" />
 
             <TextView
-                android:paddingLeft="10dp"
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
                 android:text="logout"
-                android:textColor="@color/navi_cont"/>
+                android:textColor="@color/navi_cont" />
 
         </LinearLayout>
     </LinearLayout>
@@ -73,11 +73,11 @@
             android:id="@+id/help"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="15sp"
-            android:text="도움말 및 지원"
-            android:textStyle="bold"
             android:layout_marginLeft="17dp"
-            android:layout_marginTop="7dp"/>
+            android:layout_marginTop="7dp"
+            android:text="도움말 및 지원"
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -98,111 +98,123 @@
             android:id="@+id/developer_info"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="5"
             android:text="개발자 소개"
             android:textSize="15sp"
-            android:layout_weight="5"
-            android:textStyle="bold"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="7dp"/>
+            android:textStyle="bold" />
 
-            <!--<ListView
-                android:id="@+id/settingListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />-->
+        <!--<ListView
+            android:id="@+id/settingListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
             android:weightSum="4">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="7"
                     android:layout_marginLeft="15dp"
+                    android:layout_weight="7"
                     android:src="@drawable/default_image" />
+
                 <TextView
                     android:id="@+id/developer1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="13sp"
-                    android:paddingLeft="10dp"
                     android:layout_marginLeft="10dp"
-                    android:text="최진우 : 귀여운 고양이 ✩彡✩ミ   냥냥펀치는 전설이다."
-                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
                     android:layout_weight="1"
-                    android:layout_marginTop="7dp"/>
+                    android:paddingLeft="10dp"
+                    android:text="최진우 : 귀여운 고양이 ✩彡✩ミ   냥냥펀치는 전설이다."
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="7"
                     android:layout_marginLeft="15dp"
+                    android:layout_weight="7"
                     android:src="@drawable/default_image" />
+
                 <TextView
                     android:id="@+id/developer2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="13sp"
-                    android:paddingLeft="10dp"
                     android:layout_marginLeft="10dp"
-                    android:text="김선경 : 나는야.. 세계 최강 잼미니... "
-                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
                     android:layout_weight="1"
-                    android:layout_marginTop="7dp"/>
+                    android:paddingLeft="10dp"
+                    android:text="김선경 : 나는야.. 세계 최강 잼미니... "
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="7"
                     android:layout_marginLeft="15dp"
+                    android:layout_weight="7"
                     android:src="@drawable/default_image" />
+
                 <TextView
                     android:id="@+id/developer3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="13sp"
-                    android:paddingLeft="10dp"
                     android:layout_marginLeft="10dp"
-                    android:text="김채연 : 나도.. 세계 최강 잼미니.."
-                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
                     android:layout_weight="1"
-                    android:layout_marginTop="7dp"/>
+                    android:paddingLeft="10dp"
+                    android:text="김채연 : 나도.. 세계 최강 잼미니.."
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="7"
                     android:layout_marginLeft="15dp"
+                    android:layout_weight="7"
                     android:src="@drawable/default_image" />
+
                 <TextView
                     android:id="@+id/developer4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="13sp"
-                    android:paddingLeft="10dp"
                     android:layout_marginLeft="10dp"
-                    android:text="이효민 : 나는 그냥 .. 잼미니... "
-                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
                     android:layout_weight="1"
-                    android:layout_marginTop="7dp"/>
+                    android:paddingLeft="10dp"
+                    android:text="이효민 : 나는 그냥 .. 잼미니... "
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
 

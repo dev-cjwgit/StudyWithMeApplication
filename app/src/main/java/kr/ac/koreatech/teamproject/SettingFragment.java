@@ -1,13 +1,21 @@
 package kr.ac.koreatech.teamproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentSettingBinding;
@@ -25,6 +33,7 @@ public class SettingFragment extends Fragment {
     private boolean back_btn = false;
     private String mParam1;
     private String mParam2;
+    private FirebaseAuth firebaseAuth;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -60,7 +69,12 @@ public class SettingFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentSettingBinding.inflate(getLayoutInflater());
-
+        firebaseAuth = FirebaseAuth.getInstance();
+        binding.btnLogout.setOnClickListener(v -> {
+            firebaseAuth.signOut();
+            Intent intent = new Intent(getContext(), LoginActivity.class);
+            startActivity(intent);
+        });
 
     }
 
