@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:layout_gravity="center_horizontal"
-        android:onClick="signupBtn_onClick"
+        android:onClick="addAccount_onClick"
         android:text="회원가입" />
 
 

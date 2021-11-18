@@ -100,9 +100,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="회원가입"
-            android:onClick="signupButton_onClick"
             android:textColor="@color/gray"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="signupButtoon_onClick"/>
     </LinearLayout>
 
 

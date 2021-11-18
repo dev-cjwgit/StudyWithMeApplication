@@ -67,7 +67,7 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    public void signupBtn_onClick(View view) {
+    public void addAccount_onClick(View view) {
         registerUser();
     }
 }
