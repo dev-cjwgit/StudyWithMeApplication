@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import kr.ac.koreatech.teamproject.databinding.FragmentBulletinLecInfoBinding;
+import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
 
 
 /**
@@ -20,7 +20,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentBulletinLecInfoBinding;
 public class fragment_bulletin_lec_info extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private FragmentBulletinLecInfoBinding binding;
+    private FragmentPosterMainBinding binding;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -55,7 +55,7 @@ public class fragment_bulletin_lec_info extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        binding = FragmentBulletinLecInfoBinding.inflate(getLayoutInflater());
+        binding = FragmentPosterMainBinding.inflate(getLayoutInflater());
         binding.LecIDTextview2.setText("모바일프로그래밍");
         binding.profIDTextview2.setText("강승우");
         binding.profemailTextview2.setText("swkang@koretech.ac.kr");
