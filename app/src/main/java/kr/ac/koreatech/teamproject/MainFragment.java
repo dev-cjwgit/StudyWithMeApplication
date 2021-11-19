@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -134,8 +135,11 @@ service cloud.firestore {
     }
 
 
-    public void finishStudy() {
-
+    public void finishStudy(int hour, int min, int sec) {
+        requireActivity().runOnUiThread(() -> {
+            // TODO: 계산은 본인 몫
+            binding.timerTextView.setText(hour + ":" + min + ":" + sec);
+        });
         System.out.println("공부시간이 측정되었습니다");
     }
 

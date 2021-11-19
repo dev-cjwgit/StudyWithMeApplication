@@ -32,7 +32,7 @@ public class TimerService extends Service {
         super.onCreate();
         startTime = new Date();
         System.out.println("서비스를 시작합니다.");
-        Toast toast1 = Toast.makeText(getApplicationContext(),"공부시간을 측정합니다.", Toast.LENGTH_SHORT);
+        Toast toast1 = Toast.makeText(getApplicationContext(), "공부시간을 측정합니다.", Toast.LENGTH_SHORT);
         toast1.show();
 
 
@@ -44,22 +44,21 @@ public class TimerService extends Service {
     }
 
     TextView watchTextView;
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         int sectime = (int) (new Date().getTime() - startTime.getTime());
-        int sec = (sectime/1000) % 60;
-        int min = (sectime/(1000*60)) % 60;
-        int hour = (sectime/(1000*60*60)) % 24;
-        System.out.println((hour)+"시간 "+(min)+"분 "+(sec)+"초 동안 공부했습니다.");
+        int sec = (sectime / 1000) % 60;
+        int min = (sectime / (1000 * 60)) % 60;
+        int hour = (sectime / (1000 * 60 * 60)) % 24;
 
-        ((MainFragment) MyFragment.getCurrFragment()).finishStudy();
-        Toast toast2 = Toast.makeText(getApplicationContext(),"공부시간이 측정되었습니다.", Toast.LENGTH_SHORT);
+        ((MainFragment) MyFragment.getCurrFragment()).finishStudy(hour, min, sec);
+        Toast toast2 = Toast.makeText(getApplicationContext(), "공부시간이 측정되었습니다.", Toast.LENGTH_SHORT);
         toast2.show();
 
 
     }
-
 
 
 }
