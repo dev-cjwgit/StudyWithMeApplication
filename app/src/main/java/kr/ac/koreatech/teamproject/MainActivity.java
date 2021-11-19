@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Map<String, Fragment> fragmentMap = new HashMap<>();
     private long backKeyPressedTime = 0;
-
+    private Date startTime;
     private Toast toast;
     private Intent intent;
-    private boolean running = true;
 
-    TextView watchTextView;
+//    private Button mbtnPlay, mbtnStop;
+//    private TextView mtimerTextView;
+//    private Thread timeThread = null;
+//    private Boolean isRunning = true;
 
     //region Override
     @Override
@@ -61,39 +64,10 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         //
-//        final Runnable runnable = new Runnable() {
-//            @Override
-//            public void run() {
-//                Calendar cal = Calendar.getInstance();
-//
-//                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-//                String strTime = sdf.format(cal.getTime());
-//
-//                watchTextView = findViewById(R.id.timerTextView);
-//                watchTextView.setText(strTime);
-//            }
-//        };
-//
-//        // 새로운 스레드 실행 코드, 1초 단위로 현재 시각 표시 요청
-//        class NewRunnable implements Runnable {
-//            @Override
-//            public void run() {
-//                while (true) {
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                    runOnUiThread(runnable);
-//                }
-//            }
-//        }
-//        NewRunnable nr = new NewRunnable();
-//        Thread t = new Thread(nr);
-//        t.start();
+
+
+
     }
-
-
 
     @Override
     public void onBackPressed() {

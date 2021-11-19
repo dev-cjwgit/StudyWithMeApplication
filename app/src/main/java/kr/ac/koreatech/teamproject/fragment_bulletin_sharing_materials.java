@@ -1,6 +1,8 @@
 package kr.ac.koreatech.teamproject;
 
 import androidx.appcompat.app.ActionBar;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -56,6 +58,14 @@ public class fragment_bulletin_sharing_materials extends Fragment {
         }
         binding = FragmentBulletinSharingMaterialsBinding.inflate(getLayoutInflater());
         bulletinSharingMaterialsAdapter = new BulletinSharingMaterialsAdapter();
+
+        binding.sharingAddButton.setOnClickListener(v -> {
+            System.out.println("새 info_sharing post ?");
+
+            Intent intent = new Intent(getActivity(),Lec_info_Post_Activity.class);
+            startActivity(intent);
+        });
+
 
         binding.framentsharingLecture.setAdapter(bulletinSharingMaterialsAdapter);
         bulletinSharingMaterialsAdapter.append(new BulletinSharingMaterialsEntity("오늘 모프", "실강임?","춘식이",3, new Date()));

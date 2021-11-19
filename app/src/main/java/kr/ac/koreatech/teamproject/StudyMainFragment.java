@@ -1,6 +1,7 @@
 package kr.ac.koreatech.teamproject;
 
 import android.content.ClipData;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -104,10 +105,10 @@ public class StudyMainFragment extends Fragment {
         currentMemberAdapter=new CurrentMemberAdapter();
         binding.fragmentCurmemlist.setAdapter(currentMemberAdapter);
 
-        currentMemberAdapter.append(new CurrentMemberEntity("죠르디"));
-        currentMemberAdapter.append(new CurrentMemberEntity("춘식이"));
-        currentMemberAdapter.append(new CurrentMemberEntity("라이언"));
-        currentMemberAdapter.append(new CurrentMemberEntity("어피치"));
+        currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"죠르디",BitmapFactory.decodeResource(getResources(), R.drawable.studying)));
+        currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"춘식이",BitmapFactory.decodeResource(getResources(), R.drawable.studying)));
+        currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"라이언",BitmapFactory.decodeResource(getResources(), R.drawable.not_studying)));
+        currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"어피치",BitmapFactory.decodeResource(getResources(), R.drawable.not_studying)));
 
 
     }

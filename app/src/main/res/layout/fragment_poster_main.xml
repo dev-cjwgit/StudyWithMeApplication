@@ -261,18 +261,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="19" />
 
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center|right"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/button_shape_circle"
-                    android:backgroundTint="@color/blueFacebook_background"
-                    android:text="+"
-                    android:textColor="@color/white"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

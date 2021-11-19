@@ -4,11 +4,46 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:weightSum="10"
         android:layout_height="wrap_content"
-        android:id="@+id/cur_mem_name"
-        android:textSize="15dp"
-        android:title="name"/>
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cur_mem_pic"
+            android:layout_weight="8"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:src="@drawable/default_image" />
+
+        <LinearLayout
+            android:layout_weight="2"
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:orientation="horizontal">
+            <TextView
+                android:text="name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/cur_mem_name"
+                android:gravity="center_vertical"
+                android:textSize="17dp"
+                android:title="name"
+                android:textColor="@color/navi_cont"
+                android:layout_marginLeft="10dp"/>
+            <ImageView
+                android:layout_margin="5dp"
+                android:id="@+id/cur_mem_studying"
+                android:layout_height="20dp"
+                android:layout_width="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/studying"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

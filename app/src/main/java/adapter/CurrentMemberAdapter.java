@@ -42,7 +42,9 @@ public class CurrentMemberAdapter extends BaseAdapter implements Serializable, C
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.controll_current_member, viewGroup, false);
         }
+        ImageView mem_pic = view.findViewById(R.id.cur_mem_pic);
         TextView member = view.findViewById(R.id.cur_mem_name);
+        ImageView mem_stu=view.findViewById(R.id.cur_mem_studying);
 
         member.setText(listItem.getMember());
 
