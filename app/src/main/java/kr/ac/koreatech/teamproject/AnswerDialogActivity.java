@@ -27,7 +27,7 @@ public class AnswerDialogActivity extends Activity {
 
         getWindow().getAttributes().width = width;
         getWindow().getAttributes().height = height;
-
+        //이게 보이나요?? 김채연 맥 commit test
 
     }
 
