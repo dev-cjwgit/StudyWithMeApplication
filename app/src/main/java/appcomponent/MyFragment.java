@@ -25,7 +25,7 @@ public class MyFragment {
     }
 
     public static Fragment getCurrFragment() {
-        for (Fragment fragment : context.getSupportFragmentManager().getFragments()) {
+        for (Fragment fragment : context.getSupportFragmentManager().getFragments()) { // 여기 이해 안돼요..
             if (fragment.isVisible())
                 return fragment;
         }

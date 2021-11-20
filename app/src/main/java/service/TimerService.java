@@ -39,15 +39,15 @@ public class TimerService extends Service {
         Toast toast1 = Toast.makeText(getApplicationContext(), "공부시간을 측정합니다.", Toast.LENGTH_SHORT);
         toast1.show();
         timer = new Timer();
-        mainFragmentIntent = new Intent("timeService");
+        mainFragmentIntent = new Intent("timeService"); // 새 intent 객체명 mainFragmentIntent
         timer.schedule(new TimerTask() {
             @Override
-            public void run() {
-                int sectime = (int) (new Date().getTime() - startTime.getTime());
-                mainFragmentIntent.putExtra("time_sec", sectime);
-                sendBroadcast(mainFragmentIntent);
+            public void run() { // schedule: 특정한 시간에 원하는 작업 수행, 이거 인자가 어떻게 되는 건가요?
+                int sectime = (int) (new Date().getTime() - startTime.getTime()); // 가공되지않은 전체 초
+                mainFragmentIntent.putExtra("time_sec", sectime); // intent로 액티비티 이동, 값을 넘기고 싶다면 intent안에 있는 putExtra()함수 사용
+                sendBroadcast(mainFragmentIntent); // intent 넘김, context에 포함된 함수를 사용하여 인텐트 전달, putExtra()를 사용하여 여러 타입 형태로 전달 가
             }
-        }, 1000, 1000);
+        }, 1000, 1000); // long delay, long period, 지정한 시간부터 일정 간격(period)로 지정한 작업(tast)수
 
     }
 
@@ -67,7 +67,7 @@ public class TimerService extends Service {
         int hour = (sectime / (1000 * 60 * 60)) % 24;
 
         ((MainFragment) MyFragment.getCurrFragment()).finishStudy(hour, min, sec);
-        timer.cancel();
+        timer.cancel(); // 타이머 중지를 먼저
         Toast toast2 = Toast.makeText(getApplicationContext(), "공부시간이 측정되었습니다.", Toast.LENGTH_SHORT);
         toast2.show();
 
