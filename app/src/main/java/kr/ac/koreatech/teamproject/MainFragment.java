@@ -1,6 +1,9 @@
 package kr.ac.koreatech.teamproject;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
@@ -29,6 +32,7 @@ public class MainFragment extends Fragment {
     private FragmentMainBinding binding;
     private Date startTime = new Date();
 
+    private BroadcastReceiver studyTimeRecvier;
 
     private FrontRecyclerViewAdapter m1Adapter;
     private FrontRecyclerViewAdapter m2Adapter;
@@ -60,6 +64,36 @@ public class MainFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (studyTimeRecvier == null) {
+            studyTimeRecvier = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    Integer total_sec = intent.getIntExtra("time_sec", 0);
+                    if (total_sec == null)
+                        return;
+                    int sec = (total_sec / 1000) % 60;
+                    int min = (total_sec / (1000 * 60)) % 60;
+                    int hour = (total_sec / (1000 * 60 * 60)) % 24;
+                    binding.timerTextView.setText(hour + ":" + min + ":" + sec);
+                }
+            };
+        }
+
+        requireActivity().registerReceiver(studyTimeRecvier, new IntentFilter("timeService"));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (studyTimeRecvier != null) {
+            requireActivity().unregisterReceiver(studyTimeRecvier);
+        }
     }
 
     @Override
