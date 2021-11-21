@@ -7,15 +7,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentSettingBinding;
@@ -76,6 +81,8 @@ public class SettingFragment extends Fragment {
             startActivity(intent);
         });
 
+        //------------------------------------------------------------
+        getUserInfo(firebaseAuth.getCurrentUser().getEmail());
     }
 
     @Override
@@ -86,5 +93,25 @@ public class SettingFragment extends Fragment {
         actionBar.setTitle("설정");
         actionBar.setDisplayHomeAsUpEnabled(back_btn);
         return binding.getRoot();
+    }
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private void getUserInfo(String user_email) {
+        user_email = user_email.replace(".", "-");
+
+        DocumentReference docRef = db.collection("server").document("user/" + user_email + "/info/");
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    binding.userName.setText(document.getData().get("name").toString());
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
     }
 }
