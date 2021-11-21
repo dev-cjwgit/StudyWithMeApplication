@@ -131,7 +131,8 @@ public class StudyMainFragment extends Fragment {
         currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"춘식이",BitmapFactory.decodeResource(getResources(), R.drawable.studying)));
         currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"라이언",BitmapFactory.decodeResource(getResources(), R.drawable.not_studying)));
         currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"어피치",BitmapFactory.decodeResource(getResources(), R.drawable.not_studying)));
-        //final StudyEntity item2=(StudyEntity)
+
+        //네비 드로우의 탈퇴 버튼 클릭 이벤트
         binding.signOutButton.setOnClickListener(v -> {
             //MyFragment.changeFragment(new PosterQuestionListFragment());
             System.out.println("탈퇴하려고?");

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,9 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyJoinBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
@@ -37,6 +44,27 @@ public class StudyMakeFragment extends Fragment {
     private boolean back_btn = false;
     private String mParam1;
     private String mParam2;
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    // 스터디 그룹 생성(스터디 그룹 이름, 닉네임, 자기소개, 현재인원)
+    private void addStudyGroup(String title, String nickname, String introduce, Integer currPeople) {
+        Map<String, String> study_info = new HashMap<>();
+        study_info.put("nickname", nickname);
+        study_info.put("introduce", introduce);
+        study_info.put("currPeople", currPeople.toString());
+
+
+        db.collection("server").document("data/studyGroupList/" + title)
+                .set(study_info)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error writing document", e);
+                });
+    }
 
     public StudyMakeFragment() {
         // Required empty public constructor
@@ -73,6 +101,13 @@ public class StudyMakeFragment extends Fragment {
         }
 
         binding = FragmentStudyMakeBinding.inflate(getLayoutInflater());
+
+        //생성버튼 클릭 이벤트
+        binding.btnStudyGroupMake.setOnClickListener(v->{
+            System.out.println("생성하려고?");
+            Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
+        });
+
     }
 
     @Override
@@ -88,22 +123,4 @@ public class StudyMakeFragment extends Fragment {
         return binding.getRoot();
     }
 
-    //새로추가함
-    /*public boolean onOptionsItemSelected(MenuItem item){
-        int curId=item.getItemId();
-        switch (curId){
-            case R.id.btn_studyGroupMake:
-                *//*ViewGroup.LayoutParams params2=binding.studyJoinSearchLayout.getLayoutParams();
-                if(params2.height==0){
-                    params2.height=150;
-                }else{
-                    params2.height=0;
-                }
-                binding.studyJoinSearchLayout.setLayoutParams(params2);
-                return true;
-            default:
-                break;*//*
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 }
