@@ -1,36 +1,22 @@
 package kr.ac.koreatech.teamproject;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,11 +35,13 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private void addLecture(String title, String profName, String introduce, Integer currPeople) {
+    private void addLecture(String title, String profName, String introduce, Integer currPeople, String category) {
         Map<String, String> lecture_info = new HashMap<>();
         lecture_info.put("profName", profName);
         lecture_info.put("introduce", introduce);
         lecture_info.put("currPeople", currPeople.toString());
+        lecture_info.put("category", category);
+
         db.collection("server").document("data/lectureList/" + title)
                 .set(lecture_info)
                 .addOnSuccessListener(aVoid -> {
@@ -62,53 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Log.w("TAG", "Error writing document", e);
                 });
-    }
 
-    // 스터디 그룹 생성(스터디 그룹 이름, 닉네임, 자기소개, 현재인원)
-    private void addStudyGroup(String title, String nickname, String introduce, Integer currPeople) {
-        Map<String, String> study_info = new HashMap<>();
-        study_info.put("nickname", nickname);
-        study_info.put("introduce", introduce);
-        study_info.put("currPeople", currPeople.toString());
-
-
-        db.collection("server").document("data/studyGroupList/" + title)
-                .set(study_info)
-                .addOnSuccessListener(aVoid -> {
-                    Log.d("TAG", "DocumentSnapshot successfully written!");
-                })
-                .addOnFailureListener(e -> {
-                    Log.w("TAG", "Error writing document", e);
-                });
-    }
-
-    // 스터디 그룹 삭제(스터디 그룹 이름)
-    private void deleteStudyGroup(String title) {
-        db.collection("server").document("data/studyGroupList/" + title)
-                .delete()
-                .addOnSuccessListener(aVoid -> {
-                    Log.d("TAG", "DocumentSnapshot successfully deleted!");
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("TAG", "Error deleting document", e);
-                    }
-                });
-    }
-
-
-    // 스터디 그룹 탈퇴(이메일, 탈퇴 할 스터디 그룹 이름)
-    private void removeJoinStudyGroup(String user_email, String study_group_name) {
-        user_email = user_email.replace(".", "-");
-        DocumentReference washingtonRef = db.collection("server").document("user/" + user_email + "/joinStudyGroup/");
-        washingtonRef.update("title", FieldValue.arrayRemove(study_group_name))
-                .addOnSuccessListener(aVoid -> {
-                    Log.d("TAG", "DocumentSnapshot successfully update");
-                })
-                .addOnFailureListener(e -> {
-                    Log.w("TAG", "Error update document", e);
-                });
     }
 
 
@@ -137,28 +79,21 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         //
-        /*addStudyGroup("천체연구모임방", "카운팅스타", "천체를 관측하고 사랑하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("KafkaS", "backend", "백엔드의 카프카에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("아Do!이노", "인호", "아두이노에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("라즈베리PI", "3.14", "라즈베리파이에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("신박한 아이디어", "idea", "아이디어를 공유하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("파이썬공부방", "python", "파이썬 기초에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("일터학습개론", "일터", "일터학습개론에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("정처기아자", "knight", "정보처리기사에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("컴활1급따자", "컴활", "컴활1급에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("컴활2급따자", "컴활따야지?", "컴활2급에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("데이터베이스공부하자", "디비", "데이터베이스에 대해서 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("한전가자", "kepco", "한전취업 스터디 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("모프공부방", "안드...", "강승우교수님 모바일프로그래밍 과목을 같이 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("아좌좌~자바공부~", "앱등이", "자바를 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("삭제할 방", "안드...", "강승우교수님 모바일프로그래밍 과목을 같이 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
-        addStudyGroup("효민이와 같이 영청 공부할래?", "횸니", "영어청해 과목을 같이 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
-        deleteStudyGroup("삭제할 방"); // 스터디 그룹 목록에서 삭제*/
-
-
-/*        addJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(), "라즈베리PI"); // 유저가 스터디 그룹에 가입
-        removeJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(), "라즈베리PI"); // 유저가 스터디 그룹에 탈퇴*/
-
+        addLecture("객체지향개발론및실습", "김상진", "GoF 패턴을 학습합니다.", 37,"강의");
+        addLecture("모바일프로그래밍", "강승우", "모바일 애플리케이션을 디자인하고 구현하는데 필요한 기본 능력과 방법을 습득하는 것을 목표로 한다.", 40,"강의");
+        addLecture("시스템프로그래밍", "김덕수", "유닉스/리눅스의 기본적인 사용법을 익히고, 시스템 호출과 라이브러리 제작 및 이를 사용한 응용 프로그램과 개발 기법을 학습한다.", 39,"강의");
+        addLecture("컴퓨터네트워크", "박승철", "TCP/IP 인터넷을 중심으로 컴퓨터 네트워크에 대한 전반적인 기술을 공부한다.", 40,"강의");
+        addLecture("데이터베이스시스템", "무하마드", "This course is intended to gice students a solid background in databases, with a focus on relational database systems.", 40,"강의");
+        addLecture("학습자이해와상담", "이지", "본 교과에서는 학습자의 특성 및 상담의 기초를 이해하고 이를 토대로 한 주요 학생지도 및 상담이론에 대해 학습한다.", 25,"강의");
+        addLecture("C프로그래밍2","조재수","C언어를 이용한 고수준의 프로그램 작성 능력을 배양한다.",30,"강의");
+        addLecture("컴퓨터활용능력","-","컴퓨터뢀용능력을 함양한다.",70,"자격증");
+        addLecture("한국사능력검정시험","-","한국사능력을 함양한다.",50,"자격증");
+        addLecture("e-learning개론","김원섭","본 교과목은 이러닝 코스 설계를 위한 주요 이론 및 원리를 공부하며, 양직의 학습콘텐츠를 설계해 볼 것입니다.", 50,"강의");
+        addLecture("영어회화","제임스","This course builds learner's knowledge and ability, enabling them to accomplish to things.",30,"강의");
+        addLecture("창의적사고와글쓰기","정재영","의사소통의 기본 개념과 기법을 익히고 이를 바탕으로 창의적인 문제해결의 전 과정을 학습함으로 대학생활과 직업 생활에 필요한 기초 의사소통능력을 기른다.", 30,"강의");
+        addLecture("공학수학2","박원우","공학기초 역량과 문제해결 역량을 함양하고자 한다.",35,"강의");
+        addLecture("정보처리기사","-","정보처리능력을 함양한다.",70,"자격증");
+        addLecture("보안기사","-","보안관련능력을 함양한다.",40,"자격증");
     }
 
     @Override
@@ -222,5 +157,6 @@ public class MainActivity extends AppCompatActivity {
         MyFragment.changeFragment(fragment);
 
     }
+
 
 }
