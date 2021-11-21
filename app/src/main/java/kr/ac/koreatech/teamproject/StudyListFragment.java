@@ -230,6 +230,8 @@ public class StudyListFragment extends Fragment {
                 } else {
                     params2.height = 0;
                 }
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle("전체 스터디 그룹 목록");
                 binding.studySearchLayout.setLayoutParams(params2);
 
                 binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
@@ -244,7 +246,7 @@ public class StudyListFragment extends Fragment {
 //                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디6", "사람6", 38, "참여 가능 스터디 테스트6"));
 //                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디7", "사람7", 38, "참여 가능 스터디 테스트7"));
 
-                //전체 게시판에서 스터디 그룹 가입하는 부
+                //전체 게시판에서 스터디 그룹 가입하는 부분
                 binding.fragmentStudyListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {

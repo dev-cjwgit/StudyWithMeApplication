@@ -151,7 +151,6 @@ public class StudyMainFragment extends Fragment {
                 });
 
                 return true;
-
             default:
                 break;
         }

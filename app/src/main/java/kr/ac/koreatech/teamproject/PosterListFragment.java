@@ -168,6 +168,8 @@ public class PosterListFragment extends Fragment {
                     params.height = 0;
                 }
                 binding.searchLayout.setLayoutParams(params);
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle("전체 게시판 목록");
 
                 //--------------------------------
                 posterListViewAdapter_2 = new PosterListViewAdapter();
