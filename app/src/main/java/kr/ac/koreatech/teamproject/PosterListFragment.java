@@ -18,12 +18,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -99,6 +104,7 @@ public class PosterListFragment extends Fragment {
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "일터학습개론", "김영은", 38, "일 또는 일 밖에서 일어나는 학습에 대해서 배웁니다."));
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "소프트웨어공학", "김승희", 17, "설계전략, 모델링등에 대해서 배웁니다."));
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "자바프로그래밍", "김상진", 32, "자바 기초 문법에 대해 학습합니다."));*/
+
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
         binding.framentPosterListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -154,6 +160,19 @@ public class PosterListFragment extends Fragment {
                 });
     }
 
+    // 강의 참여(이메일, 참여 할 강의 이름)
+    private void addJoinLecture(String user_email, String lecture_name) {
+        user_email = user_email.replace(".", "-");
+        DocumentReference washingtonRef = db.collection("server").document("user/" + user_email + "/joinLecture/");
+        washingtonRef.update("title", FieldValue.arrayUnion(lecture_name))
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully update");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error update document", e);
+                });
+    }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         int curId = item.getItemId();
         switch (curId) {
@@ -162,16 +181,16 @@ public class PosterListFragment extends Fragment {
 
                 if (params.height == 0) {
                     params.height = 150;
-                    getLectureList();
-                    //posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목1", "교수님1", 38, "참여 가능 게시판 테스트1"));
                 } else {
                     params.height = 0;
                 }
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle("전체 강의 게시판 목록");
                 binding.searchLayout.setLayoutParams(params);
 
-                //--------------------------------
                 posterListViewAdapter_2 = new PosterListViewAdapter();
                 binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
+                getLectureList();
 
 /*                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목1", "교수님1", 38, "참여 가능 게시판 테스트1"));
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목2", "교수님2", 38, "참여 가능 게시판 테스트2"));
@@ -184,6 +203,18 @@ public class PosterListFragment extends Fragment {
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목9", "교수님9", 38, "참여 가능 게시판 테스트9"));
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목10", "교수님10", 38, "참여 가능 게시판 테스트10"));*/
 
+                // 전체 강의 게시판에서 수강하는 게시판 가입하는 부분
+                binding.framentPosterListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> a_parent, View view, int a_position, long a_long) {
+                        final PosterEntity item = (PosterEntity) posterListViewAdapter_2.getItem(a_position);
+
+                        addJoinLecture(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저 강의 게시판 가입
+                        Toast.makeText(getActivity(),"강의 게시판에 가입합니다.",Toast.LENGTH_SHORT).show();
+
+                        System.out.println(item.getTitle() + "에 가입함?");
+                    }
+                });
                 return true;
             default:
                 break;
