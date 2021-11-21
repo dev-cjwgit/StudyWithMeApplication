@@ -6,24 +6,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +35,42 @@ public class MainActivity extends AppCompatActivity {
     private Date startTime;
     private Toast toast;
     private Intent intent;
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private void addLecture(String title, String profName, String introduce, Integer currPeople, String category) {
+        Map<String, String> lecture_info = new HashMap<>();
+        lecture_info.put("profName", profName);
+        lecture_info.put("introduce", introduce);
+        lecture_info.put("currPeople", currPeople.toString());
+        lecture_info.put("category", category);
+
+        db.collection("server").document("data/lectureList/" + title)
+                .set(lecture_info)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error writing document", e);
+                });
+
+    }
+
+
+    private void addJoinLecture(String user_email, String lecture_name) {
+        user_email = user_email.replace(".", "-");
+        DocumentReference washingtonRef = db.collection("server").document("user/" + user_email + "/joinLecture/");
+        washingtonRef.update("title", FieldValue.arrayUnion(lecture_name))
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully update");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error update document", e);
+                });
+    }
+
+
 
 //    private Button mbtnPlay, mbtnStop;
 //    private TextView mtimerTextView;
@@ -64,7 +97,10 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         //
-
+        // 유자가 강의게시판 참여
+        addJoinLecture("test1@email.com", "C프로그래밍2");
+        addJoinLecture("test1@email.com","e-learning개론");
+        addJoinLecture("test1@email.com","객체지향개발론및실습");
 
 
     }
