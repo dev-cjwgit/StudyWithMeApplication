@@ -68,7 +68,6 @@
                             android:textStyle="bold"
                             android:textColor="@color/white"
                             android:textSize="30sp" />
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -110,7 +109,6 @@
                     android:layout_gravity="bottom"/>
             </LinearLayout>
         </LinearLayout>
-
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
 

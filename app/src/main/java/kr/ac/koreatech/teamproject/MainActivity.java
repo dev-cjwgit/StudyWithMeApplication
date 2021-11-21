@@ -116,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //endregion
-    //주
-
     public void navigation_onClick(View view) {
         /*
             TODO: 프래그먼트에 대한 정적인 값으로 할지 고민 해야함.

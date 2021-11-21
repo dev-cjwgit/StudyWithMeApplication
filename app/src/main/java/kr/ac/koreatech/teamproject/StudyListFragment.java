@@ -94,9 +94,7 @@ public class StudyListFragment extends Fragment {
                     for (String item : temp) {
                         StudyEntity temp2 = list.get(item);
                         studyListViewAdapter.append(temp2);
-
                     }
-
                     //studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"천체연구모임","스타스타",4,"밤하늘을 관측하는 스터디 모임입니다."));
                 } else {
                     Log.d("TAG", "No such document");
