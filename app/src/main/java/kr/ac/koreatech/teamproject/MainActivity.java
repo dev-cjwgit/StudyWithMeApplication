@@ -22,6 +22,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -38,6 +41,25 @@ public class MainActivity extends AppCompatActivity {
     private Date startTime;
     private Toast toast;
     private Intent intent;
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private void addLecture(String title, String profName, String introduce, Integer currPeople) {
+        Map<String, String> lecture_info = new HashMap<>();
+        lecture_info.put("profName", profName);
+        lecture_info.put("introduce", introduce);
+        lecture_info.put("currPeople", currPeople.toString());
+        db.collection("server").document("data/lectureList/" + title)
+                .set(lecture_info)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error writing document", e);
+                });
+    }
+
 
 //    private Button mbtnPlay, mbtnStop;
 //    private TextView mtimerTextView;
@@ -131,5 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+public void createButton_onClick(View v) {
+        addLecture("객체지향개발론및실습","김상진", "GoF 패턴을 학습합니다.",37);
+    }
 }
