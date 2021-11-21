@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -251,9 +252,9 @@ public class StudyListFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                         final StudyEntity item = (StudyEntity) studyListViewAdapter_2.getItem(a_position);
-                        //MyFragment.changeFragment(new StudyMainFragment(item.getTitle(), true));
 
                         addJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저가 스터디 그룹에 가입
+                        Toast.makeText(getActivity(),"스터디 그룹에 가입합니다.",Toast.LENGTH_SHORT).show();
                         //Intent intent = new Intent(getActivity(), JoinDialogActivity.class);
                         //startActivity(intent);
 
