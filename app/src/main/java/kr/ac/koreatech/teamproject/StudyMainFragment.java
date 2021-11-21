@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,12 +25,18 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import adapter.CurrentMemberAdapter;
+import appcomponent.MyFragment;
 import entity.CurrentMemberEntity;
+import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyMainBinding;
 
 /**
@@ -47,6 +54,21 @@ public class StudyMainFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String title;
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    // 스터디 그룹 탈퇴(이메일, 탈퇴 할 스터디 그룹 이름)
+    private void removeJoinStudyGroup(String user_email, String study_group_name) {
+        user_email = user_email.replace(".", "-");
+        DocumentReference washingtonRef = db.collection("server").document("user/" + user_email + "/joinStudyGroup/");
+        washingtonRef.update("title", FieldValue.arrayRemove(study_group_name))
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully update");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error update document", e);
+                });
+    }
 
     private CurrentMemberAdapter currentMemberAdapter;
 
@@ -110,6 +132,13 @@ public class StudyMainFragment extends Fragment {
         currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"라이언",BitmapFactory.decodeResource(getResources(), R.drawable.not_studying)));
         currentMemberAdapter.append(new CurrentMemberEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),"어피치",BitmapFactory.decodeResource(getResources(), R.drawable.not_studying)));
 
+        //네비 드로우의 탈퇴 버튼 클릭 이벤트
+        binding.signOutButton.setOnClickListener(v -> {
+            //MyFragment.changeFragment(new PosterQuestionListFragment());
+            System.out.println("탈퇴하려고?");
+            removeJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(),title); // 유저가 스터디 그룹에 탈퇴
+            Toast.makeText(getActivity(),"탈퇴되었습니다.",Toast.LENGTH_SHORT).show();
+        });
 
     }
 
@@ -151,7 +180,6 @@ public class StudyMainFragment extends Fragment {
                 });
 
                 return true;
-
             default:
                 break;
         }

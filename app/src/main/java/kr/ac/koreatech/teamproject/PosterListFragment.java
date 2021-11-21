@@ -187,6 +187,8 @@ public class PosterListFragment extends Fragment {
                 ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                 actionBar.setTitle("전체 강의 게시판 목록");
                 binding.searchLayout.setLayoutParams(params);
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle("전체 게시판 목록");
 
                 posterListViewAdapter_2 = new PosterListViewAdapter();
                 binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
