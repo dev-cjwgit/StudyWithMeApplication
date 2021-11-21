@@ -31,8 +31,8 @@
             android:exported="false"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
