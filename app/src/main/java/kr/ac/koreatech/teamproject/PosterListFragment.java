@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -173,6 +174,25 @@ public class PosterListFragment extends Fragment {
                 });
     }
 
+    // 유저가 참여 중인 강의 목록(상세) 가져오기(이메일)
+    private void getJoinLectureList(String user_email) {
+        user_email = user_email.replace(".", "-");
+
+        DocumentReference docRef = db.collection("server").document("user/" + user_email + "/joinLecture/");
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
+    }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         int curId = item.getItemId();
         switch (curId) {
@@ -187,12 +207,11 @@ public class PosterListFragment extends Fragment {
                 ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                 actionBar.setTitle("전체 강의 게시판 목록");
                 binding.searchLayout.setLayoutParams(params);
-                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-                actionBar.setTitle("전체 게시판 목록");
 
                 posterListViewAdapter_2 = new PosterListViewAdapter();
                 binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
                 getLectureList();
+                getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
 
 /*                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목1", "교수님1", 38, "참여 가능 게시판 테스트1"));
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목2", "교수님2", 38, "참여 가능 게시판 테스트2"));
