@@ -96,6 +96,7 @@ public class SettingFragment extends Fragment {
     }
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public static String userName;
     private void getUserInfo(String user_email) {
         user_email = user_email.replace(".", "-");
 
@@ -106,6 +107,7 @@ public class SettingFragment extends Fragment {
                 if (document.exists()) {
                     Log.d("TAG", "DocumentSnapshot data: " + document.getData());
                     binding.userName.setText(document.getData().get("name").toString());
+                    userName=document.getData().get("name").toString();
                 } else {
                     Log.d("TAG", "No such document");
                 }
