@@ -46,6 +46,8 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
 public class PosterListFragment extends Fragment {
     private FragmentPosterListBinding binding;
     private PosterListViewAdapter posterListViewAdapter;
+    private PosterListViewAdapter posterListViewAdapter_2;
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -59,10 +61,7 @@ public class PosterListFragment extends Fragment {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
     private Object MenuInflater;
-
-    private PosterListViewAdapter posterListViewAdapter_2;
 
     public PosterListFragment() {
         // Required empty public constructor
@@ -71,15 +70,6 @@ public class PosterListFragment extends Fragment {
     public PosterListFragment(boolean back_btn) {
         this.back_btn = back_btn;
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PosterFragment.
-     */
 
 
     private void getLectureList() {
@@ -214,8 +204,9 @@ public class PosterListFragment extends Fragment {
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
-
+    //menu
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int curId = item.getItemId();
         switch (curId) {
             case R.id.action_poster_search:
@@ -223,15 +214,18 @@ public class PosterListFragment extends Fragment {
 
                 if (params.height == 0) {
                     params.height = 150;
+                    binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
+
                 } else {
                     params.height = 0;
+                    posterListViewAdapter.list.clear();
+                    binding.framentPosterListListView.setAdapter(posterListViewAdapter);
+                    getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
                 }
                 ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                 actionBar.setTitle("전체 강의 게시판 목록");
                 binding.searchLayout.setLayoutParams(params);
 
-                binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
-                getLectureList();
 
 /*                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목1", "교수님1", 38, "참여 가능 게시판 테스트1"));
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목2", "교수님2", 38, "참여 가능 게시판 테스트2"));
