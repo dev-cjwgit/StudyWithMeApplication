@@ -11,15 +11,21 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import adapter.FrontRecyclerViewAdapter;
 import entity.FrontPoster;
+import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 import service.TimerService;
 
@@ -115,6 +121,10 @@ public class MainFragment extends Fragment {
             requireActivity().stopService(new Intent(getActivity(), TimerService.class));
             System.out.println("stop 버튼 누름?");
         });
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 //        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍"));
 //        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "중국어회화"));
 //        data1.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "창의적글쓰기"));
