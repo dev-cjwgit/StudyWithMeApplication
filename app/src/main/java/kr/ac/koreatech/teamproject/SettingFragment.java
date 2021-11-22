@@ -99,7 +99,7 @@ public class SettingFragment extends Fragment {
     public static String userName;
     private void getUserInfo(String user_email) {
         user_email = user_email.replace(".", "-");
-
+//f
         DocumentReference docRef = db.collection("server").document("user/" + user_email + "/info/");
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
