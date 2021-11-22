@@ -2,6 +2,7 @@ package kr.ac.koreatech.teamproject;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -47,6 +49,21 @@ public class StudyMakeFragment extends Fragment {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    // 스터디 그룹 삭제(스터디 그룹 이름)
+    private void deleteStudyGroup(String title) {
+        db.collection("server").document("data/studyGroupList/" + title)
+                .delete()
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully deleted!");
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("TAG", "Error deleting document", e);
+                    }
+                });
+    }
 
     // 스터디 그룹 생성(스터디 그룹 이름, 닉네임, 자기소개, 현재인원)
     private void addStudyGroup(String title, String nickname, String introduce, Integer currPeople) {
@@ -105,6 +122,7 @@ public class StudyMakeFragment extends Fragment {
         //생성버튼 클릭 이벤트
         binding.btnStudyGroupMake.setOnClickListener(v->{
             System.out.println("생성하려고?");
+            addStudyGroup(binding.studyGroupEdittext.getText().toString(),, binding.groupIntroduce.getText().toString(), 1); // 스터디그룹목록에 추가
             Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
         });
 
