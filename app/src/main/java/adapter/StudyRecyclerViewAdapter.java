@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import appcomponent.MyFragment;
 import entity.FrontPoster;
 import entity.StudyEntity;
+import kr.ac.koreatech.teamproject.MainActivity;
 import kr.ac.koreatech.teamproject.R;
 import kr.ac.koreatech.teamproject.StudyMainFragment;
 
@@ -39,6 +40,10 @@ class StudyRecyclerViewHolder extends RecyclerView.ViewHolder {
             int pos = getAdapterPosition();
             if (pos != RecyclerView.NO_POSITION) {
                 MyFragment.changeFragment(new StudyMainFragment(items.get(pos).getTitle(), true));
+                MainActivity.context.binding.mainImageViewMain.setImageResource(R.drawable.icon_home_gray);
+                MainActivity.context.binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
+                MainActivity.context.binding.mainImageViewStudy.setImageResource(R.drawable.icon_group);
+                MainActivity.context.binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
                 System.out.println(items.get(pos).getTitle() + " 에 접속함?");
             }
         });
