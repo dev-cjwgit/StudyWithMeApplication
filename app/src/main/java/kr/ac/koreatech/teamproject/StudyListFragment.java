@@ -28,8 +28,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import adapter.StudyListViewAdapter;
 import appcomponent.MyFragment;
@@ -46,12 +49,12 @@ public class StudyListFragment extends Fragment {
     private StudyListViewAdapter studyListViewAdapter;
     private StudyListViewAdapter studyListViewAdapter_2;
     public static Map<String, StudyEntity> list = new HashMap<>();
-
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private AdapterView.OnItemClickListener joinListener;
     private AdapterView.OnItemClickListener enter_Listener;
+
 
     // 모든 스터디 그룹에 대한 상세 정보 목록 가져오기
     private void getStudyGroupList() {
@@ -149,6 +152,7 @@ public class StudyListFragment extends Fragment {
         binding = FragmentStudyListBinding.inflate(getLayoutInflater());
         studyListViewAdapter = new StudyListViewAdapter();
         studyListViewAdapter_2 = new StudyListViewAdapter();
+        getStudyGroupList();
 
         binding.studySearchLayout.getLayoutParams().height = 0;
         ArrayList search_kind = new ArrayList();
@@ -158,7 +162,7 @@ public class StudyListFragment extends Fragment {
         ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, search_kind);
         binding.fragmentStudyListSpinner.setAdapter(adapter2);
 
-        enter_Listener=new AdapterView.OnItemClickListener() {
+        enter_Listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 final StudyEntity item = (StudyEntity) studyListViewAdapter.getItem(a_position);
@@ -180,13 +184,13 @@ public class StudyListFragment extends Fragment {
 //        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"컴활1급 아자아자!", "컴활짱", 32, "요즘 시대에 도움이 되는 컴활 1급을 위한 스터디 모임입니다."));
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
         binding.fragmentStudyListListView.setOnItemClickListener(enter_Listener);
-        joinListener=new AdapterView.OnItemClickListener() {
+        joinListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 final StudyEntity item = (StudyEntity) studyListViewAdapter_2.getItem(a_position);
 
                 addJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저가 스터디 그룹에 가입
-                Toast.makeText(getActivity(),"스터디 그룹에 가입합니다.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "스터디 그룹에 가입합니다.", Toast.LENGTH_SHORT).show();
                 //Intent intent = new Intent(getActivity(), JoinDialogActivity.class);
                 //startActivity(intent);
 
@@ -201,7 +205,6 @@ public class StudyListFragment extends Fragment {
         //
 
 
-
         binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
@@ -210,9 +213,16 @@ public class StudyListFragment extends Fragment {
             fragmentTransaction.commit();
         });
         binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
-        getStudyGroupList();
-        getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
+//        getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
 
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() { // schedule: 특정한 시간에 원하는 작업 수행, 이거 인자가 어떻게 되는 건가요?
+                getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
+
+            }
+        }, 1500); // long delay, long period, 지정한 시간부터 일정 간격(period)로 지정한 작업(tast)수
 
     }
 

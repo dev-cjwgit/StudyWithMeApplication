@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +36,25 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    // 스터디 그룹 생성(스터디 그룹 이름, 닉네임, 자기소개, 현재인원)
+    private void addStudyGroup(String title, String nickname, String introduce, Integer currPeople) {
+        Map<String, String> study_info = new HashMap<>();
+        study_info.put("nickname", nickname);
+        study_info.put("introduce", introduce);
+        study_info.put("currPeople", currPeople.toString());
+
+
+        db.collection("server").document("data/studyGroupList/" + title)
+                .set(study_info)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error writing document", e);
+                });
+    }
+
 
     private void addLecture(String title, String profName, String introduce, Integer currPeople, String category) {
         Map<String, String> lecture_info = new HashMap<>();
@@ -88,7 +108,23 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         context = this;
-
+//
+//        addStudyGroup("천체연구모임방", "카운팅스타", "천체를 관측하고 사랑하는 모임입니다.", 2); // 스터디그룹목록에 추가
+//        addStudyGroup("모프공부방", "노예", "모바일프로그래밍 강승우 교수님 공부하는 공부방", 3); // 스터디그룹목록에 추가
+//        addStudyGroup("컴활1급 공부하자", "대한건아", "컴퓨터활용능력1급을 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
+//        addStudyGroup("컴활2급 공부하자", "대한", "컴퓨터활용능력2급을 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
+//        addStudyGroup("영청공부하자", "홉스", "영어청해를 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
+//        addStudyGroup("효민이랑 영청 공부할래?", "횸니", "영어청해를 효민이와 함께 모임입니다.", 6); // 스터디그룹목록에 추가
+//        addStudyGroup("객체지향공부하자!", "나는야 교수님의 노예..", "김상진교수님 객체지향프로그래밍을 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
+//        addStudyGroup("오픽공부방", "OPIC", "오픽 IH를 목표로 하는 공부방입니다.", 20); // 스터디그룹목록에 추가
+//        addStudyGroup("선경이랑 같이 그래픽스할래..?", "덩경이", "컴퓨터그래픽스를 공부하는 모임입니다.", 2); // 스터디그룹목록에 추가
+//        addStudyGroup("자바공부하ja", "자바스크립트", "자바스크립트를 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
+//        addStudyGroup("채연이와 아이들", "채요니", "채연이와 같이 시스템프로그래밍을 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
+//        addStudyGroup("직능훈 공부방", "진구교수님", "이진구 교수님 직업능력개발훈련평가 과목을 공부하는 모임입니다.", 1); // 스터디그룹목록에 추가
+//        addStudyGroup("경영학개론 공부하자", "산경천재", "경영학개론을 공부하는 모임입니다.", 5); // 스터디그룹목록에 추가
+//        addStudyGroup("Information process Knight", "Knight..", "정처기를 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
+//        addStudyGroup("정보보안기사 공부하자", "보안기사 어려워", "정보보안기사를 모임입니다.", 4); // 스터디그룹목록에 추가
+//        addStudyGroup("SQLD 공부방", "sqld최공", "SQLD를 공부하는 모임입니다.", 15); // 스터디그룹목록에 추가
         //
 //        addLecture("객체지향개발론및실습", "김상진", "GoF 패턴을 학습합니다.", 37,"강의");
 //        addLecture("모바일프로그래밍", "강승우", "모바일 애플리케이션을 디자인하고 구현하는데 필요한 기본 능력과 방법을 습득하는 것을 목표로 한다.", 40,"강의");
