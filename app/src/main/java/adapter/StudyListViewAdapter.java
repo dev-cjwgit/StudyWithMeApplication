@@ -51,9 +51,8 @@ public class StudyListViewAdapter extends BaseAdapter implements Serializable, C
         TextView currPeople = view.findViewById(R.id.StudyList_listview_people);
         TextView introduce = view.findViewById(R.id.studyList_listview_introduce);
 
-
         bitmap.setImageBitmap(listItem.getBitmap());
-        GradientDrawable drawable= (GradientDrawable) context.getDrawable(R.drawable.background_rounding);
+        GradientDrawable drawable = (GradientDrawable) context.getDrawable(R.drawable.background_rounding);
 //        bitmap.setBackground(new ShapeDrawable(new OvalShape()));
         bitmap.setBackground(drawable);
         bitmap.setClipToOutline(true);
@@ -63,7 +62,6 @@ public class StudyListViewAdapter extends BaseAdapter implements Serializable, C
         profName.setText(listItem.getProfName());
         currPeople.setText(listItem.getCurrPeople() + "명");
         introduce.setText(listItem.getIntroduce());
-
         return view;
     }
 
