@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -59,6 +60,8 @@ public class PosterMainFragment extends Fragment {
                     Log.w("TAG", "Error update document", e);
                 });
     }
+
+//
     public PosterMainFragment(String title, boolean back_btn) {
         // Required empty public constructor
         this.title = title;
@@ -70,14 +73,6 @@ public class PosterMainFragment extends Fragment {
         this(title, false);
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PosterFragment.
-     */
     public static PosterMainFragment newInstance(String param1, String param2) {
         PosterMainFragment fragment = new PosterMainFragment("");
         Bundle args = new Bundle();
