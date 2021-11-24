@@ -169,9 +169,10 @@ public class StudyListFragment extends Fragment {
             }
         };
 
-        //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
+        //리스트뷰의 아이템을 클릭시 스터디 그룹에 들어감(enter)
         binding.fragmentStudyListListView.setOnItemClickListener(enter_Listener);
 
+        //리스트뷰 선택시 -> 가입(가입 리스너 설정)
         joinListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
@@ -184,6 +185,7 @@ public class StudyListFragment extends Fragment {
             }
         };
 
+        //스터디 그룹 생성 버튼 누르면 발생하는 이벤트 처리
         binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
@@ -230,7 +232,7 @@ public class StudyListFragment extends Fragment {
             case R.id.action_studyList_search:
                 ViewGroup.LayoutParams params2 = binding.studySearchLayout.getLayoutParams();
                 if (params2.height == 0) {
-                    params2.height = 150;
+                    params2.height = 150; //검색창 열림
                     binding.fragmentStudyListListView.setAdapter(study_FullListViewAdapter);
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("전체 스터디 그룹 목록");
@@ -238,7 +240,7 @@ public class StudyListFragment extends Fragment {
                     binding.fragmentStudyListListView.setOnItemClickListener(joinListener);
 
                 } else {
-                    params2.height = 0;
+                    params2.height = 0; //검색창 닫힘
                     studyListViewAdapter.list.clear();
                     binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
                     getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
