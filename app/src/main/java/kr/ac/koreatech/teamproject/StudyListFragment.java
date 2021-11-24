@@ -47,8 +47,9 @@ import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
 public class StudyListFragment extends Fragment {
     private FragmentStudyListBinding binding;
     private StudyListViewAdapter studyListViewAdapter;
-    private StudyListViewAdapter studyListViewAdapter_2;
+    private StudyListViewAdapter study_FullListViewAdapter; //전체 스터디 그룹 목록
     public static Map<String, StudyEntity> list = new HashMap<>();
+
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -65,7 +66,7 @@ public class StudyListFragment extends Fragment {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Log.d("TAG", document.getId() + " => " + document.getData());
                             StudyEntity temp = new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), document.getId(), document.getData().get("nickname").toString(), Integer.parseInt(document.getData().get("currPeople").toString()), document.getData().get("introduce").toString());
-                            studyListViewAdapter_2.append(temp);
+                            study_FullListViewAdapter.append(temp);
                             list.put(document.getId(), temp);
                         }
                     } else {
@@ -151,7 +152,7 @@ public class StudyListFragment extends Fragment {
         }
         binding = FragmentStudyListBinding.inflate(getLayoutInflater());
         studyListViewAdapter = new StudyListViewAdapter();
-        studyListViewAdapter_2 = new StudyListViewAdapter();
+        study_FullListViewAdapter = new StudyListViewAdapter();
         getStudyGroupList();
 
         binding.studySearchLayout.getLayoutParams().height = 0;
@@ -187,7 +188,7 @@ public class StudyListFragment extends Fragment {
         joinListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                final StudyEntity item = (StudyEntity) studyListViewAdapter_2.getItem(a_position);
+                final StudyEntity item = (StudyEntity) study_FullListViewAdapter.getItem(a_position);
 
                 addJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저가 스터디 그룹에 가입
                 Toast.makeText(getActivity(), "스터디 그룹에 가입합니다.", Toast.LENGTH_SHORT).show();
@@ -246,7 +247,7 @@ public class StudyListFragment extends Fragment {
                 ViewGroup.LayoutParams params2 = binding.studySearchLayout.getLayoutParams();
                 if (params2.height == 0) {
                     params2.height = 150;
-                    binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
+                    binding.fragmentStudyListListView.setAdapter(study_FullListViewAdapter);
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("전체 스터디 그룹 목록");
                     binding.studySearchLayout.setLayoutParams(params2);

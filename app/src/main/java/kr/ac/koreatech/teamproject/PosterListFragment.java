@@ -1,14 +1,10 @@
 package kr.ac.koreatech.teamproject;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,7 +42,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
 public class PosterListFragment extends Fragment {
     private FragmentPosterListBinding binding;
     private PosterListViewAdapter posterListViewAdapter;
-    private PosterListViewAdapter posterListViewAdapter_2;
+    private PosterListViewAdapter posterFullListViewAdapter; //전체 게시판 목록
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -89,7 +85,7 @@ public class PosterListFragment extends Fragment {
                                     Integer.parseInt(document.getData().get("currPeople").toString()),
                                     document.getData().get("introduce").toString());
 
-                            posterListViewAdapter_2.append(entity1);
+                            posterFullListViewAdapter.append(entity1);
                             list.put(document.getId(),entity1);
 
                         }
@@ -157,7 +153,7 @@ public class PosterListFragment extends Fragment {
         binding = FragmentPosterListBinding.inflate(getLayoutInflater());
         posterListViewAdapter = new PosterListViewAdapter();
         binding.framentPosterListListView.setAdapter(posterListViewAdapter);
-        posterListViewAdapter_2 = new PosterListViewAdapter();
+        posterFullListViewAdapter = new PosterListViewAdapter();
 
         binding.searchLayout.getLayoutParams().height = 0;
         ArrayList kind = new ArrayList();
@@ -198,7 +194,7 @@ public class PosterListFragment extends Fragment {
         join_lecture_listener=new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final PosterEntity item = (PosterEntity) posterListViewAdapter_2.getItem(position);
+                final PosterEntity item = (PosterEntity) posterFullListViewAdapter.getItem(position);
 
                 addJoinLecture(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저 강의 게시판 가입
                 Toast.makeText(getActivity(), "강의 게시판에 가입합니다.", Toast.LENGTH_SHORT).show();
@@ -235,7 +231,7 @@ public class PosterListFragment extends Fragment {
 
                 if (params.height == 0) {
                     params.height = 150;
-                    binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
+                    binding.framentPosterListListView.setAdapter(posterFullListViewAdapter);
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("전체 강의 게시판 목록");
                     binding.searchLayout.setLayoutParams(params);
