@@ -82,6 +82,7 @@ public class PosterListFragment extends Fragment {
                             PosterEntity entity1 = new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image),
                                     document.getId(),
                                     document.getData().get("profName").toString(),
+                                    //TODO: 나 여기 수정해야함 하
                                     Integer.parseInt(document.getData().get("currPeople").toString()),
                                     document.getData().get("introduce").toString());
 
