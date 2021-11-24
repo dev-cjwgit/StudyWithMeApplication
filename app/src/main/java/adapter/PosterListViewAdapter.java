@@ -47,7 +47,6 @@ public class PosterListViewAdapter extends BaseAdapter implements Serializable, 
         ImageView bitmap = view.findViewById(R.id.poster_listview_image);
         TextView title = view.findViewById(R.id.poster_listview_title);
         TextView profName = view.findViewById(R.id.poster_listview_profname);
-        TextView currPeople = view.findViewById(R.id.poster_listview_people);
         TextView introduce = view.findViewById(R.id.poster_listview_introduce);
 
 
@@ -60,7 +59,6 @@ public class PosterListViewAdapter extends BaseAdapter implements Serializable, 
 
         title.setText(listItem.getTitle());
         profName.setText(listItem.getProfName());
-        currPeople.setText(listItem.getCurrPeople() + "명");
         introduce.setText(listItem.getIntroduce());
 
         return view;
