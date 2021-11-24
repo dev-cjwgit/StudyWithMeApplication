@@ -231,6 +231,7 @@ public class StudyListFragment extends Fragment {
                 } else {
                     params2.height = 0;
                 }
+
                 ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                 actionBar.setTitle("전체 스터디 그룹 목록");
                 binding.studySearchLayout.setLayoutParams(params2);
