@@ -63,6 +63,7 @@ public class StudyJoinFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,7 +124,7 @@ public class StudyJoinFragment extends Fragment {
 
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("plz in search");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -139,15 +140,15 @@ public class StudyJoinFragment extends Fragment {
     }
 
     //새로추가함
-    public boolean onOptionsItemSelected(MenuItem item){
-        int curId=item.getItemId();
-        switch (curId){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
             case R.id.action_search:
-                ViewGroup.LayoutParams params2=binding.studyJoinSearchLayout.getLayoutParams();
-                if(params2.height==0){
-                    params2.height=150;
-                }else{
-                    params2.height=0;
+                ViewGroup.LayoutParams params2 = binding.studyJoinSearchLayout.getLayoutParams();
+                if (params2.height == 0) {
+                    params2.height = 150;
+                } else {
+                    params2.height = 0;
                 }
                 binding.studyJoinSearchLayout.setLayoutParams(params2);
                 return true;
