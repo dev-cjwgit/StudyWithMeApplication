@@ -138,6 +138,7 @@ public class StudyMainFragment extends Fragment {
             System.out.println("탈퇴하려고?");
             removeJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(),title); // 유저가 스터디 그룹에 탈퇴
             Toast.makeText(getActivity(),"탈퇴되었습니다.",Toast.LENGTH_SHORT).show();
+            MyFragment.changeFragment(new StudyListFragment());
         });
 
     }
