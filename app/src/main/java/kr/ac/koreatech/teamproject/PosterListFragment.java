@@ -161,6 +161,7 @@ public class PosterListFragment extends Fragment {
         binding.framentPosterListListView.setAdapter(posterListViewAdapter);
         posterFullListViewAdapter = new PosterListViewAdapter();
 
+
         binding.searchLayout.getLayoutParams().height = 0;
         ArrayList kind = new ArrayList();
         kind.add("강의");
@@ -203,7 +204,7 @@ public class PosterListFragment extends Fragment {
                 final PosterEntity item = (PosterEntity) posterFullListViewAdapter.getItem(position);
 
                 addJoinLecture(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저 강의 게시판 가입
-                Toast.makeText(getActivity(), "강의 게시판에 가입합니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "강의 게시판에 가입", Toast.LENGTH_SHORT).show();
 
                 System.out.println(item.getTitle() + "에 가입함?");
 
@@ -241,6 +242,7 @@ public class PosterListFragment extends Fragment {
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("전체 강의 게시판 목록");
                     binding.searchLayout.setLayoutParams(params);
+                    binding.framentPosterListListView.setOnItemClickListener(join_lecture_listener);
 
                 } else {
                     params.height = 0;
@@ -250,6 +252,7 @@ public class PosterListFragment extends Fragment {
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("참여중인 게시판 목록");
                     binding.searchLayout.setLayoutParams(params);
+                    binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
 
                 }
                 /*ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
@@ -267,8 +270,7 @@ public class PosterListFragment extends Fragment {
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목9", "교수님9", 38, "참여 가능 게시판 테스트9"));
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목10", "교수님10", 38, "참여 가능 게시판 테스트10"));*/
 
-                // 전체 강의 게시판에서 수강하는 게시판 가입하는 부분
-                binding.framentPosterListListView.setOnItemClickListener(join_lecture_listener);
+
                 return true;
             default:
                 break;
