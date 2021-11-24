@@ -146,6 +146,7 @@ public class PosterMainFragment extends Fragment {
         int curId = item.getItemId();
         switch (curId) {
             case R.id.post_category:
+                System.out.println("네비바 보려고?");
                 if (drawerLayout.isDrawerOpen(Gravity.RIGHT))
                     drawerLayout.closeDrawer(Gravity.RIGHT);
                 else
