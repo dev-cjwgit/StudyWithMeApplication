@@ -127,6 +127,7 @@ public class PosterListFragment extends Fragment {
                         PosterEntity temp2 = list.get(item);
                         posterListViewAdapter.append(temp2);
                     }
+
                 } else {
                     Log.d("TAG", "No such document");
                 }
