@@ -25,7 +25,8 @@ import appcomponent.MyFragment;
 import kr.ac.koreatech.teamproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+    public static MainActivity context;
+    public ActivityMainBinding binding;
     private Map<String, Fragment> fragmentMap = new HashMap<>();
     private long backKeyPressedTime = 0;
     private Date startTime;
@@ -86,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
+        context = this;
+
         //
         addLecture("객체지향개발론및실습", "김상진", "GoF 패턴을 학습합니다.", 37,"강의");
         addLecture("모바일프로그래밍", "강승우", "모바일 애플리케이션을 디자인하고 구현하는데 필요한 기본 능력과 방법을 습득하는 것을 목표로 한다.", 40,"강의");
