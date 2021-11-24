@@ -76,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentMap.put("study", new StudyListFragment());
         fragmentMap.put("more", new SettingFragment());
         //
+        binding.mainImageViewMain.setImageResource(R.drawable.icon_home);
+        binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
+        binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
+        binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
@@ -129,28 +134,48 @@ public class MainActivity extends AppCompatActivity {
             case R.id.main_imageView_main: {
                 Log.i("C_MainActivity/navigation_onClick", "메인 프래그먼트");
                 fragment = fragmentMap.get("main");
+                binding.mainImageViewMain.setImageResource(R.drawable.icon_home);
+                binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
+                binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
+                binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
                 break;
             }
 
             case R.id.main_imageView_poster: {
                 Log.i("C_MainActivity/navigation_onClick", "게시판 프래그먼트");
                 fragment = fragmentMap.get("poster");
+                binding.mainImageViewMain.setImageResource(R.drawable.icon_home_gray);
+                binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject);
+                binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
+                binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
                 break;
             }
 
             case R.id.main_imageView_study: {
                 Log.i("C_MainActivity/navigation_onClick", "스터디 프래그먼트");
                 fragment = fragmentMap.get("study");
+                binding.mainImageViewMain.setImageResource(R.drawable.icon_home_gray);
+                binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
+                binding.mainImageViewStudy.setImageResource(R.drawable.icon_group);
+                binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
                 break;
             }
 
             case R.id.main_imageView_setting: {
                 Log.i("C_MainActivity/navigation_onClick", "설정 프래그먼트");
                 fragment = fragmentMap.get("more");
+                binding.mainImageViewMain.setImageResource(R.drawable.icon_home_gray);
+                binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
+                binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
+                binding.mainImageViewSetting.setImageResource(R.drawable.icon_more);
                 break;
             }
             default: {
                 Log.i("C_MainActivity/navigation_onClick", "기본 프래그먼트");
+                binding.mainImageViewMain.setImageResource(R.drawable.icon_home);
+                binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
+                binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
+                binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
                 fragment = fragmentMap.get("main");
             }
         }
