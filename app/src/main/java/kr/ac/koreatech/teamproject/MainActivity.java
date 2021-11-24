@@ -36,11 +36,16 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private void addLecture(String title, String profName, String introduce, Integer currPeople, String category) {
+    private void addLecture(String title, String profName, String introduce, String profEmail, String phone, String assistEmail, String lecturePlan, String mainBook, String subBook, String category) {
         Map<String, String> lecture_info = new HashMap<>();
         lecture_info.put("profName", profName);
         lecture_info.put("introduce", introduce);
-        lecture_info.put("currPeople", currPeople.toString());
+        lecture_info.put("profEmail", profEmail);
+        lecture_info.put("phone", phone);
+        lecture_info.put("assistEmail", assistEmail);
+        lecture_info.put("lecturePlan", lecturePlan);
+        lecture_info.put("mainBook", mainBook);
+        lecture_info.put("subBook", subBook);
         lecture_info.put("category", category);
 
         db.collection("server").document("data/lectureList/" + title)
@@ -52,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("TAG", "Error writing document", e);
                 });
 
+        System.out.println("강의게시판&정보생성하게?");
     }
-
 
 
 
@@ -89,22 +94,18 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         context = this;
 
-        //
-//        addLecture("객체지향개발론및실습", "김상진", "GoF 패턴을 학습합니다.", 37,"강의");
-//        addLecture("모바일프로그래밍", "강승우", "모바일 애플리케이션을 디자인하고 구현하는데 필요한 기본 능력과 방법을 습득하는 것을 목표로 한다.", 40,"강의");
-//        addLecture("시스템프로그래밍", "김덕수", "유닉스/리눅스의 기본적인 사용법을 익히고, 시스템 호출과 라이브러리 제작 및 이를 사용한 응용 프로그램과 개발 기법을 학습한다.", 39,"강의");
-//        addLecture("컴퓨터네트워크", "박승철", "TCP/IP 인터넷을 중심으로 컴퓨터 네트워크에 대한 전반적인 기술을 공부한다.", 40,"강의");
-//        addLecture("데이터베이스시스템", "무하마드", "This course is intended to gice students a solid background in databases, with a focus on relational database systems.", 40,"강의");
-//        addLecture("학습자이해와상담", "이지", "본 교과에서는 학습자의 특성 및 상담의 기초를 이해하고 이를 토대로 한 주요 학생지도 및 상담이론에 대해 학습한다.", 25,"강의");
-//        addLecture("C프로그래밍2","조재수","C언어를 이용한 고수준의 프로그램 작성 능력을 배양한다.",30,"강의");
-//        addLecture("컴퓨터활용능력","-","컴퓨터뢀용능력을 함양한다.",70,"자격증");
-//        addLecture("한국사능력검정시험","-","한국사능력을 함양한다.",50,"자격증");
-//        addLecture("e-learning개론","김원섭","본 교과목은 이러닝 코스 설계를 위한 주요 이론 및 원리를 공부하며, 양직의 학습콘텐츠를 설계해 볼 것입니다.", 50,"강의");
-//        addLecture("영어회화","제임스","This course builds learner's knowledge and ability, enabling them to accomplish to things.",30,"강의");
-//        addLecture("창의적사고와글쓰기","정재영","의사소통의 기본 개념과 기법을 익히고 이를 바탕으로 창의적인 문제해결의 전 과정을 학습함으로 대학생활과 직업 생활에 필요한 기초 의사소통능력을 기른다.", 30,"강의");
-//        addLecture("공학수학2","박원우","공학기초 역량과 문제해결 역량을 함양하고자 한다.",35,"강의");
-//        addLecture("정보처리기사","-","정보처리능력을 함양한다.",70,"자격증");
-//        addLecture("보안기사","-","보안관련능력을 함양한다.",40,"자격증");
+        addLecture("모바일프로그래밍", "강승우", "과제 수행을 통한 안드로이드 앱 개발 역량을 기른다","cy0804bamboo@naver.com",
+                "01098678883","cu0000@naver.com","1주차: 과목소개, 안드로이드 앱 개발 개요\n2주차: 사용자 인터페이스 기초\n3주차: 사용자 인터페이스 기초\n4주차: 이벤트 처리\n5주차: 메뉴와 대화상자\n6주차: 액티비티아 인텐트\n7주차: 액티비티 생명주기\n8주차: 파일 처리\n9주차: 어댑터뷰\n10주차: 브로드캐스트 리시버\n11주차: 프로젝트 중간발표",
+                "그림으로 쉽게 설명하는 안드로이드 프로그래밍", "Eclipse를 활용한 안드로이드 프로그래밍","강의"); // 강의목록에 추가
+        addLecture("데이터베이스시스템","무하마드","This course is intened to gice students a solid background in databases.",
+                "v12@naver.com","01012345999","mumu@naver.com","1주차: Introduction to Database Management Systems\n2주차: The Relational Model\n3주차: SQL Server\n4주차: TSQL Functions\n5주차: Stored Procedures\n6주차: TSQL Triggers\n7주차: TSQL Cursors\n8주차: Mid Exam\n9주차: Data Security\n10주차: Transaction Processing and Management\n11주차: Query Processing" +
+                        "\n12주차: JDBC\n13주차: Java Application Development1\n14주차: Java Application Development2\n15주차: Report Building\n16주차: Final Exam","Database Systems","Practical Database Programming with JAVA","강의");
+        addLecture("빅데이터활용","이호","빅데이터관련 기본적인 지식 습득과 활용을 목표로 한다.","hoho@naver.com","010188887777",
+                "hohoassist@naver.com","1주차: 강의소개\n2주차: 4차산업혁과 빅데이터\n3주차: 빅데이터 생성 및 수집\n4주차: 특징 및 사례\n5주차: 분석 및 시각화\n6주차:" +
+                        "빅데이터와 인공지능\n7주차: 선형회귀분석\n8주차: 사례 연구 토론 및 질의응답\n9주차: 의사결정트리\n10주차: 중간고사\n11주차: 비정형데이터 분석 개념 학습 및 실습\n12주차: 멘토링세션\n13주차: 멘토링세션\n14주차: 기말고사\n15주차: 기말고사\n16주차: 기말고사",
+                "자체교재","자체교재","강의");
+        addLecture("한국사능력검정시험","-","한국사능력을 함양합니다.","-","-","-","-","이기적한국사능력검정시험","-","자격증");
+        //addLecture("컴퓨터활용능력검정시험","-","");
     }
 
     @Override

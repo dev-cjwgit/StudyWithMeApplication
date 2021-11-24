@@ -159,7 +159,7 @@ public class PosterListFragment extends Fragment {
         ArrayList kind = new ArrayList();
         kind.add("강의");
         kind.add("자격증");
-        kind.add("기타");
+
         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, kind);
         binding.fragmentPosterListSpiner1.setAdapter(adapter);
         getLectureList();
