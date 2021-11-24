@@ -76,12 +76,13 @@ public class MainActivity extends AppCompatActivity {
         fragmentMap.put("study", new StudyListFragment());
         fragmentMap.put("more", new SettingFragment());
         //
+
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         binding.mainImageViewMain.setImageResource(R.drawable.icon_home);
         binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
         binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
         binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
-
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
