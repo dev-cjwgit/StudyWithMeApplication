@@ -228,16 +228,22 @@ public class StudyListFragment extends Fragment {
                 ViewGroup.LayoutParams params2 = binding.studySearchLayout.getLayoutParams();
                 if (params2.height == 0) {
                     params2.height = 150;
+                    binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
                 } else {
                     params2.height = 0;
+                    studyListViewAdapter.list.clear();
+                    binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
+                    getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
                 }
 
                 ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                 actionBar.setTitle("전체 스터디 그룹 목록");
                 binding.studySearchLayout.setLayoutParams(params2);
 
+                /*//
                 binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
                 getStudyGroupList();
+                //*/
 
 
 //                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디1", "사람1", 38, "참여 가능 스터디 테스트1"));
