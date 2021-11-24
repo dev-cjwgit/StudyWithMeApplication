@@ -97,7 +97,7 @@ public class PosterMainFragment extends Fragment {
         binding = FragmentPosterMainBinding.inflate(getLayoutInflater());
 
         binding.questionAnswerMoveTextView.setOnClickListener(v -> {
-            MyFragment.changeFragment(new PosterQuestionListFragment());
+            MyFragment.changeFragment(new PosterQuestionListFragment(title));
             System.out.println("질의 응답방에 접속하려고?");
         });
 
