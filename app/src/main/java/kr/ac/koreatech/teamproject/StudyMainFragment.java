@@ -46,6 +46,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentStudyMainBinding;
  */
 public class StudyMainFragment extends Fragment {
     private FragmentStudyMainBinding binding;
+    private DrawerLayout drawerLayout_study;
     private List<String> list = new ArrayList<>();
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,6 +58,7 @@ public class StudyMainFragment extends Fragment {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     // 스터디 그룹 탈퇴(이메일, 탈퇴 할 스터디 그룹 이름)
     private void removeJoinStudyGroup(String user_email, String study_group_name) {
         user_email = user_email.replace(".", "-");
@@ -138,6 +140,7 @@ public class StudyMainFragment extends Fragment {
             System.out.println("탈퇴하려고?");
             removeJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(),title); // 유저가 스터디 그룹에 탈퇴
             Toast.makeText(getActivity(),"탈퇴되었습니다.",Toast.LENGTH_SHORT).show();
+            MyFragment.changeFragment(new StudyListFragment());
         });
 
     }
@@ -159,6 +162,8 @@ public class StudyMainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.studymenu, menu);
+        //dwLayout=getActivity().findViewById(R.id.drawerLayout_study_main);
+        drawerLayout_study=getActivity().findViewById(R.id.drawerLayout_study_main);
     }
 
     @Override
@@ -167,8 +172,18 @@ public class StudyMainFragment extends Fragment {
         switch (curId) {
             case R.id.action_online:
                 System.out.println("현활 보려고??");
+                if (drawerLayout_study.isDrawerOpen(Gravity.RIGHT))
+                    drawerLayout_study.closeDrawer(Gravity.RIGHT);
+                else
+                    drawerLayout_study.openDrawer(Gravity.RIGHT);
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
 
-                DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerLayout);
+
+                /*DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerLayout);
                 View btn_setting=getActivity().findViewById(curId);
 
                 btn_setting.setOnClickListener(new View.OnClickListener(){
@@ -183,7 +198,7 @@ public class StudyMainFragment extends Fragment {
             default:
                 break;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);*/
     }
 
 

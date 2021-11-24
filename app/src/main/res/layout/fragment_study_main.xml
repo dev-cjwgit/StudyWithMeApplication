@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="107dp"
         tools:layout_editor_absoluteY="119dp"
-        android:id="@+id/drawerLayout">
+        android:id="@+id/drawerLayout_study_main">
 
                 <LinearLayout
                     android:layout_width="match_parent"
