@@ -7,6 +7,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +15,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import appcomponent.MyFragment;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
@@ -37,6 +44,21 @@ public class PosterMainFragment extends Fragment {
     private String mParam2;
     private String title;
 
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    // 강의 탈퇴(이메일, 탈퇴 할 강의 이름)
+    private void removeJoinLecutre(String user_email, String lecture_name) {
+        user_email = user_email.replace(".", "-");
+        DocumentReference washingtonRef = db.collection("server").document("user/" + user_email + "/joinLecture/");
+        washingtonRef.update("title", FieldValue.arrayRemove(lecture_name))
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully update");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error update document", e);
+                });
+    }
     public PosterMainFragment(String title, boolean back_btn) {
         // Required empty public constructor
         this.title = title;
@@ -82,6 +104,13 @@ public class PosterMainFragment extends Fragment {
         binding.shareInfo.setOnClickListener(v -> {
             MyFragment.changeFragment(new fragment_bulletin_sharing_materials());
             System.out.println("정보 공유에 접속하려고?");
+        });
+
+        // 드로우바 탈퇴 버튼 클릭 이벤트
+        binding.signOutButton.setOnClickListener(v -> {
+            System.out.println("탈퇴하려고?");
+            removeJoinLecutre(firebaseAuth.getCurrentUser().getEmail(),title); // 유저가 강의 게시판 탈퇴
+            Toast.makeText(getActivity(),"탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
         });
 
     }
