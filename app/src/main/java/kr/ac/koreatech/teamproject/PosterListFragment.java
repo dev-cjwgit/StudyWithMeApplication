@@ -61,6 +61,9 @@ public class PosterListFragment extends Fragment {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    private AdapterView.OnItemClickListener join_lecture_listener;
+    private AdapterView.OnItemClickListener enter_lecture_listener;
+
     private Object MenuInflater;
 
     public PosterListFragment() {
@@ -165,6 +168,19 @@ public class PosterListFragment extends Fragment {
         getLectureList();
         getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
 
+        enter_lecture_listener=new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final PosterEntity item = (PosterEntity) posterListViewAdapter.getItem(position);
+                MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
+
+                //텍스트뷰에 출력
+                System.out.println(item.getTitle() + " 에 접속함?");
+            }
+        };
+
+
+
 /*        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍", "강승우", 38, "안드로이드 스튜디오를 이용하여 앱을 만듭니다."));
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "객체지향개발론및실습", "김상진", 42, "객체지향의 5대 원칙 등을 배웁니다."));
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "컴퓨터네트워크", "박승철", 45, "컴퓨터의 OSI 7계층에 대해서 "));
@@ -176,16 +192,20 @@ public class PosterListFragment extends Fragment {
         posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "자바프로그래밍", "김상진", 32, "자바 기초 문법에 대해 학습합니다."));*/
 
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
-        binding.framentPosterListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                final PosterEntity item = (PosterEntity) posterListViewAdapter.getItem(a_position);
-                MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
+        binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
 
-                //텍스트뷰에 출력
-                System.out.println(item.getTitle() + " 에 접속함?");
+        join_lecture_listener=new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final PosterEntity item = (PosterEntity) posterListViewAdapter_2.getItem(position);
+
+                addJoinLecture(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저 강의 게시판 가입
+                Toast.makeText(getActivity(), "강의 게시판에 가입합니다.", Toast.LENGTH_SHORT).show();
+
+                System.out.println(item.getTitle() + "에 가입함?");
+
             }
-        });
+        };
     }
 
     @Override
@@ -215,17 +235,23 @@ public class PosterListFragment extends Fragment {
                 if (params.height == 0) {
                     params.height = 150;
                     binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
+                    ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                    actionBar.setTitle("전체 강의 게시판 목록");
+                    binding.searchLayout.setLayoutParams(params);
 
                 } else {
                     params.height = 0;
                     posterListViewAdapter.list.clear();
                     binding.framentPosterListListView.setAdapter(posterListViewAdapter);
                     getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
-                }
-                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-                actionBar.setTitle("전체 강의 게시판 목록");
-                binding.searchLayout.setLayoutParams(params);
+                    ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                    actionBar.setTitle("참여중인 게시판 목록");
+                    binding.searchLayout.setLayoutParams(params);
 
+                }
+                /*ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle("전체 강의 게시판 목록");
+                binding.searchLayout.setLayoutParams(params);*/
 
 /*                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목1", "교수님1", 38, "참여 가능 게시판 테스트1"));
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목2", "교수님2", 38, "참여 가능 게시판 테스트2"));
@@ -239,17 +265,7 @@ public class PosterListFragment extends Fragment {
                 posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목10", "교수님10", 38, "참여 가능 게시판 테스트10"));*/
 
                 // 전체 강의 게시판에서 수강하는 게시판 가입하는 부분
-                binding.framentPosterListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> a_parent, View view, int a_position, long a_long) {
-                        final PosterEntity item = (PosterEntity) posterListViewAdapter_2.getItem(a_position);
-
-                        addJoinLecture(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저 강의 게시판 가입
-                        Toast.makeText(getActivity(), "강의 게시판에 가입합니다.", Toast.LENGTH_SHORT).show();
-
-                        System.out.println(item.getTitle() + "에 가입함?");
-                    }
-                });
+                binding.framentPosterListListView.setOnItemClickListener(join_lecture_listener);
                 return true;
             default:
                 break;

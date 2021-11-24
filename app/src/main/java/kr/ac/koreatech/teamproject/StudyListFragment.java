@@ -198,12 +198,6 @@ public class StudyListFragment extends Fragment {
                 System.out.println(item.getTitle() + " 에 가입함?");
             }
         };
-        /*binding.fragmentStudyListListView.setOnClickListener(v->{
-            Intent intent=new Intent(getActivity(),joinDialogActivity.class);
-            startActivity(intent);
-        });*/
-        //
-
 
         binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
             MainActivity main = ((MainActivity) getActivity());

@@ -96,6 +96,7 @@ public class SettingFragment extends Fragment {
     }
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     public static String userName;
     private void getUserInfo(String user_email) {
         user_email = user_email.replace(".", "-");

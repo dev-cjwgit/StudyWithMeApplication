@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         context = this;
-//
+
 //        addStudyGroup("천체연구모임방", "카운팅스타", "천체를 관측하고 사랑하는 모임입니다.", 2); // 스터디그룹목록에 추가
 //        addStudyGroup("모프공부방", "노예", "모바일프로그래밍 강승우 교수님 공부하는 공부방", 3); // 스터디그룹목록에 추가
 //        addStudyGroup("컴활1급 공부하자", "대한건아", "컴퓨터활용능력1급을 공부하는 모임입니다.", 4); // 스터디그룹목록에 추가
