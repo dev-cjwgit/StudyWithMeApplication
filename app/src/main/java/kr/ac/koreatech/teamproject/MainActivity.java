@@ -36,11 +36,16 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private void addLecture(String title, String profName, String introduce, Integer currPeople, String category) {
+    private void addLecture(String title, String profName, String introduce, String profEmail, String phone, String assistEmail, String lecturePlan, String mainBook, String subBook, String category) {
         Map<String, String> lecture_info = new HashMap<>();
         lecture_info.put("profName", profName);
         lecture_info.put("introduce", introduce);
-        lecture_info.put("currPeople", currPeople.toString());
+        lecture_info.put("profEmail", profEmail);
+        lecture_info.put("phone", phone);
+        lecture_info.put("assistEmail", assistEmail);
+        lecture_info.put("lecturePlan", lecturePlan);
+        lecture_info.put("mainBook", mainBook);
+        lecture_info.put("subBook", subBook);
         lecture_info.put("category", category);
 
         db.collection("server").document("data/lectureList/" + title)
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("TAG", "Error writing document", e);
                 });
 
+        System.out.println("강의게시판&정보생성하게?");
     }
 
 
@@ -105,6 +111,19 @@ public class MainActivity extends AppCompatActivity {
 //        addLecture("공학수학2","박원우","공학기초 역량과 문제해결 역량을 함양하고자 한다.",35,"강의");
 //        addLecture("정보처리기사","-","정보처리능력을 함양한다.",70,"자격증");
 //        addLecture("보안기사","-","보안관련능력을 함양한다.",40,"자격증");
+
+        addLecture("모바일프로그래밍", "강승우", "과제 수행을 통한 안드로이드 앱 개발 역량을 기른다","cy0804bamboo@naver.com",
+                "01098678883","cu0000@naver.com","1주차: 과목소개, 안드로이드 앱 개발 개요\n2주차: 사용자 인터페이스 기초\n3주차: 사용자 인터페이스 기초\n4주차: 이벤트 처리\n5주차: 메뉴와 대화상자\n6주차: 액티비티아 인텐트\n7주차: 액티비티 생명주기\n8주차: 파일 처리\n9주차: 어댑터뷰\n10주차: 브로드캐스트 리시버\n11주차: 프로젝트 중간발표",
+                "그림으로 쉽게 설명하는 안드로이드 프로그래밍", "Eclipse를 활용한 안드로이드 프로그래밍","강의"); // 강의목록에 추가
+        addLecture("데이터베이스시스템","무하마드","This course is intened to gice students a solid background in databases.",
+                "v12@naver.com","01012345999","mumu@naver.com","1주차: Introduction to Database Management Systems\n2주차: The Relational Model\n3주차: SQL Server\n4주차: TSQL Functions\n5주차: Stored Procedures\n6주차: TSQL Triggers\n7주차: TSQL Cursors\n8주차: Mid Exam\n9주차: Data Security\n10주차: Transaction Processing and Management\n11주차: Query Processing" +
+                        "\n12주차: JDBC\n13주차: Java Application Development1\n14주차: Java Application Development2\n15주차: Report Building\n16주차: Final Exam","Database Systems","Practical Database Programming with JAVA","강의");
+        addLecture("빅데이터활용","이호","빅데이터관련 기본적인 지식 습득과 활용을 목표로 한다.","hoho@naver.com","010188887777",
+                "hohoassist@naver.com","1주차: 강의소개\n2주차: 4차산업혁과 빅데이터\n3주차: 빅데이터 생성 및 수집\n4주차: 특징 및 사례\n5주차: 분석 및 시각화\n6주차:" +
+                        "빅데이터와 인공지능\n7주차: 선형회귀분석\n8주차: 사례 연구 토론 및 질의응답\n9주차: 의사결정트리\n10주차: 중간고사\n11주차: 비정형데이터 분석 개념 학습 및 실습\n12주차: 멘토링세션\n13주차: 멘토링세션\n14주차: 기말고사\n15주차: 기말고사\n16주차: 기말고사",
+                "자체교재","자체교재","강의");
+        addLecture("한국사능력검정시험","-","한국사능력을 함양합니다.","-","-","-","-","이기적한국사능력검정시험","-","자격증");
+        //addLecture("컴퓨터활용능력검정시험","-","");
     }
 
     @Override
