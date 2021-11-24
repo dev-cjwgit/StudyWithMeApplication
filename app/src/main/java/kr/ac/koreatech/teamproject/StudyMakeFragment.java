@@ -35,7 +35,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentStudyMakeBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StudyJoinFragment#newInstance} factory method to
+ * Use the {@link StudyMakeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class StudyMakeFragment extends Fragment {
@@ -101,8 +101,8 @@ public class StudyMakeFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment StudyJoinFragment.
      */
-    public static StudyJoinFragment newInstance(String param1, String param2) {
-        StudyJoinFragment fragment = new StudyJoinFragment();
+    public static StudyMakeFragment newInstance(String param1, String param2) {
+        StudyMakeFragment fragment = new StudyMakeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
