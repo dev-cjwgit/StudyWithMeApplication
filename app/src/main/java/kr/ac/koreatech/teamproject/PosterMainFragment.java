@@ -97,7 +97,7 @@ public class PosterMainFragment extends Fragment {
         });
 
         binding.shareInfo.setOnClickListener(v -> {
-            MyFragment.changeFragment(new fragment_bulletin_sharing_materials());
+            MyFragment.changeFragment(new fragment_bulletin_sharing_materials(title));
             System.out.println("정보 공유에 접속하려고?");
         });
 
