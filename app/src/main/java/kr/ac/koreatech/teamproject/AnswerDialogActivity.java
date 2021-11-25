@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -52,7 +53,7 @@ public class AnswerDialogActivity extends Activity {
                 "" + binding.answerActivityBodyEditText.getText().toString());
         addPosterQnAAnswer(poster_title, qnaInfo,
                 binding.answerActivityTitleEditText.getText().toString(),
-                SettingFragment.userName,
+                MainFragment.userName,
                 binding.answerActivityBodyEditText.getText().toString(),
                 sDate2.format(new Date())
         );
@@ -69,5 +70,4 @@ public class AnswerDialogActivity extends Activity {
                     Log.w("TAG", "Error update document", e);
                 });
     }
-
 }

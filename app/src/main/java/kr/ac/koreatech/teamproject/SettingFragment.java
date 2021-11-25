@@ -31,6 +31,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentSettingBinding;
  * create an instance of this fragment.
  */
 public class SettingFragment extends Fragment {
+    private static String userName;
     private FragmentSettingBinding binding;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,9 +81,7 @@ public class SettingFragment extends Fragment {
             Intent intent = new Intent(getContext(), LoginActivity.class);
             startActivity(intent);
         });
-
-        //------------------------------------------------------------
-        getUserInfo(firebaseAuth.getCurrentUser().getEmail());
+        binding.userName.setText(MainFragment.userName);
     }
 
     @Override
@@ -95,26 +94,4 @@ public class SettingFragment extends Fragment {
         return binding.getRoot();
     }
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    public static String userName;
-    private void getUserInfo(String user_email) {
-        user_email = user_email.replace(".", "-");
-
-        DocumentReference docRef = db.collection("server").document("user/" + user_email + "/info/");
-        docRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
-                    binding.userName.setText(document.getData().get("name").toString());
-                    userName=document.getData().get("name").toString();
-                } else {
-                    Log.d("TAG", "No such document");
-                }
-            } else {
-                Log.d("TAG", "get failed with ", task.getException());
-            }
-        });
-    }
 }

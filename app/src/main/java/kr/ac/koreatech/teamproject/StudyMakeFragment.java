@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -122,7 +124,7 @@ public class StudyMakeFragment extends Fragment {
         //생성버튼 클릭 이벤트
         binding.btnStudyGroupMake.setOnClickListener(v->{
             System.out.println("생성하려고?");
-            addStudyGroup(binding.studyGroupEdittext.getText().toString(),SettingFragment.userName, binding.groupIntroduce.getText().toString(), 1); // 스터디그룹목록에 추가
+            addStudyGroup(binding.studyGroupEdittext.getText().toString(),StudyMakeFragment.userName, binding.groupIntroduce.getText().toString(), 1); // 스터디그룹목록에 추가
             Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
         });
 
@@ -141,4 +143,23 @@ public class StudyMakeFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private static String userName;
+    private void getUserInfo(String user_email) {
+        user_email = user_email.replace(".", "-");
+
+        DocumentReference docRef = db.collection("server").document("user/" + user_email + "/info/");
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    userName=document.getData().get("name").toString();
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
+    }
 }

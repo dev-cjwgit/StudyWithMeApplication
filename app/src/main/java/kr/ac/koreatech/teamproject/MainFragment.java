@@ -17,15 +17,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import adapter.FrontRecyclerViewAdapter;
 import entity.FrontPoster;
 import entity.PosterEntity;
+import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 import service.TimerService;
 
@@ -37,7 +43,7 @@ import service.TimerService;
 public class MainFragment extends Fragment {
     private FragmentMainBinding binding;
     private Date startTime = new Date();
-
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private BroadcastReceiver studyTimeRecvier;
 
     private FrontRecyclerViewAdapter m1Adapter;
@@ -50,6 +56,8 @@ public class MainFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    ArrayList<String> join_1 = new ArrayList<String>();
 
     public MainFragment() {
         // Required empty public constructor
@@ -168,6 +176,12 @@ service cloud.firestore {
         // init Adapter
         m1Adapter = new FrontRecyclerViewAdapter();
         m2Adapter = new FrontRecyclerViewAdapter();
+
+        //--------------------------------------------------------------
+//        data2.add(new FrontPoster(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), );
+
+        //--------------------------------------------------------------
+
         // set Data
         m1Adapter.setData(data1);
         m2Adapter.setData(data2);
@@ -176,6 +190,9 @@ service cloud.firestore {
         binding.fragmentMainPosterListView.setAdapter(m1Adapter);
 
         binding.fragmentMainStudyListView.setAdapter(m2Adapter);
+
+        getUserInfo(firebaseAuth.getCurrentUser().getEmail());
+
     }
 
 
@@ -197,4 +214,28 @@ service cloud.firestore {
         return binding.getRoot();
     }
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public static String userName;
+    private void getUserInfo(String user_email) {
+        user_email = user_email.replace(".", "-");
+
+        DocumentReference docRef = db.collection("server").document("user/" + user_email + "/info/");
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    userName=document.getData().get("name").toString();
+
+                    //--------------------------------------------------------------------
+
+
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
+    }
 }

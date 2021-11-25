@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -52,7 +53,7 @@ public class QnaDialogActivity extends Activity {
 
         createPosterQnA(title,
                 binding.qnaActivityTitleEditText.getText().toString(),
-                SettingFragment.userName,
+                MainFragment.userName,
                 binding.qnaActivityBodyEditText.getText().toString(),
                 sDate2.format(new Date()));
     }
