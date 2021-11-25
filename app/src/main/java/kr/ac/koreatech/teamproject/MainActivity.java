@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("강의게시판&정보생성하게?");
     }*/
 
-
-
-
 //    private Button mbtnPlay, mbtnStop;
 //    private TextView mtimerTextView;
 //    private Thread timeThread = null;
