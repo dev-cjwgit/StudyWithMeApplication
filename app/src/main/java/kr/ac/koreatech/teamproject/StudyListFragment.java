@@ -113,10 +113,6 @@ public class StudyListFragment extends Fragment {
         });
     }
 
-    //->기존 코
-    /*//private StudyRecyclerViewAdapter m1Adapter;
-    private LinearLayoutManager m1LayoutManager;*/
-
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -168,24 +164,15 @@ public class StudyListFragment extends Fragment {
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 final StudyEntity item = (StudyEntity) studyListViewAdapter.getItem(a_position);
                 MyFragment.changeFragment(new StudyMainFragment(item.getTitle(), true));
-
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 접속함?");
             }
         };
 
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"천체연구모임","스타스타",4,"밤하늘을 관측하는 스터디 모임입니다."));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"KafkaS", "백엔드", 7, "백엔드의 카프카에 대해서 공부하는 모임방입니다."));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"아Do!이노", "인호", 12, "아두이노에 대해 공부하는 스터디입니다~"));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"라즈베리PI", "3.14", 3, "라즈베리파이의에 대해서 연구합니다."));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"신박한아이디어", "노력노력", 6, "기가막히다고 생각되는 아이디어를 공유하는 모임"));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"한기대파이썬공부방", "helloPhyton", 23, "파이썬 기초에 대해서 모임하여 공부합니다."));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"일터학습개론", "김영은", 38, "일 또는 일 밖에서 일어나는 학습에 대해서 배웁니다."));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"정보처리기사가 갖고싶어요", "정처기", 17, "전전인 정처기에 대해서 공부할거예용~!"));
-//        studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"컴활1급 아자아자!", "컴활짱", 32, "요즘 시대에 도움이 되는 컴활 1급을 위한 스터디 모임입니다."));
-        //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
+        //리스트뷰의 아이템을 클릭시 스터디 그룹에 들어감(enter)
         binding.fragmentStudyListListView.setOnItemClickListener(enter_Listener);
 
+        //리스트뷰 선택시 -> 가입(가입 리스너 설정)
         joinListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
@@ -193,14 +180,12 @@ public class StudyListFragment extends Fragment {
 
                 addJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저가 스터디 그룹에 가입
                 Toast.makeText(getActivity(), "스터디 그룹에 가입합니다.", Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(getActivity(), JoinDialogActivity.class);
-                //startActivity(intent);
-
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 가입함?");
             }
         };
 
+        //스터디 그룹 생성 버튼 누르면 발생하는 이벤트 처리
         binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
             MainActivity main = ((MainActivity) getActivity());
             FragmentManager fm = main.getSupportFragmentManager();
@@ -247,7 +232,7 @@ public class StudyListFragment extends Fragment {
             case R.id.action_studyList_search:
                 ViewGroup.LayoutParams params2 = binding.studySearchLayout.getLayoutParams();
                 if (params2.height == 0) {
-                    params2.height = 150;
+                    params2.height = 150; //검색창 열림
                     binding.fragmentStudyListListView.setAdapter(study_FullListViewAdapter);
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("전체 스터디 그룹 목록");
@@ -255,7 +240,7 @@ public class StudyListFragment extends Fragment {
                     binding.fragmentStudyListListView.setOnItemClickListener(joinListener);
 
                 } else {
-                    params2.height = 0;
+                    params2.height = 0; //검색창 닫힘
                     studyListViewAdapter.list.clear();
                     binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
                     getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
@@ -265,26 +250,7 @@ public class StudyListFragment extends Fragment {
                     binding.fragmentStudyListListView.setOnItemClickListener(enter_Listener);
                 }
 
-                /*ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-                actionBar.setTitle("전체 스터디 그룹 목록");
-                binding.studySearchLayout.setLayoutParams(params2);*/
-
-                /*//
-                binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
-                getStudyGroupList();
-                //*/
-
-//                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디1", "사람1", 38, "참여 가능 스터디 테스트1"));
-//                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디2", "사람2", 38, "참여 가능 스터디 테스트2"));
-//                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디3", "사람3", 38, "참여 가능 스터디 테스트3"));
-//                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디4", "사람4", 38, "참여 가능 스터디 테스트4"));
-//                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디5", "사람5", 38, "참여 가능 스터디 테스트5"));
-//                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디6", "사람6", 38, "참여 가능 스터디 테스트6"));
-//                studyListViewAdapter_2.append(new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스터디7", "사람7", 38, "참여 가능 스터디 테스트7"));
-
                 //전체 게시판에서 스터디 그룹 가입하는 부분
-
-
                 return true;
             default:
                 break;

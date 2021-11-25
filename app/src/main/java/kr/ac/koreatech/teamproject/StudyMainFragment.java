@@ -181,24 +181,6 @@ public class StudyMainFragment extends Fragment {
                 break;
         }
         return super.onOptionsItemSelected(item);
-
-
-                /*DrawerLayout drawerLayout=getActivity().findViewById(R.id.drawerLayout);
-                View btn_setting=getActivity().findViewById(curId);
-
-                btn_setting.setOnClickListener(new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View view) {
-                        drawerLayout.openDrawer(Gravity.RIGHT);
-                    }
-                });
-
-                return true;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);*/
     }
 
 
