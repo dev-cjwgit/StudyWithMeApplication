@@ -7,10 +7,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +37,8 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterQuestionMainBinding
 public class PosterQuestionMainFragment extends Fragment {
     private FragmentPosterQuestionMainBinding binding;
     private List<String> list = new ArrayList<>();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     private PosterQuestionAnswerListViewAdapter posterQuestionAnswerListViewAdapter;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,10 +47,12 @@ public class PosterQuestionMainFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String title;
 
-    public PosterQuestionMainFragment(PosterQuestionEntity entity) {
+    public PosterQuestionMainFragment(PosterQuestionEntity entity, String title) {
         // Required empty public constructor
         this.entity = entity;
+        this.title = title;
     }
 
     @Override
@@ -65,10 +74,12 @@ public class PosterQuestionMainFragment extends Fragment {
         binding.answerTextView.setOnClickListener(v -> {
             System.out.println("답변 달꺼지?");
             Intent intent = new Intent(getActivity(), AnswerDialogActivity.class);
+            intent.putExtra("poster_title", title);
+            String temp;
+            temp = entity.getTitle() + "|" + entity.getName() + "|" + sDate2.format(entity.getDate());
+            intent.putExtra("qnaInfo", temp);
             startActivity(intent);
         });
-
-
 
         posterQuestionAnswerListViewAdapter = new PosterQuestionAnswerListViewAdapter();
 
@@ -85,7 +96,10 @@ public class PosterQuestionMainFragment extends Fragment {
 //                            "마지막으로도 안되면 라즈베리파이를 재 구매하시는 최악의 방법까지 생각해보셔야 할 것 같아요 ㅠ"));
 //
 //        }
+
+        getPosterQnAAnswer(title, entity.getTitle() + "|" + entity.getName() + "|" + sDate2.format(entity.getDate()));
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,4 +110,38 @@ public class PosterQuestionMainFragment extends Fragment {
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
+
+    private void getPosterQnAAnswer(String poster_title, String qnainfo) {
+        DocumentReference docRef = db.collection("QnA" + poster_title).document(qnainfo);
+
+        SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    ArrayList<String> answerList = (ArrayList<String>) document.getData().get("list");
+                    for (String answer : answerList) {
+                        String[] info = answer.replace("|", "@").split("@");
+                        try {
+                            posterQuestionAnswerListViewAdapter.append(new PosterQuestionAnswerEntity(info[0],
+                                    info[1],
+                                    transFormat.parse(info[3]),
+                                    info[2]
+                            ));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("");
+                    }
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
+    }
+
+
 }
