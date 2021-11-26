@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.function.ObjIntConsumer;
 
 import android.view.Menu;
@@ -186,24 +188,24 @@ public class PosterListFragment extends Fragment {
         }
         binding = FragmentPosterListBinding.inflate(getLayoutInflater());
         posterListViewAdapter = new PosterListViewAdapter();
-        binding.framentPosterListListView.setAdapter(posterListViewAdapter);
         posterFullListViewAdapter = new PosterListViewAdapter();
 
         posterListViewAdapter_License.clear();
-        //posterListViewAdapter.clear();
         posterFullListViewAdapter.clear();
         posterListViewAdapter_Lecture.clear();
+        getLectureList();
 
 
         binding.searchLayout.getLayoutParams().height = 0;
         ArrayList kind = new ArrayList();
+        kind.add("전체");
         kind.add("강의");
         kind.add("자격증");
 
         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, kind);
         binding.fragmentPosterListSpiner1.setAdapter(adapter);
-        getLectureList();
-        getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
+
+        //getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
 
         enter_lecture_listener=new AdapterView.OnItemClickListener() {
             @Override
@@ -247,12 +249,24 @@ public class PosterListFragment extends Fragment {
             }
         };
 
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() { // schedule: 특정한 시간에 원하는 작업 수행, 이거 인자가 어떻게 되는 건가요?
+                getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
+
+            }
+        }, 1500); // long delay, long period, 지정한 시간부터 일정 간격(period)로 지정한 작업(tast)수
+
         binding.fragmentPosterListSpiner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String text=binding.fragmentPosterListSpiner1.getSelectedItem().toString();
                 if(b==true){
-                    String text=binding.fragmentPosterListSpiner1.getSelectedItem().toString();
                     switch(text){
+                        case("전체"):
+                            binding.framentPosterListListView.setAdapter(posterFullListViewAdapter);
+                            break;
                         case("강의"):
                             binding.framentPosterListListView.setAdapter(posterListViewAdapter_Lecture);
                             break;
@@ -262,16 +276,15 @@ public class PosterListFragment extends Fragment {
                         default:
                             break;
                     }
+                }else{
+                    b=true;
+                    binding.fragmentPosterListSpiner1.setSelection(0);
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
-
         getLectureList();
     }
 
@@ -316,13 +329,11 @@ public class PosterListFragment extends Fragment {
                     actionBar.setTitle("참여중인 게시판 목록");
                     binding.searchLayout.setLayoutParams(params);
                     binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
-
                 }
                 return true;
             default:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
