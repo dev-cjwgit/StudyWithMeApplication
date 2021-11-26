@@ -40,18 +40,19 @@ import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
 public class StudyListFragment extends Fragment {
     private FragmentStudyListBinding binding;
     private StudyListViewAdapter studyListViewAdapter; //참여중인 스터디 그룹 목록?
-    private StudyListViewAdapter studyListViewAdapter_Lecture =new StudyListViewAdapter(); //강의 카테고리 스터디 그룹
-    private StudyListViewAdapter studyListViewAdapter_License =new StudyListViewAdapter(); //자격증 카테고리 스터디 그룹
-    private StudyListViewAdapter studyListViewAdapter_ETC =new StudyListViewAdapter(); //기타 카테고리 스터디 그룹
+    private StudyListViewAdapter studyListViewAdapter_Lecture = new StudyListViewAdapter(); //강의 카테고리 스터디 그룹
+    private StudyListViewAdapter studyListViewAdapter_License = new StudyListViewAdapter(); //자격증 카테고리 스터디 그룹
+    private StudyListViewAdapter studyListViewAdapter_ETC = new StudyListViewAdapter(); //기타 카테고리 스터디 그룹
     private StudyListViewAdapter study_FullListViewAdapter; //전체 스터디 그룹 목록
     public static Map<String, StudyEntity> list = new HashMap<>();
-    public boolean a=false;
+    public boolean a = false;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private AdapterView.OnItemClickListener joinListener;
     private AdapterView.OnItemClickListener enter_Listener;
+    private AdapterView.OnItemSelectedListener spinnerSelectedListener;
 
 
     // 모든 스터디 그룹에 대한 상세 정보 목록 가져오기
@@ -65,13 +66,13 @@ public class StudyListFragment extends Fragment {
                             StudyEntity temp = new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), document.getId(), document.getData().get("nickname").toString(), Integer.parseInt(document.getData().get("currPeople").toString()), document.getData().get("introduce").toString());
                             study_FullListViewAdapter.append(temp);
                             list.put(document.getId(), temp);
-                            if(document.getData().get("category").toString().equals("강의")){
+                            if (document.getData().get("category").toString().equals("강의")) {
                                 studyListViewAdapter_Lecture.append(temp);
                             }
-                            if(document.getData().get("category").toString().equals("자격증")) {
+                            if (document.getData().get("category").toString().equals("자격증")) {
                                 studyListViewAdapter_License.append(temp);
                             }
-                            if(document.getData().get("category").toString().equals("기타")){
+                            if (document.getData().get("category").toString().equals("기타")) {
                                 studyListViewAdapter_ETC.append(temp);
                             }
                         }
@@ -137,16 +138,18 @@ public class StudyListFragment extends Fragment {
         // Required empty public constructor
         this.back_btn = back_btn;
     }
+
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
-        binding.fragmentStudyListSpinner.setEnabled(false);
+        spinnerSelectedListener = null;
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        a=false;
+        a = false;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -214,38 +217,39 @@ public class StudyListFragment extends Fragment {
 
             }
         }, 1500); // long delay, long period, 지정한 시간부터 일정 간격(period)로 지정한 작업(tast)수
-
-        //카테고리 누르면 카테고리 별로 리스트 나뉨
-        binding.fragmentStudyListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //AdapterView.OnItemSelectedListener spinnerSelectedListener
+        spinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(a==true){
-                    String text=binding.fragmentStudyListSpinner.getSelectedItem().toString();
-                    switch(text){
-                        case("전체"):
+                if (a == true) {
+                    String text = binding.fragmentStudyListSpinner.getSelectedItem().toString();
+                    switch (text) {
+                        case ("전체"):
                             binding.fragmentStudyListListView.setAdapter(study_FullListViewAdapter);
                             break;
-                        case("강의"):
+                        case ("강의"):
                             binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_Lecture);
                             break;
-                        case("자격증"):
+                        case ("자격증"):
                             binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_License);
                             break;
-                        case("기타"):
+                        case ("기타"):
                             binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_ETC);
                             break;
                     }
-                }
-                else{
-                    a=true;
+                } else {
+                    a = true;
+                    binding.fragmentStudyListSpinner.setSelection(0);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
-        binding.fragmentStudyListSpinner.setEnabled(true);
+        };
+        //카테고리 누르면 카테고리 별로 리스트 나뉨
+        binding.fragmentStudyListSpinner.setOnItemSelectedListener(spinnerSelectedListener);
     }
 
     @Override
