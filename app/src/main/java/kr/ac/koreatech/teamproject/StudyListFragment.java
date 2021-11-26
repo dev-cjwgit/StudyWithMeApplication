@@ -2,7 +2,6 @@ package kr.ac.koreatech.teamproject;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.content.Intent;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
@@ -28,7 +27,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -41,11 +39,10 @@ import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
 
 public class StudyListFragment extends Fragment {
     private FragmentStudyListBinding binding;
-    private StudyListViewAdapter studyListViewAdapter;
-    private StudyListViewAdapter studyListViewAdapter_2=new StudyListViewAdapter();
-    //강의 카테고리 스터디 그룹
-    private StudyListViewAdapter studyListViewAdapter_3=new StudyListViewAdapter();
-    //게시판 카테고리 스터디 그룹
+    private StudyListViewAdapter studyListViewAdapter; //참여중인 스터디 그룹 목록?
+    private StudyListViewAdapter studyListViewAdapter_Lecture =new StudyListViewAdapter(); //강의 카테고리 스터디 그룹
+    private StudyListViewAdapter studyListViewAdapter_License =new StudyListViewAdapter(); //자격증 카테고리 스터디 그룹
+    private StudyListViewAdapter studyListViewAdapter_ETC =new StudyListViewAdapter(); //기타 카테고리 스터디 그룹
     private StudyListViewAdapter study_FullListViewAdapter; //전체 스터디 그룹 목록
     public static Map<String, StudyEntity> list = new HashMap<>();
     public boolean a=false;
@@ -69,10 +66,13 @@ public class StudyListFragment extends Fragment {
                             study_FullListViewAdapter.append(temp);
                             list.put(document.getId(), temp);
                             if(document.getData().get("category").toString().equals("강의")){
-                                studyListViewAdapter_2.append(temp);
+                                studyListViewAdapter_Lecture.append(temp);
                             }
-                            if(document.getData().get("category").toString().equals("자격증")){
-                                studyListViewAdapter_3.append(temp);
+                            if(document.getData().get("category").toString().equals("자격증")) {
+                                studyListViewAdapter_License.append(temp);
+                            }
+                            if(document.getData().get("category").toString().equals("기타")){
+                                studyListViewAdapter_ETC.append(temp);
                             }
                         }
                     } else {
@@ -98,6 +98,7 @@ public class StudyListFragment extends Fragment {
 
     // 유저가 가입 중인 스터디 그룹 목록(상세) 가져오기(이메일)
     private void getJoinStudyGroupList(String user_email) {
+        //studyListViewAdapter.list.clear();
         user_email = user_email.replace(".", "-");
 
         DocumentReference docRef = db.collection("server").document("user/" + user_email + "/joinStudyGroup/");
@@ -136,7 +137,11 @@ public class StudyListFragment extends Fragment {
         // Required empty public constructor
         this.back_btn = back_btn;
     }
-
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        binding.fragmentStudyListSpinner.setEnabled(false);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -149,6 +154,10 @@ public class StudyListFragment extends Fragment {
         binding = FragmentStudyListBinding.inflate(getLayoutInflater());
         studyListViewAdapter = new StudyListViewAdapter();
         study_FullListViewAdapter = new StudyListViewAdapter();
+        study_FullListViewAdapter.clear();
+        studyListViewAdapter_ETC.clear();
+        studyListViewAdapter_Lecture.clear();
+        studyListViewAdapter_License.clear();
         getStudyGroupList();
 
         binding.studySearchLayout.getLayoutParams().height = 0;
@@ -217,24 +226,26 @@ public class StudyListFragment extends Fragment {
                             binding.fragmentStudyListListView.setAdapter(study_FullListViewAdapter);
                             break;
                         case("강의"):
-                            binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
+                            binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_Lecture);
                             break;
                         case("자격증"):
-                            binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_3);
+                            binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_License);
+                            break;
+                        case("기타"):
+                            binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_ETC);
                             break;
                     }
                 }
                 else{
                     a=true;
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
+        binding.fragmentStudyListSpinner.setEnabled(true);
     }
 
     @Override
@@ -280,7 +291,6 @@ public class StudyListFragment extends Fragment {
                     binding.fragmentStudyListListView.setOnItemClickListener(enter_Listener);
                 }
 
-                //전체 게시판에서 스터디 그룹 가입하는 부분
                 return true;
             default:
                 break;

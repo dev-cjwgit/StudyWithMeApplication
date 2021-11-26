@@ -41,10 +41,10 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
  */
 public class PosterListFragment extends Fragment {
     private FragmentPosterListBinding binding;
-    private PosterListViewAdapter posterListViewAdapter;
+    private PosterListViewAdapter posterListViewAdapter; //참여중인 게시판 목록?
     private PosterListViewAdapter posterFullListViewAdapter; //전체 게시판 목록
-    private PosterListViewAdapter posterListViewAdapter_2=new PosterListViewAdapter();
-    private PosterListViewAdapter posterListViewAdapter_3=new PosterListViewAdapter();
+    private PosterListViewAdapter posterListViewAdapter_Lecture =new PosterListViewAdapter(); //강의 카테고리 게시판
+    private PosterListViewAdapter posterListViewAdapter_License =new PosterListViewAdapter(); //자격증 카테고리 게시판
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -55,6 +55,8 @@ public class PosterListFragment extends Fragment {
     private String mParam2;
 
     public static Map<String, PosterEntity> list = new HashMap<>();
+
+    public boolean b=false;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -96,10 +98,10 @@ public class PosterListFragment extends Fragment {
                             posterFullListViewAdapter.append(entity1);
                             list.put(document.getId(),entity1);
                             if(document.getData().get("category").toString().equals("강의")){
-                                posterListViewAdapter_2.append(entity1);
+                                posterListViewAdapter_Lecture.append(entity1);
                             }
                             if(document.getData().get("category").toString().equals("자격증")){
-                                posterListViewAdapter_3.append(entity1);
+                                posterListViewAdapter_License.append(entity1);
                             }
                         }
                     } else {
@@ -159,6 +161,7 @@ public class PosterListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        b=false;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -190,18 +193,6 @@ public class PosterListFragment extends Fragment {
             }
         };
 
-
-
-/*        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍", "강승우", 38, "안드로이드 스튜디오를 이용하여 앱을 만듭니다."));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "객체지향개발론및실습", "김상진", 42, "객체지향의 5대 원칙 등을 배웁니다."));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "컴퓨터네트워크", "박승철", 45, "컴퓨터의 OSI 7계층에 대해서 "));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "IoT개론및실습", "강승우", 23, "라즈베리파이의 GPIO에 대해서 학습합니다."));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "공학설계", "조태훈", 6, "졸업설계를 위한 아이디어를 구상합니다."));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "스크립트프로그래밍", "한연희", 40, "파이썬의 기초 문법을 배웁니다."));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "일터학습개론", "김영은", 38, "일 또는 일 밖에서 일어나는 학습에 대해서 배웁니다."));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "소프트웨어공학", "김승희", 17, "설계전략, 모델링등에 대해서 배웁니다."));
-        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "자바프로그래밍", "김상진", 32, "자바 기초 문법에 대해 학습합니다."));*/
-
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
         binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
 
@@ -221,17 +212,20 @@ public class PosterListFragment extends Fragment {
         binding.fragmentPosterListSpiner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String text=binding.fragmentPosterListSpiner1.getSelectedItem().toString();
-                switch(text){
-                    case("강의"):
-                        binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
-                        break;
-                    case("자격증"):
-                        binding.framentPosterListListView.setAdapter(posterListViewAdapter_3);
-                        break;
-                    default:
-                        break;
+                if(b==true){
+                    String text=binding.fragmentPosterListSpiner1.getSelectedItem().toString();
+                    switch(text){
+                        case("강의"):
+                            binding.framentPosterListListView.setAdapter(posterListViewAdapter_Lecture);
+                            break;
+                        case("자격증"):
+                            binding.framentPosterListListView.setAdapter(posterListViewAdapter_License);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
             }
 
             @Override
