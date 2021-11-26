@@ -66,7 +66,7 @@ public class AnswerSharingDialogActivity extends Activity {
         try {
             addPosterInfoAnswer(poster_title,
                     qnainfo,
-                    SettingFragment.userName,
+                    MainFragment.userName,
                     binding.answerSharingMatDialogBody.getText().toString(),
                     sDate2.format(new Date()));
         } catch (Exception e) {

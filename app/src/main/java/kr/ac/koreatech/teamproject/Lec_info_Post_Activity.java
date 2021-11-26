@@ -50,7 +50,7 @@ public class Lec_info_Post_Activity extends Activity {
                 "" + binding.lecInfoTitleEditText.getText().toString() + "\n" +
                 "" + binding.lecInfoBodyEditText.getText().toString());
         createPosterInfo(title, binding.lecInfoTitleEditText.getText().toString(),
-                SettingFragment.userName,
+                MainFragment.userName,
                 binding.lecInfoBodyEditText.getText().toString(),
                 sDate2.format(new Date()));
     }
