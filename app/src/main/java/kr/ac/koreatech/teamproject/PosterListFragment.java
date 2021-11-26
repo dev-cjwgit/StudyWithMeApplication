@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.ObjIntConsumer;
 
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -63,6 +64,7 @@ public class PosterListFragment extends Fragment {
 
     private AdapterView.OnItemClickListener join_lecture_listener;
     private AdapterView.OnItemClickListener enter_lecture_listener;
+    private AdapterView.OnItemClickListener spinnerSelectedListener_poster;
 
     private Object MenuInflater;
 
@@ -102,14 +104,14 @@ public class PosterListFragment extends Fragment {
                                     document.getData().get("subBook").toString(),
                                     document.getData().get("category").toString());
 
-                                    profName = document.getData().get("profName").toString();
-                                    introduce = document.getData().get("introduce").toString();
-                                    profEmail = document.getData().get("profEmail").toString();
-                                    phone = document.getData().get("phone").toString();
-                                    assistEmail = document.getData().get("assistEmail").toString();
-                                    lecturePlan = document.getData().get("lecturePlan").toString();
-                                    mainBook = document.getData().get("mainBook").toString();
-                                    subBook = document.getData().get("subBook").toString();
+                            profName = document.getData().get("profName").toString();
+                            introduce = document.getData().get("introduce").toString();
+                            profEmail = document.getData().get("profEmail").toString();
+                            phone = document.getData().get("phone").toString();
+                            assistEmail = document.getData().get("assistEmail").toString();
+                            lecturePlan = document.getData().get("lecturePlan").toString();
+                            mainBook = document.getData().get("mainBook").toString();
+                            subBook = document.getData().get("subBook").toString();
 
                             posterFullListViewAdapter.append(entity1);
                             list.put(document.getId(),entity1);
@@ -187,6 +189,11 @@ public class PosterListFragment extends Fragment {
         binding.framentPosterListListView.setAdapter(posterListViewAdapter);
         posterFullListViewAdapter = new PosterListViewAdapter();
 
+        posterListViewAdapter_License.clear();
+        //posterListViewAdapter.clear();
+        posterFullListViewAdapter.clear();
+        posterListViewAdapter_Lecture.clear();
+
 
         binding.searchLayout.getLayoutParams().height = 0;
         ArrayList kind = new ArrayList();
@@ -209,6 +216,21 @@ public class PosterListFragment extends Fragment {
             }
         };
 
+        //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
+        binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
+
+        join_lecture_listener=new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final PosterEntity item = (PosterEntity) posterFullListViewAdapter.getItem(position);
+
+                addJoinLecture(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저 강의 게시판 가입
+                Toast.makeText(getActivity(), "강의 게시판에 가입", Toast.LENGTH_SHORT).show();
+
+                System.out.println(item.getTitle() + "에 가입함?");
+
+            }
+        };
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
         binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
 
@@ -296,22 +318,6 @@ public class PosterListFragment extends Fragment {
                     binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
 
                 }
-                /*ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-                actionBar.setTitle("전체 강의 게시판 목록");
-                binding.searchLayout.setLayoutParams(params);*/
-
-/*                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목1", "교수님1", 38, "참여 가능 게시판 테스트1"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목2", "교수님2", 38, "참여 가능 게시판 테스트2"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목3", "교수님3", 38, "참여 가능 게시판 테스트3"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목4", "교수님4", 38, "참여 가능 게시판 테스트4"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목5", "교수님5", 38, "참여 가능 게시판 테스트5"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목6", "교수님6", 38, "참여 가능 게시판 테스트6"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목7", "교수님7", 38, "참여 가능 게시판 테스트7"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목8", "교수님8", 38, "참여 가능 게시판 테스트8"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목9", "교수님9", 38, "참여 가능 게시판 테스트9"));
-                posterListViewAdapter_2.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "과목10", "교수님10", 38, "참여 가능 게시판 테스트10"));*/
-
-
                 return true;
             default:
                 break;

@@ -157,6 +157,7 @@ public class StudyListFragment extends Fragment {
         binding = FragmentStudyListBinding.inflate(getLayoutInflater());
         studyListViewAdapter = new StudyListViewAdapter();
         study_FullListViewAdapter = new StudyListViewAdapter();
+
         study_FullListViewAdapter.clear();
         studyListViewAdapter_ETC.clear();
         studyListViewAdapter_Lecture.clear();
