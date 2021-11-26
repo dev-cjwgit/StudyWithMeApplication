@@ -48,6 +48,7 @@ public class StudyListFragment extends Fragment {
     //게시판 카테고리 스터디 그룹
     private StudyListViewAdapter study_FullListViewAdapter; //전체 스터디 그룹 목록
     public static Map<String, StudyEntity> list = new HashMap<>();
+    public boolean a=false;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -140,6 +141,7 @@ public class StudyListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        a=false;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -151,9 +153,10 @@ public class StudyListFragment extends Fragment {
 
         binding.studySearchLayout.getLayoutParams().height = 0;
         ArrayList search_kind = new ArrayList();
+        search_kind.add("전체");
         search_kind.add("강의");
         search_kind.add("자격증");
-        //search_kind.add("기타");
+        search_kind.add("기타");
         ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, search_kind);
         binding.fragmentStudyListSpinner.setAdapter(adapter2);
 
@@ -207,13 +210,24 @@ public class StudyListFragment extends Fragment {
         binding.fragmentStudyListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String text=binding.fragmentStudyListSpinner.getSelectedItem().toString();
-                switch(text){
-                    case("강의"):
-                        binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
-                    case("자격증"):
-                        binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_3);
+                if(a==true){
+                    String text=binding.fragmentStudyListSpinner.getSelectedItem().toString();
+                    switch(text){
+                        case("전체"):
+                            binding.fragmentStudyListListView.setAdapter(study_FullListViewAdapter);
+                            break;
+                        case("강의"):
+                            binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
+                            break;
+                        case("자격증"):
+                            binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_3);
+                            break;
+                    }
                 }
+                else{
+                    a=true;
+                }
+
             }
 
             @Override

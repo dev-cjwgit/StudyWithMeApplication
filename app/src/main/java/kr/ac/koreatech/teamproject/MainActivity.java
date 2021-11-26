@@ -36,6 +36,25 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    // 스터디 그룹 생성(스터디 그룹 이름, 닉네임, 자기소개, 현재인원)
+    private void addStudyGroup(String title, String nickname, String introduce, Integer currPeople,String category) {
+        Map<String, String> study_info = new HashMap<>();
+        study_info.put("nickname", nickname);
+        study_info.put("introduce", introduce);
+        study_info.put("currPeople", currPeople.toString());
+        study_info.put("category",category.toString());
+
+
+        db.collection("server").document("data/studyGroupList/" + title)
+                .set(study_info)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w("TAG", "Error writing document", e);
+                });
+    }
+
     private void addLecture(String title, String profName, String introduce, String profEmail, String phone, String assistEmail, String lecturePlan, String mainBook, String subBook, String category) {
         Map<String, String> lecture_info = new HashMap<>();
         lecture_info.put("profName", profName);
@@ -94,6 +113,21 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 상태바 없앰(전체화면)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED); // 양방향 가로모드 고정
         context = this;
+
+        /*addStudyGroup("유니티 공부방","유니티어려워","유니티를 함께 공부하고 연구하는 모임입니다.",3,"기타");
+        addStudyGroup("영청 공부하자","영어청해","영어청해를 함께 공부하는 모임입니다.",3,"강의");
+        addStudyGroup("(객체지향프로그래밍)자바 공부 같이 하ja","자바는 너무..","자바를 함께 공부하는 모임입니다.",10,"강의");
+        addStudyGroup("모프공부방","안드로이드스튜디오","강승우교수님 모바일프로그래밍 과목을 함께 공부하는 모임입니다.",13,"강의");
+        addStudyGroup("시프공부방","나는야 노예","김덕수교수님 시프 과목을 함께 공부하는 모임입니다.",19,"강의");
+        addStudyGroup("컴네공부방","대학원길만 걷자","박승철교수님 컴네 과목을 함께 공부하는 모임입니다.",13,"강의");
+        addStudyGroup("컴활1급 공부하자","유동균최고","컴활1급을 함께 공부하는 모임입니다.",2,"자격증");
+        addStudyGroup("한국사검정시험 공부할랭","큰별쌤최고","한국사능력검정시험을 함께 공부하는 모임입니다.",1,"자격증");
+        addStudyGroup("adsp 공부하자","빅데이터","adsp을 함께 공부하는 모임입니다.",2,"자격증");
+        addStudyGroup("sqld 공부할랭","스큐엘","sqld을 함께 공부하는 모임입니다.",1,"자격증");
+        addStudyGroup("adp 공부하자","어려워","adp을 함께 공부하는 모임입니다.",2,"자격증");
+        addStudyGroup("OPIC 공부할랭","3대 500","OPIC을 함께 공부하는 모임입니다.",1,"자격증");
+        addStudyGroup("TOEIC 공부하자","줄리엔강","TOEIC을 함께 공부하는 모임입니다.",2,"자격증");
+        addStudyGroup("CPA 공부할랭","회계사되자","CPA를 함께 공부하는 모임입니다.",1,"자격증");*/
 
         //
 //        addLecture("객체지향개발론및실습", "김상진", "GoF 패턴을 학습합니다.", 37,"강의");
