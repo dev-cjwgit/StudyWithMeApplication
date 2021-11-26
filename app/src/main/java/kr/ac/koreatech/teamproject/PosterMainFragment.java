@@ -23,7 +23,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import appcomponent.MyFragment;
+import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
 
 
@@ -34,7 +38,6 @@ import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
  */
 public class PosterMainFragment extends Fragment {
     private FragmentPosterMainBinding binding;
-
     private DrawerLayout drawerLayout;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,6 +47,8 @@ public class PosterMainFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String title;
+
+    public static Map<String, PosterEntity> list = new HashMap<>();
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -107,28 +112,23 @@ public class PosterMainFragment extends Fragment {
             removeJoinLecutre(firebaseAuth.getCurrentUser().getEmail(),title); // 유저가 강의 게시판 탈퇴
             Toast.makeText(getActivity(),"탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
         });
-        binding.LecIDTextview2.setText(PosterListFragment.profName);
-        System.out.println("교수이름 가져오게?");
-        binding.profemailTextview2.setText(PosterListFragment.profEmail);
-        System.out.println("교수이메일 가져오게?");
-        binding.profdiaTextview2.setText(PosterListFragment.phone);
-        System.out.println("교수 전화번호 가져오게?");
-        //에러남 진짜 대체 왜
-        //binding.assi_email_Textview2.setText(PosterListFragment.assistEmail);
-        //System.out.println("조교 이메일 가져오게?");
-        binding.lectureplan.setText(PosterListFragment.lecturePlan);
-        System.out.println("강의 계획 가져오게?");
-        binding.mainTbTextview2.setText(PosterListFragment.mainBook);
-        System.out.println("메인 교재 가져오게?");
-        binding.subTbTextview2.setText(PosterListFragment.subBook);
-        System.out.println("서브 교재 가져오게?");
+
+        PosterEntity a = PosterListFragment.hashMap.get(title);
+        binding.LecIDTextview2.setText(a.getTitle());
+        binding.profIDTextview2.setText(a.getProfName());
+        binding.profemailTextview2.setText(a.getProfEmail());
+        binding.profdiaTextview2.setText(a.getPhone());
+        binding.assiemailTextview2.setText(a.getAssistEmail());
+        binding.lectureplan.setText(a.getLecturePlan());
+        binding.maintbTextView2.setText(a.getMainBook());
+        binding.subTbTextview2.setText(a.getSubBook());
 
     }
+
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         System.out.println("파괴됨..");
     }
 
