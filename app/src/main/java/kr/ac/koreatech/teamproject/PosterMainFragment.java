@@ -107,6 +107,21 @@ public class PosterMainFragment extends Fragment {
             removeJoinLecutre(firebaseAuth.getCurrentUser().getEmail(),title); // 유저가 강의 게시판 탈퇴
             Toast.makeText(getActivity(),"탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
         });
+        binding.LecIDTextview2.setText(PosterListFragment.profName);
+        System.out.println("교수이름 가져오게?");
+        binding.profemailTextview2.setText(PosterListFragment.profEmail);
+        System.out.println("교수이메일 가져오게?");
+        binding.profdiaTextview2.setText(PosterListFragment.phone);
+        System.out.println("교수 전화번호 가져오게?");
+        //에러남 진짜 대체 왜
+        //binding.assi_email_Textview2.setText(PosterListFragment.assistEmail);
+        //System.out.println("조교 이메일 가져오게?");
+        binding.lectureplan.setText(PosterListFragment.lecturePlan);
+        System.out.println("강의 계획 가져오게?");
+        binding.mainTbTextview2.setText(PosterListFragment.mainBook);
+        System.out.println("메인 교재 가져오게?");
+        binding.subTbTextview2.setText(PosterListFragment.subBook);
+        System.out.println("서브 교재 가져오게?");
 
     }
 

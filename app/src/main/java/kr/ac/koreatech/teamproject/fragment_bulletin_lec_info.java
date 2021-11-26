@@ -65,10 +65,10 @@ public class fragment_bulletin_lec_info extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
         binding = FragmentPosterMainBinding.inflate(getLayoutInflater());
-        // binding.LecIDTextview2.setText(getTitle());
-        // TODO: 채요니 여기 겟 해결해야함 ㅋ
+
+
+
     }
 
 
