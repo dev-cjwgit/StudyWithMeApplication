@@ -173,6 +173,7 @@ public class StudyListFragment extends Fragment {
         ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, search_kind);
         binding.fragmentStudyListSpinner.setAdapter(adapter2);
 
+
         enter_Listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
