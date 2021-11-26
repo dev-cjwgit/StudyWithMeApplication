@@ -8,10 +8,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,6 +30,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentAnsbulletSharingMatBindin
 
 public class fragment_ansbullet_sharing_mat extends Fragment {
     private FragmentAnsbulletSharingMatBinding binding;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private AnsbulletSharingMatAdapter ansbulletSharingMatAdapter;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,10 +42,12 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String title;
 
-    public fragment_ansbullet_sharing_mat(BulletinSharingMaterialsEntity entity) {
+    public fragment_ansbullet_sharing_mat(BulletinSharingMaterialsEntity entity, String title) {
         // Required empty public constructor
         this.entity = entity;
+        this.title = title;
     }
 
     @Override
@@ -56,34 +64,66 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
         binding.anssharingMainBody.setText(entity.getBody());
         SimpleDateFormat sDate4 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         binding.anssharingDateTextView.setText(sDate4.format(entity.getDate()));
+        SimpleDateFormat sDate2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
         binding.anssharingMainBody.setMovementMethod(new ScrollingMovementMethod());
         binding.anssharingAnsTextView.setOnClickListener(v -> {
             System.out.println("답변 달꺼지? 답변하기 클릭했나?");
-            Intent intent = new Intent(getActivity(),AnswerSharingDialogActivity.class);
+            Intent intent = new Intent(getActivity(), AnswerSharingDialogActivity.class);
+            intent.putExtra("poster_title", title);
+            String temp;
+            temp = entity.getTitle() + "|" + entity.getName() + "|" + sDate2.format(entity.getDate());
+            intent.putExtra("qnainfo", temp);
             startActivity(intent);
 
 
         });
 
+
         ansbulletSharingMatAdapter = new AnsbulletSharingMatAdapter();
 
         binding.fragmentAnssharingListView.setAdapter(ansbulletSharingMatAdapter);
-
-        for (int i = 0; i < entity.getAnswer(); i++) {
-            ansbulletSharingMatAdapter.append(new AnssharingEntity("곰돌", 1, new Date(),"실강없어요."));
-            ansbulletSharingMatAdapter.append(new AnssharingEntity("뷔뷔", 1, new Date(),"흠 정 불안하면 조교님한테 메일 드려봐요."));
-        }
+        getPosterInfoAnswer(title, entity.getTitle() + "|" + entity.getName() + "|" + sDate2.format(entity.getDate()));
+        //
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("정보 공유");
         actionBar.setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
+
+    private void getPosterInfoAnswer(String poster_title, String qnainfo) {
+        SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+        DocumentReference docRef = db.collection("Info" + poster_title).document(qnainfo);
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    ArrayList<String> lists = (ArrayList<String>) document.getData().get("list");
+                    for (String item : lists) {
+                        try {
+                            String[] info = item.replace("|", "@").split("@");
+                            ansbulletSharingMatAdapter.append(new AnssharingEntity(info[0], 0, transFormat.parse(info[2]), info[1]));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+//                    ansbulletSharingMatAdapter.append(new AnssharingEntity());
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
+    }
+
 }

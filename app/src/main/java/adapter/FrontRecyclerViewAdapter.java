@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import appcomponent.MyFragment;
 import entity.FrontPoster;
+import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.PosterMainFragment;
 import kr.ac.koreatech.teamproject.R;
 import kr.ac.koreatech.teamproject.StudyMainFragment;

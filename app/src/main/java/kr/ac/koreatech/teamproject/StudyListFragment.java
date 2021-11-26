@@ -39,14 +39,13 @@ import appcomponent.MyFragment;
 import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StudyListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class StudyListFragment extends Fragment {
     private FragmentStudyListBinding binding;
     private StudyListViewAdapter studyListViewAdapter;
+    private StudyListViewAdapter studyListViewAdapter_2=new StudyListViewAdapter();
+    //강의 카테고리 스터디 그룹
+    private StudyListViewAdapter studyListViewAdapter_3=new StudyListViewAdapter();
+    //게시판 카테고리 스터디 그룹
     private StudyListViewAdapter study_FullListViewAdapter; //전체 스터디 그룹 목록
     public static Map<String, StudyEntity> list = new HashMap<>();
 
@@ -68,6 +67,12 @@ public class StudyListFragment extends Fragment {
                             StudyEntity temp = new StudyEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), document.getId(), document.getData().get("nickname").toString(), Integer.parseInt(document.getData().get("currPeople").toString()), document.getData().get("introduce").toString());
                             study_FullListViewAdapter.append(temp);
                             list.put(document.getId(), temp);
+                            if(document.getData().get("category").toString().equals("강의")){
+                                studyListViewAdapter_2.append(temp);
+                            }
+                            if(document.getData().get("category").toString().equals("자격증")){
+                                studyListViewAdapter_3.append(temp);
+                            }
                         }
                     } else {
                         Log.d("TAG", "Error getting documents: ", task.getException());
@@ -86,6 +91,8 @@ public class StudyListFragment extends Fragment {
                 .addOnFailureListener(e -> {
                     Log.w("TAG", "Error update document", e);
                 });
+
+//        System.out.println(db.document());
     }
 
     // 유저가 가입 중인 스터디 그룹 목록(상세) 가져오기(이메일)
@@ -129,15 +136,6 @@ public class StudyListFragment extends Fragment {
         this.back_btn = back_btn;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StudyFragment.
-     */
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -155,7 +153,7 @@ public class StudyListFragment extends Fragment {
         ArrayList search_kind = new ArrayList();
         search_kind.add("강의");
         search_kind.add("자격증");
-        search_kind.add("기타");
+        //search_kind.add("기타");
         ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, search_kind);
         binding.fragmentStudyListSpinner.setAdapter(adapter2);
 
@@ -205,6 +203,24 @@ public class StudyListFragment extends Fragment {
             }
         }, 1500); // long delay, long period, 지정한 시간부터 일정 간격(period)로 지정한 작업(tast)수
 
+        //카테고리 누르면 카테고리 별로 리스트 나뉨
+        binding.fragmentStudyListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String text=binding.fragmentStudyListSpinner.getSelectedItem().toString();
+                switch(text){
+                    case("강의"):
+                        binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_2);
+                    case("자격증"):
+                        binding.fragmentStudyListListView.setAdapter(studyListViewAdapter_3);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override

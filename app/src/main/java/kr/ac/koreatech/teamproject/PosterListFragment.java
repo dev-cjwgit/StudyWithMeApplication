@@ -43,6 +43,8 @@ public class PosterListFragment extends Fragment {
     private FragmentPosterListBinding binding;
     private PosterListViewAdapter posterListViewAdapter;
     private PosterListViewAdapter posterFullListViewAdapter; //전체 게시판 목록
+    private PosterListViewAdapter posterListViewAdapter_2=new PosterListViewAdapter();
+    private PosterListViewAdapter posterListViewAdapter_3=new PosterListViewAdapter();
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -93,7 +95,12 @@ public class PosterListFragment extends Fragment {
 
                             posterFullListViewAdapter.append(entity1);
                             list.put(document.getId(),entity1);
-
+                            if(document.getData().get("category").toString().equals("강의")){
+                                posterListViewAdapter_2.append(entity1);
+                            }
+                            if(document.getData().get("category").toString().equals("자격증")){
+                                posterListViewAdapter_3.append(entity1);
+                            }
                         }
                     } else {
                         Log.d("TAG", "Error getting documents: ", task.getException());
@@ -115,7 +122,7 @@ public class PosterListFragment extends Fragment {
     }
 
     // 유저가 참여 중인 강의 목록(상세) 가져오기(이메일)
-    private void getJoinLectureList(String user_email) {
+    public void getJoinLectureList(String user_email) {
         user_email = user_email.replace(".", "-");
 
         DocumentReference docRef = db.collection("server").document("user/" + user_email + "/joinLecture/");
@@ -210,6 +217,28 @@ public class PosterListFragment extends Fragment {
 
             }
         };
+
+        binding.fragmentPosterListSpiner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String text=binding.fragmentPosterListSpiner1.getSelectedItem().toString();
+                switch(text){
+                    case("강의"):
+                        binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
+                        break;
+                    case("자격증"):
+                        binding.framentPosterListListView.setAdapter(posterListViewAdapter_3);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override

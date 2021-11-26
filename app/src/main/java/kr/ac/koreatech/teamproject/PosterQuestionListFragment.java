@@ -112,7 +112,7 @@ public class PosterQuestionListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 final PosterQuestionEntity item = (PosterQuestionEntity) posterQuestionListViewAdapter.getItem(a_position);
-                MyFragment.changeFragment(new PosterQuestionMainFragment(item));
+                MyFragment.changeFragment(new PosterQuestionMainFragment(item, title));
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 질문글에 접속함?");
             }
