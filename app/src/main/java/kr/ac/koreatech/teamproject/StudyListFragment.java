@@ -153,7 +153,7 @@ public class StudyListFragment extends Fragment {
         ArrayList search_kind = new ArrayList();
         search_kind.add("강의");
         search_kind.add("자격증");
-        //search_kind.add("기타");
+        search_kind.add("기타");
         ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, search_kind);
         binding.fragmentStudyListSpinner.setAdapter(adapter2);
 
