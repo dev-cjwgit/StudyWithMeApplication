@@ -68,11 +68,12 @@ public class StudyMakeFragment extends Fragment {
     }
 
     // 스터디 그룹 생성(스터디 그룹 이름, 닉네임, 자기소개, 현재인원)
-    private void addStudyGroup(String title, String nickname, String introduce, Integer currPeople) {
+    private void addStudyGroup(String title, String nickname, String introduce, Integer currPeople,String category) {
         Map<String, String> study_info = new HashMap<>();
         study_info.put("nickname", nickname);
         study_info.put("introduce", introduce);
         study_info.put("currPeople", currPeople.toString());
+        study_info.put("category",category.toString());
 
 
         db.collection("server").document("data/studyGroupList/" + title)
@@ -124,12 +125,16 @@ public class StudyMakeFragment extends Fragment {
         //생성버튼 클릭 이벤트
         binding.btnStudyGroupMake.setOnClickListener(v->{
             System.out.println("생성하려고?");
-            addStudyGroup(binding.studyGroupEdittext.getText().toString(),StudyMakeFragment.userName, binding.groupIntroduce.getText().toString(), 1); // 스터디그룹목록에 추가
+            if(binding.radioLecture.isChecked()==true){
+                addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(), 1,"강의"); // 스터디그룹목록에 추가
+            }else if(binding.radioLicense.isChecked()==true){
+                addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(),1,"자격증");
+            }else if(binding.radioEtc.isChecked()==true){
+                addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(),1,"기타");
+            }
             Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
         });
-
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

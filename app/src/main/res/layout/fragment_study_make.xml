@@ -29,6 +29,7 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/radio_lecture"
                 android:text="강의"
                 android:layout_marginLeft="10dp"
                 android:textSize="15dp"
@@ -37,6 +38,7 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/radio_license"
                 android:text="자격증"
                 android:textSize="15dp"
                 android:layout_marginLeft="10dp"
@@ -45,6 +47,7 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/radio_etc"
                 android:text="기타"
                 android:textSize="15dp"
                 android:layout_marginLeft="10dp"
