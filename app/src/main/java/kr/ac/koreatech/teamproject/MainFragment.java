@@ -225,10 +225,10 @@ service cloud.firestore {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
                     Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+
                     userName=document.getData().get("name").toString();
 
                     //--------------------------------------------------------------------
-
 
                 } else {
                     Log.d("TAG", "No such document");

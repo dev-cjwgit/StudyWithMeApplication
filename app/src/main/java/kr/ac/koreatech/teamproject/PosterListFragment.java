@@ -71,7 +71,14 @@ public class PosterListFragment extends Fragment {
     public PosterListFragment(boolean back_btn) {
         this.back_btn = back_btn;
     }
-
+    public static String profName;
+    public static String introduce;
+    public static String profEmail;
+    public static String phone;
+    public static String assistEmail;
+    public static String lecturePlan;
+    public static String mainBook;
+    public static String subBook;
 
     private void getLectureList() {
         db.collection("server/data/lectureList/")
@@ -92,6 +99,15 @@ public class PosterListFragment extends Fragment {
                                     document.getData().get("mainBook").toString(),
                                     document.getData().get("subBook").toString(),
                                     document.getData().get("category").toString());
+
+                                    profName = document.getData().get("profName").toString();
+                                    introduce = document.getData().get("introduce").toString();
+                                    profEmail = document.getData().get("profEmail").toString();
+                                    phone = document.getData().get("phone").toString();
+                                    assistEmail = document.getData().get("assistEmail").toString();
+                                    lecturePlan = document.getData().get("lecturePlan").toString();
+                                    mainBook = document.getData().get("mainBook").toString();
+                                    subBook = document.getData().get("subBook").toString();
 
                             posterFullListViewAdapter.append(entity1);
                             list.put(document.getId(),entity1);
@@ -239,6 +255,8 @@ public class PosterListFragment extends Fragment {
 
             }
         });
+
+        getLectureList();
     }
 
     @Override
