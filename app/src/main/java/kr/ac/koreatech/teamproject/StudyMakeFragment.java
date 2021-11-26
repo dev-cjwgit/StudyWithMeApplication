@@ -125,26 +125,16 @@ public class StudyMakeFragment extends Fragment {
         //생성버튼 클릭 이벤트
         binding.btnStudyGroupMake.setOnClickListener(v->{
             System.out.println("생성하려고?");
-
-            addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(), 1,"강의"); // 스터디그룹목록에 추가
+            if(binding.radioLecture.isChecked()==true){
+                addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(), 1,"강의"); // 스터디그룹목록에 추가
+            }else if(binding.radioLicense.isChecked()==true){
+                addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(),1,"자격증");
+            }else if(binding.radioEtc.isChecked()==true){
+                addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(),1,"기타");
+            }
             Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
         });
-
     }
-    /*public void onClick(View view){
-        int viewId=view.getId();
-        if(viewId==R.id.radio_lecture){
-            addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(),1,"강의");
-            Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
-        }else if(viewId==R.id.radio_license){
-            addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(),1,"자격증");
-            Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
-        }else if(viewId==R.id.radio_etc){
-            addStudyGroup(binding.studyGroupEdittext.getText().toString(),MainFragment.userName,binding.groupIntroduce.getText().toString(),1,"기타");
-            Toast.makeText(getActivity(),"생성되었습니다.",Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
