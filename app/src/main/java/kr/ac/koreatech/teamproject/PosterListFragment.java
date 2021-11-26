@@ -190,18 +190,16 @@ public class PosterListFragment extends Fragment {
         posterListViewAdapter = new PosterListViewAdapter();
         posterFullListViewAdapter = new PosterListViewAdapter();
 
-        posterListViewAdapter_License.clear();
         posterFullListViewAdapter.clear();
+        posterListViewAdapter_License.clear();
         posterListViewAdapter_Lecture.clear();
         getLectureList();
-
 
         binding.searchLayout.getLayoutParams().height = 0;
         ArrayList kind = new ArrayList();
         kind.add("전체");
         kind.add("강의");
         kind.add("자격증");
-
         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, kind);
         binding.fragmentPosterListSpiner1.setAdapter(adapter);
 
