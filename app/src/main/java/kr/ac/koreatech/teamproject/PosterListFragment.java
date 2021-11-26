@@ -71,6 +71,7 @@ public class PosterListFragment extends Fragment {
     public PosterListFragment(boolean back_btn) {
         this.back_btn = back_btn;
     }
+
     public static String profName;
     public static String introduce;
     public static String profEmail;
@@ -79,6 +80,8 @@ public class PosterListFragment extends Fragment {
     public static String lecturePlan;
     public static String mainBook;
     public static String subBook;
+
+    public static HashMap<String, PosterEntity> hashMap = new HashMap<>();
 
     private void getLectureList() {
         db.collection("server/data/lectureList/")
@@ -100,14 +103,21 @@ public class PosterListFragment extends Fragment {
                                     document.getData().get("subBook").toString(),
                                     document.getData().get("category").toString());
 
-                                    profName = document.getData().get("profName").toString();
-                                    introduce = document.getData().get("introduce").toString();
-                                    profEmail = document.getData().get("profEmail").toString();
-                                    phone = document.getData().get("phone").toString();
-                                    assistEmail = document.getData().get("assistEmail").toString();
-                                    lecturePlan = document.getData().get("lecturePlan").toString();
-                                    mainBook = document.getData().get("mainBook").toString();
-                                    subBook = document.getData().get("subBook").toString();
+                            hashMap.put(entity1.getTitle(),entity1);
+//
+//
+//                                    // 해쉬 맵
+
+//                                    profName = document.getData().get("profName").toString();
+//                                    introduce = document.getData().get("introduce").toString();
+//                                    profEmail = document.getData().get("profEmail").toString();
+//                                    phone = document.getData().get("phone").toString();
+//                                    assistEmail = document.getData().get("assistEmail").toString();
+//                                    lecturePlan = document.getData().get("lecturePlan").toString();
+//                                    mainBook = document.getData().get("mainBook").toString();
+//                                    subBook = document.getData().get("subBook").toString();
+
+
 
                             posterFullListViewAdapter.append(entity1);
                             list.put(document.getId(),entity1);
@@ -205,7 +215,7 @@ public class PosterListFragment extends Fragment {
                 System.out.println(item.getTitle() + " 에 접속함?");
             }
         };
-
+        getLectureList();
 
 
 /*        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍", "강승우", 38, "안드로이드 스튜디오를 이용하여 앱을 만듭니다."));

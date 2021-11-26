@@ -66,7 +66,7 @@ public class PosterMainFragment extends Fragment {
                 });
     }
 
-//
+    //
     public PosterMainFragment(String title, boolean back_btn) {
         // Required empty public constructor
         this.title = title;
