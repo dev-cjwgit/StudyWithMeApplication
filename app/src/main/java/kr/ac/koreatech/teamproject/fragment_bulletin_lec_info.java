@@ -1,5 +1,6 @@
 package kr.ac.koreatech.teamproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -9,12 +10,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+
+import adapter.PosterListViewAdapter;
+import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
 
 
@@ -57,20 +65,10 @@ public class fragment_bulletin_lec_info extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         binding = FragmentPosterMainBinding.inflate(getLayoutInflater());
-//        binding.LecIDTextview2.setText("모바일프로그래밍");
-//        binding.profIDTextview2.setText("강승우");
-//        binding.profemailTextview2.setText("swkang@koretech.ac.kr");
-//        binding.profdiaTextview2.setText("044-123-1122");
-//        binding.assiEmailTextview2.setText("cy0804bamboo@naver.com");
-//        binding.lectureplan.setText("1주차 | 과목 소개, 안드로이드 앱 개발 개요\n2주차 | 사용자 인터페이스 기초: UI 개요, 기본 뷰, 레이아웃\n3주차 | 사용자 인터페이스 기초: 이벤트 처리\n4주차 | 이벤트 처리\n5주차 | 메뉴와 대화상자\n6주차 | 액티비티와 인텐트\n7주차 | 액티비티 생명주기\n8주차 | 파일 처리\n9주차 | 어댑터 뷰 / 서비스\n10주차 | 브로드캐스트 리시버/Firebase\n");
-//        binding.mainTbTextview2.setText("그림으로 쉽게 설명하는 안드로이드 프로그래밍, 생능출판, 천인국 지음\n" +
-//                "이것이 안드로이드다. 박성근의 안드로이드 앱 프로그래밍, 한빛미디어, 박성근 지음");
-//        binding.subTbTextview2.setText("Eclipse를 활용한 안드로이드 프로그래밍, 한빛아카데미, 우재남/이복기 지음");
-
-
-
-
+        // binding.LecIDTextview2.setText(getTitle());
+        // TODO: 채요니 여기 겟 해결해야함 ㅋ
     }
 
 
@@ -83,4 +81,37 @@ public class fragment_bulletin_lec_info extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         return binding.getRoot();
     }
+
+    public ArrayList<PosterEntity> list;
+
+//    public View getView(int i, View view, ViewGroup viewGroup) {
+//        final Context context = viewGroup.getContext();
+//        PosterEntity listItem = list.get(i);
+//
+//        if(view == null) {
+//            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            view = inflater.inflate(R.layout.fragment_poster_main, viewGroup,false);
+//
+//        }
+//        TextView title = view.findViewById(R.id.LecIDTextview2);
+//        TextView profName = view.findViewById(R.id.profIDTextview2);
+//        TextView profEmail = view.findViewById(R.id.profemailTextview2);
+//        TextView phone = view.findViewById(R.id.profdiaTextview2);
+//        TextView assistEmail = view.findViewById(R.id.assi_email_Textview2);
+//        TextView lecturePlan = view.findViewById(R.id.lectureplan);
+//        TextView mainBook = view.findViewById(R.id.main_tb_textview2);
+//        TextView subBook = view.findViewById(R.id.sub_tb_textview2);
+//
+//        title.setText(listItem.getTitle());
+//        profName.setText(listItem.getProfName());
+//        profEmail.setText(listItem.getProfEmail());
+//        phone.setText(listItem.getPhone());
+//        assistEmail.setText(listItem.getAssistEmail());
+//        lecturePlan.setText(listItem.getLecturePlan());
+//        mainBook.setText(listItem.getMainBook());
+//        subBook.setText(listItem.getSubBook());
+//
+//        return view;
+//    }
+
 }
