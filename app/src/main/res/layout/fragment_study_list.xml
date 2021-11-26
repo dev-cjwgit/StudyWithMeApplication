@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7"/>
 
+
         <EditText
             android:id="@+id/fragmentStudyList_searchTextView"
             android:layout_width="0dp"
