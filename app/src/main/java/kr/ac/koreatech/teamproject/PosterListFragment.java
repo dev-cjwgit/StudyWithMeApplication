@@ -307,9 +307,9 @@ public class PosterListFragment extends Fragment {
 
                 } else {
                     params.height = 0;
-//                    posterJoinListViewAdapter.clear();
+                    posterJoinListViewAdapter.clear();
                     binding.framentPosterListListView.setAdapter(posterJoinListViewAdapter);
-//                    getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
+                    getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("참여중인 게시판 목록");
                     binding.searchLayout.setLayoutParams(params);
