@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,17 +36,12 @@ import appcomponent.MyFragment;
 import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PosterListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PosterListFragment extends Fragment {
     private FragmentPosterListBinding binding;
-    private PosterListViewAdapter posterListViewAdapter;
+    private PosterListViewAdapter posterJoinListViewAdapter; // 가입중인
     private PosterListViewAdapter posterFullListViewAdapter; //전체 게시판 목록
-    private PosterListViewAdapter posterListViewAdapter_2=new PosterListViewAdapter();
-    private PosterListViewAdapter posterListViewAdapter_3=new PosterListViewAdapter();
+    private PosterListViewAdapter posterListViewAdapter_2 = new PosterListViewAdapter(); // 강의
+    private PosterListViewAdapter posterListViewAdapter_3 = new PosterListViewAdapter(); // 자격증
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,7 +58,7 @@ public class PosterListFragment extends Fragment {
 
     private AdapterView.OnItemClickListener join_lecture_listener;
     private AdapterView.OnItemClickListener enter_lecture_listener;
-
+    private boolean status = false;
     private Object MenuInflater;
 
     public PosterListFragment() {
@@ -84,6 +81,9 @@ public class PosterListFragment extends Fragment {
     public static HashMap<String, PosterEntity> hashMap = new HashMap<>();
 
     private void getLectureList() {
+        posterFullListViewAdapter.clear();
+        posterListViewAdapter_2.clear();
+        posterListViewAdapter_3.clear();
         db.collection("server/data/lectureList/")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -103,7 +103,7 @@ public class PosterListFragment extends Fragment {
                                     document.getData().get("subBook").toString(),
                                     document.getData().get("category").toString());
 
-                            hashMap.put(entity1.getTitle(),entity1);
+                            hashMap.put(entity1.getTitle(), entity1);
 //
 //
 //                                    // 해쉬 맵
@@ -118,13 +118,12 @@ public class PosterListFragment extends Fragment {
 //                                    subBook = document.getData().get("subBook").toString();
 
 
-
                             posterFullListViewAdapter.append(entity1);
-                            list.put(document.getId(),entity1);
-                            if(document.getData().get("category").toString().equals("강의")){
+                            list.put(document.getId(), entity1);
+                            if (document.getData().get("category").toString().equals("강의")) {
                                 posterListViewAdapter_2.append(entity1);
                             }
-                            if(document.getData().get("category").toString().equals("자격증")){
+                            if (document.getData().get("category").toString().equals("자격증")) {
                                 posterListViewAdapter_3.append(entity1);
                             }
                         }
@@ -160,7 +159,7 @@ public class PosterListFragment extends Fragment {
                     ArrayList<String> temp = (ArrayList<String>) document.get("title");
                     for (String item : temp) {
                         PosterEntity temp2 = list.get(item);
-                        posterListViewAdapter.append(temp2);
+                        posterJoinListViewAdapter.append(temp2);
                     }
 
                 } else {
@@ -173,15 +172,6 @@ public class PosterListFragment extends Fragment {
     }
 
 
-    public static PosterListFragment newInstance(String param1, String param2) {
-        PosterListFragment fragment = new PosterListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,32 +180,32 @@ public class PosterListFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentPosterListBinding.inflate(getLayoutInflater());
-        posterListViewAdapter = new PosterListViewAdapter();
-        binding.framentPosterListListView.setAdapter(posterListViewAdapter);
+        posterJoinListViewAdapter = new PosterListViewAdapter();
+        binding.framentPosterListListView.setAdapter(posterJoinListViewAdapter);
+        status = false;
+
         posterFullListViewAdapter = new PosterListViewAdapter();
-
-
         binding.searchLayout.getLayoutParams().height = 0;
         ArrayList kind = new ArrayList();
+        kind.add("전체");
         kind.add("강의");
         kind.add("자격증");
 
         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, kind);
         binding.fragmentPosterListSpiner1.setAdapter(adapter);
         getLectureList();
-        getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
+//        getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
 
-        enter_lecture_listener=new AdapterView.OnItemClickListener() {
+        enter_lecture_listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final PosterEntity item = (PosterEntity) posterListViewAdapter.getItem(position);
+                final PosterEntity item = (PosterEntity) posterJoinListViewAdapter.getItem(position);
                 MyFragment.changeFragment(new PosterMainFragment(item.getTitle(), true));
 
                 //텍스트뷰에 출력
                 System.out.println(item.getTitle() + " 에 접속함?");
             }
         };
-        getLectureList();
 
 
 /*        posterListViewAdapter.append(new PosterEntity(BitmapFactory.decodeResource(getResources(), R.drawable.default_image), "모바일프로그래밍", "강승우", 38, "안드로이드 스튜디오를 이용하여 앱을 만듭니다."));
@@ -231,7 +221,7 @@ public class PosterListFragment extends Fragment {
         //리스트뷰의 아이템을 클릭시 해당 아이템의 문자열을 가져오기 위한 처리
         binding.framentPosterListListView.setOnItemClickListener(enter_lecture_listener);
 
-        join_lecture_listener=new AdapterView.OnItemClickListener() {
+        join_lecture_listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final PosterEntity item = (PosterEntity) posterFullListViewAdapter.getItem(position);
@@ -247,16 +237,24 @@ public class PosterListFragment extends Fragment {
         binding.fragmentPosterListSpiner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String text=binding.fragmentPosterListSpiner1.getSelectedItem().toString();
-                switch(text){
-                    case("강의"):
-                        binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
-                        break;
-                    case("자격증"):
-                        binding.framentPosterListListView.setAdapter(posterListViewAdapter_3);
-                        break;
-                    default:
-                        break;
+                if (status) {
+                    String text = binding.fragmentPosterListSpiner1.getSelectedItem().toString();
+                    switch (text) {
+                        case "전체":
+                            binding.framentPosterListListView.setAdapter(posterFullListViewAdapter);
+                            break;
+                        case ("강의"):
+                            binding.framentPosterListListView.setAdapter(posterListViewAdapter_2);
+                            break;
+                        case ("자격증"):
+                            binding.framentPosterListListView.setAdapter(posterListViewAdapter_3);
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    status = true;
+                    binding.fragmentPosterListSpiner1.setSelection(0);
                 }
             }
 
@@ -265,8 +263,13 @@ public class PosterListFragment extends Fragment {
 
             }
         });
-
-        getLectureList();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() { // schedule: 특정한 시간에 원하는 작업 수행, 이거 인자가 어떻게 되는 건가요?
+                getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
+            }
+        }, 1500); // long delay, long period, 지정한 시간부터 일정 간격(period)로 지정한 작업(tast)수
     }
 
     @Override
@@ -285,6 +288,7 @@ public class PosterListFragment extends Fragment {
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
+
     //menu
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -303,9 +307,9 @@ public class PosterListFragment extends Fragment {
 
                 } else {
                     params.height = 0;
-                    posterListViewAdapter.list.clear();
-                    binding.framentPosterListListView.setAdapter(posterListViewAdapter);
-                    getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
+//                    posterJoinListViewAdapter.clear();
+                    binding.framentPosterListListView.setAdapter(posterJoinListViewAdapter);
+//                    getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("참여중인 게시판 목록");
                     binding.searchLayout.setLayoutParams(params);
