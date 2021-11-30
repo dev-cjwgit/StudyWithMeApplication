@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -96,7 +97,19 @@ public class fragment_bulletin_sharing_materials extends Fragment {
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
 
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void getPosterInfo(String poster_title) {
         SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 

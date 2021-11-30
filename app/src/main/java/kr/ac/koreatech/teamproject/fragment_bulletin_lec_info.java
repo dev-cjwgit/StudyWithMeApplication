@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 import adapter.PosterListViewAdapter;
+import appcomponent.MyFragment;
 import entity.PosterEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterMainBinding;
 
@@ -81,7 +83,19 @@ public class fragment_bulletin_lec_info extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         return binding.getRoot();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
 
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     public ArrayList<PosterEntity> list;
 
 //    public View getView(int i, View view, ViewGroup viewGroup) {

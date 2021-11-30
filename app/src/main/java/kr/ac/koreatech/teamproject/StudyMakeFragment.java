@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import appcomponent.MyFragment;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyJoinBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyListBinding;
 import kr.ac.koreatech.teamproject.databinding.FragmentStudyMakeBinding;
@@ -147,7 +148,19 @@ public class StudyMakeFragment extends Fragment {
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
 
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private static String userName;
     private void getUserInfo(String user_email) {
         user_email = user_email.replace(".", "-");

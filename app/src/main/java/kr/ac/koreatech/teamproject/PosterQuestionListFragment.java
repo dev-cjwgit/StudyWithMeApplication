@@ -7,7 +7,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,11 +27,6 @@ import appcomponent.MyFragment;
 import entity.PosterQuestionEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterQuestionListBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PosterQuestionListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PosterQuestionListFragment extends Fragment {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -76,14 +73,6 @@ public class PosterQuestionListFragment extends Fragment {
                 });
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PosterQuestionList.
-     */
     // TODO: Rename and change types and number of parameters
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -136,4 +125,17 @@ public class PosterQuestionListFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
+
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

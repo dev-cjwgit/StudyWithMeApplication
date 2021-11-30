@@ -109,8 +109,8 @@ public class PosterMainFragment extends Fragment {
         // 드로우바 탈퇴 버튼 클릭 이벤트
         binding.signOutButton.setOnClickListener(v -> {
             System.out.println("탈퇴하려고?");
-            removeJoinLecutre(firebaseAuth.getCurrentUser().getEmail(),title); // 유저가 강의 게시판 탈퇴
-            Toast.makeText(getActivity(),"탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
+            removeJoinLecutre(firebaseAuth.getCurrentUser().getEmail(), title); // 유저가 강의 게시판 탈퇴
+            Toast.makeText(getActivity(), "탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
         });
 
         PosterEntity a = PosterListFragment.hashMap.get(title);
@@ -162,6 +162,9 @@ public class PosterMainFragment extends Fragment {
                 else
                     drawerLayout.openDrawer(Gravity.RIGHT);
                 return true;
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
             default:
                 break;
         }

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 import adapter.AnsbulletSharingMatAdapter;
+import appcomponent.MyFragment;
 import entity.AnssharingEntity;
 import entity.BulletinSharingMaterialsEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentAnsbulletSharingMatBinding;
@@ -105,7 +107,19 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
 
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void getPosterInfoAnswer(String poster_title, String qnainfo) {
         SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 

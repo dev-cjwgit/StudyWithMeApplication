@@ -205,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
                     binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
                     binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
+                    MyFragment.clearHistory();
                 }
                 break;
             }
@@ -217,6 +218,8 @@ public class MainActivity extends AppCompatActivity {
                     binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject);
                     binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
                     binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
+                    MyFragment.clearHistory();
+
                 }
                 break;
             }
@@ -229,6 +232,8 @@ public class MainActivity extends AppCompatActivity {
                     binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
                     binding.mainImageViewStudy.setImageResource(R.drawable.icon_group);
                     binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
+                    MyFragment.clearHistory();
+
                 }
                 break;
             }
@@ -241,6 +246,8 @@ public class MainActivity extends AppCompatActivity {
                     binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
                     binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
                     binding.mainImageViewSetting.setImageResource(R.drawable.icon_more);
+                    MyFragment.clearHistory();
+
                 }
                 break;
             }
@@ -252,6 +259,8 @@ public class MainActivity extends AppCompatActivity {
                     binding.mainImageViewPoster.setImageResource(R.drawable.icon_subject_gray);
                     binding.mainImageViewStudy.setImageResource(R.drawable.icon_group_gray);
                     binding.mainImageViewSetting.setImageResource(R.drawable.icon_more_gray);
+                    MyFragment.clearHistory();
+
                 }
                 break;
             }

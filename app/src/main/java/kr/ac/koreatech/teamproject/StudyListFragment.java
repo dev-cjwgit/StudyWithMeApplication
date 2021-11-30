@@ -204,11 +204,7 @@ public class StudyListFragment extends Fragment {
 
         //스터디 그룹 생성 버튼 누르면 발생하는 이벤트 처리
         binding.fragmentStudyListAddButton.setOnClickListener((v) -> {
-            MainActivity main = ((MainActivity) getActivity());
-            FragmentManager fm = main.getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment1, new StudyMakeFragment(true));
-            fragmentTransaction.commit();
+            MyFragment.changeFragment(new StudyMakeFragment(true));
         });
         binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
 //        getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
@@ -319,6 +315,9 @@ public class StudyListFragment extends Fragment {
                 }
 
                 return true;
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
             default:
                 break;
         }

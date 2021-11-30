@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,7 @@ import java.util.List;
 
 import adapter.PosterQuestionAnswerListViewAdapter;
 import adapter.PosterQuestionListViewAdapter;
+import appcomponent.MyFragment;
 import entity.PosterQuestionAnswerEntity;
 import entity.PosterQuestionEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterQuestionListBinding;
@@ -118,7 +120,19 @@ public class PosterQuestionMainFragment extends Fragment {
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        switch (curId) {
 
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void getPosterQnAAnswer(String poster_title, String qnainfo) {
         DocumentReference docRef = db.collection("QnA" + poster_title).document(qnainfo);
 

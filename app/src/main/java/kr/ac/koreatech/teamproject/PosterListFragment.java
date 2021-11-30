@@ -352,6 +352,9 @@ public class PosterListFragment extends Fragment {
 
 
                 return true;
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
             default:
                 break;
         }

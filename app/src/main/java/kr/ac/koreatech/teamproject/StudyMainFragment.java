@@ -177,6 +177,9 @@ public class StudyMainFragment extends Fragment {
                 else
                     drawerLayout_study.openDrawer(Gravity.RIGHT);
                 return true;
+            case android.R.id.home:
+                MyFragment.prevFragment();
+                break;
             default:
                 break;
         }
