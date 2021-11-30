@@ -43,11 +43,12 @@
             android:textColor="@color/white"
             android:textSize="25sp" />
     </LinearLayout>
+
     <ListView
         android:id="@+id/fragmentStudyList_listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="15"/>
+        android:layout_height="548dp"
+        android:layout_weight="15" />
 
     <!--<androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentStudyList_study_recyclerview"
