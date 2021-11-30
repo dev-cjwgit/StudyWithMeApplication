@@ -83,8 +83,16 @@ public class fragment_ansbullet_sharing_mat extends Fragment {
         ansbulletSharingMatAdapter = new AnsbulletSharingMatAdapter();
 
         binding.fragmentAnssharingListView.setAdapter(ansbulletSharingMatAdapter);
-        getPosterInfoAnswer(title, entity.getTitle() + "|" + entity.getName() + "|" + sDate2.format(entity.getDate()));
         //
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ansbulletSharingMatAdapter.clear();
+        SimpleDateFormat sDate2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        getPosterInfoAnswer(title, entity.getTitle() + "|" + entity.getName() + "|" + sDate2.format(entity.getDate()));
+
     }
 
     @Override

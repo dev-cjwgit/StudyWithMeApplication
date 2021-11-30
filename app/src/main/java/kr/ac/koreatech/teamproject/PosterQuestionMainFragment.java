@@ -97,7 +97,15 @@ public class PosterQuestionMainFragment extends Fragment {
 //
 //        }
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        posterQuestionAnswerListViewAdapter.clear();
+        SimpleDateFormat sDate2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         getPosterQnAAnswer(title, entity.getTitle() + "|" + entity.getName() + "|" + sDate2.format(entity.getDate()));
+
     }
 
     @Override
