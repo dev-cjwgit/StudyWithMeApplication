@@ -32,8 +32,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import adapter.PosterListViewAdapter;
+import adapter.StudyListViewAdapter;
 import appcomponent.MyFragment;
 import entity.PosterEntity;
+import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentPosterListBinding;
 
 public class PosterListFragment extends Fragment {
@@ -42,7 +44,6 @@ public class PosterListFragment extends Fragment {
     private PosterListViewAdapter posterFullListViewAdapter; //전체 게시판 목록
     private PosterListViewAdapter posterListViewAdapter_2 = new PosterListViewAdapter(); // 강의
     private PosterListViewAdapter posterListViewAdapter_3 = new PosterListViewAdapter(); // 자격증
-
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -262,6 +263,24 @@ public class PosterListFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+        });
+        binding.fragmentPosterListSearchButton.setOnClickListener((v) -> {
+            PosterListViewAdapter presentAdapter = null;
+            if (binding.fragmentPosterListSpiner1.getSelectedItem().toString().equals("전체")) {
+                presentAdapter = posterFullListViewAdapter;
+            } else if (binding.fragmentPosterListSpiner1.getSelectedItem().toString().equals("강의")) {
+                presentAdapter = posterListViewAdapter_2;
+            } else if (binding.fragmentPosterListSpiner1.getSelectedItem().toString().equals("자격증")) {
+                presentAdapter = posterListViewAdapter_3;
+            }
+            PosterListViewAdapter searchAdapter = new PosterListViewAdapter();
+            for (PosterEntity item : presentAdapter.list) {
+                if (item.getTitle().contains(binding.fragmentPosterListSearchTextView.getText().toString())) {
+                    searchAdapter.append(item);
+                }
+            }
+
+            binding.framentPosterListListView.setAdapter(searchAdapter);
         });
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {

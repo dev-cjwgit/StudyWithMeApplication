@@ -44,6 +44,8 @@ public class StudyListFragment extends Fragment {
     private StudyListViewAdapter studyListViewAdapter_License = new StudyListViewAdapter(); //자격증 카테고리 스터디 그룹
     private StudyListViewAdapter studyListViewAdapter_ETC = new StudyListViewAdapter(); //기타 카테고리 스터디 그룹
     private StudyListViewAdapter study_FullListViewAdapter; //전체 스터디 그룹 목록
+
+    private StudyListViewAdapter presentAdapter = null;
     public static Map<String, StudyEntity> list = new HashMap<>();
     public boolean a = false;
 
@@ -210,7 +212,26 @@ public class StudyListFragment extends Fragment {
         });
         binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
 //        getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
+        binding.fragmentStudyListSearchButton.setOnClickListener((v) -> {
+            StudyListViewAdapter presentAdapter = null;
+            if (binding.fragmentStudyListSpinner.getSelectedItem().toString().equals("전체")) {
+                presentAdapter = study_FullListViewAdapter;
+            } else if (binding.fragmentStudyListSpinner.getSelectedItem().toString().equals("강의")) {
+                presentAdapter = studyListViewAdapter_Lecture;
+            } else if (binding.fragmentStudyListSpinner.getSelectedItem().toString().equals("자격증")) {
+                presentAdapter = studyListViewAdapter_License;
+            } else if (binding.fragmentStudyListSpinner.getSelectedItem().toString().equals("기타")) {
+                presentAdapter = studyListViewAdapter_ETC;
+            }
+            StudyListViewAdapter searchAdapter = new StudyListViewAdapter();
+            for (StudyEntity item : presentAdapter.list) {
+                if (item.getTitle().contains(binding.fragmentStudyListSearchTextView.getText().toString())) {
+                    searchAdapter.append(item);
+                }
+            }
 
+            binding.fragmentStudyListListView.setAdapter(searchAdapter);
+        });
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
