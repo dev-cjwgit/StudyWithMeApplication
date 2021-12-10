@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -143,7 +144,7 @@ public class MainFragment extends Fragment {
     private TimeRankModel rank1;
     private TimeRankModel rank2;
     private TimeRankModel rank3;
-
+    private Long myTime = 0L;
     private FrontRecyclerViewAdapter m1Adapter;
     private FrontRecyclerViewAdapter m2Adapter;
     private LinearLayoutManager m1LayoutManager;
@@ -307,14 +308,37 @@ service cloud.firestore {
                 });
     }
 
+    private void updateRankTime(String email, Long value) {
+        email = email.replace(".", "-");
+        DocumentReference washingtonRef = db.collection("ranking").document(email);
+        washingtonRef
+                .update("time", value)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        getRankingList();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("TAG", "Error updating document", e);
+                    }
+                });
+    }
+
     private void getRankingList() {
         db.collection("ranking")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         list.clear();
+                        String email = firebaseAuth.getCurrentUser().getEmail().replace(".", "-");
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             list.add(new RankDTO(document.getData().get("name").toString(), Long.parseLong(document.getData().get("time").toString())));
+                            if (document.getId().equals(email)) {
+                                myTime = Long.parseLong(document.getData().get("time").toString());
+                            }
                         }
                         Collections.sort(list, new RankComparator().reversed());
                         rank1.setData(list.get(0).name, list.get(0).time);
@@ -330,6 +354,8 @@ service cloud.firestore {
     }
 
     public void finishStudy(Long secTime) {
+        myTime += secTime;
+        updateRankTime(firebaseAuth.getCurrentUser().getEmail(), myTime);
         System.out.println(secTime + "공부시간이 측정되었습니다");
     }
 
