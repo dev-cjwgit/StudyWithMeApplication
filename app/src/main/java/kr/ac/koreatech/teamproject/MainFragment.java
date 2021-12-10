@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,13 +18,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +47,7 @@ import java.util.Map;
 import adapter.FrontRecyclerViewAdapter;
 import entity.FrontPoster;
 import entity.PosterEntity;
+import entity.PosterQuestionEntity;
 import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 import service.TimerService;
@@ -81,6 +97,45 @@ public class MainFragment extends Fragment {
         }
     }
 
+    class RankDTO {
+        private String name;
+        private Long time;
+
+        public RankDTO(String name, Long time) {
+            this.name = name;
+            this.time = time;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Long getTime() {
+            return time;
+        }
+
+        public void setTime(Long time) {
+            this.time = time;
+        }
+    }
+
+    class RankComparator implements Comparator<RankDTO> {
+        @Override
+        public int compare(RankDTO f1, RankDTO f2) {
+            if (f1.getTime() > f2.getTime()) {
+                return 1;
+            } else if (f1.getTime() < f2.getTime()) {
+                return -1;
+            }
+            return 0;
+        }
+    }
+
+    ArrayList<RankDTO> list = new ArrayList<>();
     private FragmentMainBinding binding;
     private Date startTime = new Date();
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -221,18 +276,61 @@ service cloud.firestore {
         binding.fragmentMainStudyListView.setAdapter(m2Adapter);
 
         getUserInfo(firebaseAuth.getCurrentUser().getEmail());
-        rank1.setData("김채연", 4024230L);
-        rank2.setData("김선경", 2333440L);
-        rank3.setData("이효민", 1242300L);
+//        getUserList();
+        /*createRank("admin@email-com","최진우");
+        createRank("test1@email-com","김채연");
+        createRank("test2@email-com","이효민");
+        createRank("test3@email-com","김선경");
+        createRank("test4@email-com","테스트4");
+        createRank("test5@email-com","테스트5");
+        createRank("test6@email-com","테스트6");
+        createRank("test7@email-com","테스트7");
+        createRank("test8@email-com","테스트8");
+        createRank("test9@email-com","테스트9");
+        createRank("test10@email-com","테스트10");*/
+        getRankingList();
+        rank1.setData("로딩중", 0L);
+        rank2.setData("로딩중", 0L);
+        rank3.setData("로딩중", 0L);
     }
 
+    private void createRank(String email, String name) {
+        email = email.replace(".", "-");
+        Map<String, Object> city = new HashMap<>();
+        city.put("name", name);
+        city.put("time", 0);
+
+        db.collection("ranking").document(email)
+                .set(city)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                });
+    }
+
+    private void getRankingList() {
+        db.collection("ranking")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        list.clear();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            list.add(new RankDTO(document.getData().get("name").toString(), Long.parseLong(document.getData().get("time").toString())));
+                        }
+                        Collections.sort(list, new RankComparator().reversed());
+                        rank1.setData(list.get(0).name, list.get(0).time);
+                        rank2.setData(list.get(1).name, list.get(1).time);
+                        rank3.setData(list.get(2).name, list.get(2).time);
+                        Log.d("TAG", "good");
+
+                    } else {
+                        Log.d("TAG", "Error getting documents: ", task.getException());
+                    }
+                });
+
+    }
 
     public void finishStudy(Long secTime) {
-        requireActivity().runOnUiThread(() -> {
-            // TODO: 계산은 본인 몫
-//            binding.timerTextView.setText(hour + ":" + min + ":" + sec);
-        });
-        System.out.println("공부시간이 측정되었습니다");
+        System.out.println(secTime + "공부시간이 측정되었습니다");
     }
 
     @Override
@@ -247,6 +345,7 @@ service cloud.firestore {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static String userName;
+
 
     private void getUserInfo(String user_email) {
         user_email = user_email.replace(".", "-");
