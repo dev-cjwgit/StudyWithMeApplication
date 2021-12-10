@@ -66,7 +66,7 @@
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/controll_bulletin_sharing_materials.xml" value="0.21739130434782608" />
         <entry key="app/src/main/res/layout/controll_current_member.xml" value="0.21739130434782608" />
-        <entry key="app/src/main/res/layout/controll_listview_poster.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/controll_listview_poster.xml" value="0.375" />
         <entry key="app/src/main/res/layout/controll_listview_studylist.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/controll_question_answer_listview.xml" value="0.21739130434782608" />
         <entry key="app/src/main/res/layout/controll_questionlist_listview.xml" value="0.21739130434782608" />

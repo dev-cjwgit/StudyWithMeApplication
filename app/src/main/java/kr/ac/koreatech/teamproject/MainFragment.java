@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -35,16 +36,58 @@ import entity.StudyEntity;
 import kr.ac.koreatech.teamproject.databinding.FragmentMainBinding;
 import service.TimerService;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MainFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MainFragment extends Fragment {
+    class TimeRankModel {
+        private TextView name;
+        private TextView time;
+
+        public TimeRankModel(TextView name, TextView time) {
+            this.name = name;
+            this.time = time;
+        }
+
+        public String getName() {
+            return name.getText().toString();
+        }
+
+        public Integer getTime() {
+            String temp = name.getText().toString();
+            if (temp.equals(""))
+                return null;
+            String[] split = temp.split(":");
+            int sec = Integer.parseInt(split[2]);
+            int min = Integer.parseInt(split[1]) * 60;
+            int hour = Integer.parseInt(split[0]) * 3600;
+            return sec + min + hour;
+        }
+
+        public void setName(String name) {
+            requireActivity().runOnUiThread(() -> {
+                this.name.setText(name);
+            });
+        }
+
+        public void setTime(Long time) {
+            Long sec = (time / 1000) % 60;
+            Long min = (time / (1000 * 60)) % 60;
+            Long hour = (time / (1000 * 60 * 60)) % 24;
+            this.time.setText(hour + ":" + min + ":" + sec);
+        }
+
+        public void setData(String name, Long time) {
+            setName(name);
+            setTime(time);
+        }
+    }
+
     private FragmentMainBinding binding;
     private Date startTime = new Date();
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private BroadcastReceiver studyTimeRecvier;
+    private TimeRankModel rank1;
+    private TimeRankModel rank2;
+    private TimeRankModel rank3;
 
     private FrontRecyclerViewAdapter m1Adapter;
     private FrontRecyclerViewAdapter m2Adapter;
@@ -63,22 +106,6 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MainFragment.
-     */
-    public static MainFragment newInstance(String param1, String param2) {
-        MainFragment fragment = new MainFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onResume() {
@@ -118,7 +145,9 @@ public class MainFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         binding = FragmentMainBinding.inflate(getLayoutInflater());
-
+        rank1 = new TimeRankModel(binding.rank1NameText, binding.rank1TimeText);
+        rank2 = new TimeRankModel(binding.rank2NameText, binding.rank2TimeText);
+        rank3 = new TimeRankModel(binding.rank3NameText, binding.rank3TimeText);
         // init Data
         ArrayList<FrontPoster> data1 = new ArrayList<>();
         binding.btnPlay.setOnClickListener(v -> {
@@ -192,14 +221,16 @@ service cloud.firestore {
         binding.fragmentMainStudyListView.setAdapter(m2Adapter);
 
         getUserInfo(firebaseAuth.getCurrentUser().getEmail());
-
+        rank1.setData("김채연", 4024230L);
+        rank2.setData("김선경", 2333440L);
+        rank3.setData("이효민", 1242300L);
     }
 
 
-    public void finishStudy(int hour, int min, int sec) {
+    public void finishStudy(Long secTime) {
         requireActivity().runOnUiThread(() -> {
             // TODO: 계산은 본인 몫
-            binding.timerTextView.setText(hour + ":" + min + ":" + sec);
+//            binding.timerTextView.setText(hour + ":" + min + ":" + sec);
         });
         System.out.println("공부시간이 측정되었습니다");
     }
@@ -216,6 +247,7 @@ service cloud.firestore {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static String userName;
+
     private void getUserInfo(String user_email) {
         user_email = user_email.replace(".", "-");
 
@@ -226,7 +258,7 @@ service cloud.firestore {
                 if (document.exists()) {
                     Log.d("TAG", "DocumentSnapshot data: " + document.getData());
 
-                    userName=document.getData().get("name").toString();
+                    userName = document.getData().get("name").toString();
 
                     //--------------------------------------------------------------------
 

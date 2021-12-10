@@ -61,12 +61,9 @@ public class TimerService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        int sectime = (int) (new Date().getTime() - startTime.getTime());
-        int sec = (sectime / 1000) % 60;
-        int min = (sectime / (1000 * 60)) % 60;
-        int hour = (sectime / (1000 * 60 * 60)) % 24;
+        Long sectime = new Date().getTime() - startTime.getTime();
 
-        ((MainFragment) MyFragment.getCurrFragment()).finishStudy(hour, min, sec);
+        ((MainFragment) MyFragment.getCurrFragment()).finishStudy(sectime);
         timer.cancel(); // 타이머 중지를 먼저
         Toast toast2 = Toast.makeText(getApplicationContext(), "공부시간이 측정되었습니다.", Toast.LENGTH_SHORT);
         toast2.show();
