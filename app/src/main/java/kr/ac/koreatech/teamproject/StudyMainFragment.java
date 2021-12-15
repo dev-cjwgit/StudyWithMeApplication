@@ -53,7 +53,7 @@ import kr.ac.koreatech.teamproject.databinding.FragmentStudyMainBinding;
  */
 public class StudyMainFragment extends Fragment {
 
-    class ChatDTO{
+    public class ChatDTO{
         private String UserName;
         private String message;
 
@@ -146,7 +146,7 @@ public class StudyMainFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         binding.framentStudyListView.setAdapter(adapter);
 
-        openChat(title);
+        //openChat(title);
 
         binding.fragmentStudyButtonSend.setOnClickListener((v) -> {
             list.add(MainFragment.userName+" : "+binding.fragmentStudyEditTextSend.getText().toString());
@@ -188,14 +188,14 @@ public class StudyMainFragment extends Fragment {
         binding.framentStudyListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
     }
     private void openChat(String title){
-        ArrayAdapter<String> chat_adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1);
+        ArrayAdapter<String> chat_adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,android.R.id.text1);
         binding.framentStudyListView.setAdapter(chat_adapter);
         binding.framentStudyListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
 
         databaseReference.child("chat").child(title).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, String s) {
-                addMessage(snapshot,chat_adapter);
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
+                addMessage(dataSnapshot,chat_adapter);
                 Log.e("LOG","s:"+s);
             }
 
@@ -205,8 +205,8 @@ public class StudyMainFragment extends Fragment {
             }
 
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                removeMessage(snapshot,chat_adapter);
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                removeMessage(dataSnapshot,chat_adapter);
             }
 
             @Override
