@@ -44,6 +44,7 @@ public class PosterListFragment extends Fragment {
     private PosterListViewAdapter posterFullListViewAdapter; //전체 게시판 목록
     private PosterListViewAdapter posterListViewAdapter_2 = new PosterListViewAdapter(); // 강의
     private PosterListViewAdapter posterListViewAdapter_3 = new PosterListViewAdapter(); // 자격증
+    private PosterListViewAdapter presentAdapter;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -225,7 +226,7 @@ public class PosterListFragment extends Fragment {
         join_lecture_listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final PosterEntity item = (PosterEntity) posterFullListViewAdapter.getItem(position);
+                final PosterEntity item = (PosterEntity) presentAdapter.getItem(position);
 
                 addJoinLecture(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저 강의 게시판 가입
                 Toast.makeText(getActivity(), "강의 게시판에 가입", Toast.LENGTH_SHORT).show();
@@ -279,7 +280,7 @@ public class PosterListFragment extends Fragment {
                     searchAdapter.append(item);
                 }
             }
-
+            presentAdapter = searchAdapter;
             binding.framentPosterListListView.setAdapter(searchAdapter);
         });
         Timer timer = new Timer();
@@ -319,6 +320,7 @@ public class PosterListFragment extends Fragment {
                 if (params.height == 0) {
                     params.height = 150;
                     binding.framentPosterListListView.setAdapter(posterFullListViewAdapter);
+                    presentAdapter = posterFullListViewAdapter;
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("전체 강의 게시판 목록");
                     binding.searchLayout.setLayoutParams(params);
@@ -328,6 +330,7 @@ public class PosterListFragment extends Fragment {
                     params.height = 0;
                     posterJoinListViewAdapter.clear();
                     binding.framentPosterListListView.setAdapter(posterJoinListViewAdapter);
+                    presentAdapter = posterJoinListViewAdapter;
                     getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("참여중인 게시판 목록");
