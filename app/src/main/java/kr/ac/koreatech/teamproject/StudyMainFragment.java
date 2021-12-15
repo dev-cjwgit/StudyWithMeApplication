@@ -120,7 +120,8 @@ public class StudyMainFragment extends Fragment {
         binding.framentStudyListView.setAdapter(adapter);
 
         binding.fragmentStudyButtonSend.setOnClickListener((v) -> {
-            list.add(binding.fragmentStudyEditTextSend.getText().toString());
+            list.add(MainFragment.userName+" : "+binding.fragmentStudyEditTextSend.getText().toString());
+            //System.out.println(MainFragment.userName); //채팅 보낸 userName
             binding.fragmentStudyEditTextSend.setText("");
             adapter.notifyDataSetChanged();
         });
@@ -145,7 +146,7 @@ public class StudyMainFragment extends Fragment {
 
     }
 
-    // Hi
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
