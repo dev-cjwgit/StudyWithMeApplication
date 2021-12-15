@@ -193,7 +193,7 @@ public class StudyListFragment extends Fragment {
         joinListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                final StudyEntity item = (StudyEntity) study_FullListViewAdapter.getItem(a_position);
+                final StudyEntity item = (StudyEntity) presentAdapter.getItem(a_position);
 
                 addJoinStudyGroup(firebaseAuth.getCurrentUser().getEmail(), item.getTitle()); // 유저가 스터디 그룹에 가입
                 Toast.makeText(getActivity(), "스터디 그룹에 가입합니다.", Toast.LENGTH_SHORT).show();
@@ -209,7 +209,6 @@ public class StudyListFragment extends Fragment {
         binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
 //        getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
         binding.fragmentStudyListSearchButton.setOnClickListener((v) -> {
-            StudyListViewAdapter presentAdapter = null;
             if (binding.fragmentStudyListSpinner.getSelectedItem().toString().equals("전체")) {
                 presentAdapter = study_FullListViewAdapter;
             } else if (binding.fragmentStudyListSpinner.getSelectedItem().toString().equals("강의")) {
@@ -225,7 +224,7 @@ public class StudyListFragment extends Fragment {
                     searchAdapter.append(item);
                 }
             }
-
+            presentAdapter = searchAdapter;
             binding.fragmentStudyListListView.setAdapter(searchAdapter);
         });
         Timer timer = new Timer();
@@ -298,6 +297,7 @@ public class StudyListFragment extends Fragment {
                 if (params2.height == 0) {
                     params2.height = 150; //검색창 열림
                     binding.fragmentStudyListListView.setAdapter(study_FullListViewAdapter);
+                    presentAdapter = study_FullListViewAdapter;
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("전체 스터디 그룹 목록");
                     binding.studySearchLayout.setLayoutParams(params2);
@@ -307,6 +307,7 @@ public class StudyListFragment extends Fragment {
                     params2.height = 0; //검색창 닫힘
                     studyListViewAdapter.list.clear();
                     binding.fragmentStudyListListView.setAdapter(studyListViewAdapter);
+                    presentAdapter = studyListViewAdapter;
                     getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
                     ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                     actionBar.setTitle("참여중인 스터디 그룹");
