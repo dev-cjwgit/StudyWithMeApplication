@@ -4,6 +4,8 @@ import android.content.ClipData;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
@@ -26,6 +28,11 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,6 +52,23 @@ import kr.ac.koreatech.teamproject.databinding.FragmentStudyMainBinding;
  * create an instance of this fragment.
  */
 public class StudyMainFragment extends Fragment {
+
+    class ChatDTO{
+        private String UserName;
+        private String message;
+
+        public ChatDTO(){}
+        public ChatDTO(String UserName,String message){
+            this.UserName=UserName;
+            this.message=message;
+        }
+        public void setUserName(String UserName){this.UserName=UserName;}
+        public void setMessage(String message){this.message=message;}
+        public String getUserName(){return UserName;}
+        public String getMessage(){return message;}
+    }
+
+
     private FragmentStudyMainBinding binding;
     private DrawerLayout drawerLayout_study;
     private List<String> list = new ArrayList<>();
@@ -58,6 +82,10 @@ public class StudyMainFragment extends Fragment {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    //
+    private FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference=firebaseDatabase.getReference();
+    //
 
     // 스터디 그룹 탈퇴(이메일, 탈퇴 할 스터디 그룹 이름)
     private void removeJoinStudyGroup(String user_email, String study_group_name) {
@@ -115,18 +143,21 @@ public class StudyMainFragment extends Fragment {
         }
         binding = FragmentStudyMainBinding.inflate(getLayoutInflater());
 
-//        binding.navView.setEnabled(false);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         binding.framentStudyListView.setAdapter(adapter);
+
+        openChat(title);
 
         binding.fragmentStudyButtonSend.setOnClickListener((v) -> {
             list.add(MainFragment.userName+" : "+binding.fragmentStudyEditTextSend.getText().toString());
             //System.out.println(MainFragment.userName); //채팅 보낸 userName
+            ChatDTO chat=new ChatDTO(MainFragment.userName,binding.fragmentStudyEditTextSend.getText().toString());
+            databaseReference.child("chat").child(title).push().setValue(chat);
             binding.fragmentStudyEditTextSend.setText("");
             adapter.notifyDataSetChanged();
         });
 
-        //studygroupmain navigation listview
+        //studyGroupMain navigation listview
         currentMemberAdapter=new CurrentMemberAdapter();
         binding.fragmentCurmemlist.setAdapter(currentMemberAdapter);
 
@@ -144,6 +175,50 @@ public class StudyMainFragment extends Fragment {
             MyFragment.changeFragment(new StudyListFragment());
         });
 
+    }
+
+    private void addMessage(DataSnapshot dataSnapshot,ArrayAdapter<String>adapter){
+        ChatDTO chatDTO=dataSnapshot.getValue(ChatDTO.class);
+        adapter.add(chatDTO.getUserName()+" : "+chatDTO.getMessage());
+        binding.framentStudyListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+    }
+    private void removeMessage(DataSnapshot dataSnapshot,ArrayAdapter<String>adapter){
+        ChatDTO chatDTO=dataSnapshot.getValue(ChatDTO.class);
+        adapter.remove(chatDTO.getUserName()+" : "+chatDTO.getMessage());
+        binding.framentStudyListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+    }
+    private void openChat(String title){
+        ArrayAdapter<String> chat_adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1);
+        binding.framentStudyListView.setAdapter(chat_adapter);
+        binding.framentStudyListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+
+        databaseReference.child("chat").child(title).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, String s) {
+                addMessage(snapshot,chat_adapter);
+                Log.e("LOG","s:"+s);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                removeMessage(snapshot,chat_adapter);
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 
