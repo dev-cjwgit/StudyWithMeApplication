@@ -25,18 +25,6 @@ public class JoinDialogActivity extends Activity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-/*    // 스터디 그룹에 가임(이메일, 가입 할 스터디 그룹 이름)
-    private void addJoinStudyGroup(String user_email, String study_group_name) {
-        user_email = user_email.replace(".", "-");
-        DocumentReference washingtonRef = db.collection("server").document("user/" + user_email + "/joinStudyGroup/");
-        washingtonRef.update("title", FieldValue.arrayUnion(study_group_name))
-                .addOnSuccessListener(aVoid -> {
-                    Log.d("TAG", "DocumentSnapshot successfully update");
-                })
-                .addOnFailureListener(e -> {
-                    Log.w("TAG", "Error update document", e);
-                });
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
