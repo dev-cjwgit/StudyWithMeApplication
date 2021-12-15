@@ -277,18 +277,9 @@ service cloud.firestore {
         binding.fragmentMainStudyListView.setAdapter(m2Adapter);
 
         getUserInfo(firebaseAuth.getCurrentUser().getEmail());
-//        getUserList();
-        /*createRank("admin@email-com","최진우");
-        createRank("test1@email-com","김채연");
-        createRank("test2@email-com","이효민");
-        createRank("test3@email-com","김선경");
-        createRank("test4@email-com","테스트4");
-        createRank("test5@email-com","테스트5");
-        createRank("test6@email-com","테스트6");
-        createRank("test7@email-com","테스트7");
-        createRank("test8@email-com","테스트8");
-        createRank("test9@email-com","테스트9");
-        createRank("test10@email-com","테스트10");*/
+        //
+        getJoinStudyGroupList(firebaseAuth.getCurrentUser().getEmail());
+        getJoinLectureList(firebaseAuth.getCurrentUser().getEmail());
         getRankingList();
         rank1.setData("로딩중", 0L);
         rank2.setData("로딩중", 0L);
@@ -373,6 +364,8 @@ service cloud.firestore {
     public static String userName;
 
 
+
+
     private void getUserInfo(String user_email) {
         user_email = user_email.replace(".", "-");
 
@@ -386,6 +379,56 @@ service cloud.firestore {
                     userName = document.getData().get("name").toString();
 
                     //--------------------------------------------------------------------
+
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
+    }
+    private void getJoinStudyGroupList(String user_email) {
+        user_email = user_email.replace(".", "-");
+
+        DocumentReference docRef = db.collection("server").document("user/" + user_email + "/joinStudyGroup/");
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    ArrayList<String> temp = (ArrayList<String>) document.get("title");
+                    ArrayList<FrontPoster> data=new ArrayList<>();
+                    for(String item : temp) {
+                        data.add(new FrontPoster(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),item));
+                    }
+                    m2Adapter.setData(data);
+                    m2Adapter.notifyDataSetChanged();   //데이터가 변경되면 view가 갱신되었다고 알림
+                    //studyListViewAdapter.append(new StudyEntity(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),"천체연구모임","스타스타",4,"밤하늘을 관측하는 스터디 모임입니다."));
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
+    }
+    public void getJoinLectureList(String user_email){
+        user_email = user_email.replace(".", "-");
+
+        DocumentReference docRef = db.collection("server").document("user/" + user_email + "/joinLecture/");
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    ArrayList<String> temp = (ArrayList<String>) document.get("title");
+                    ArrayList<FrontPoster> data=new ArrayList<>();
+                    for(String item : temp) {
+                        data.add(new FrontPoster(BitmapFactory.decodeResource(getResources(),R.drawable.default_image),item));
+                    }
+                    m1Adapter.setData(data);
+                    m1Adapter.notifyDataSetChanged();   //데이터가 변경되면 view가 갱신되었다고 알림
 
                 } else {
                     Log.d("TAG", "No such document");
